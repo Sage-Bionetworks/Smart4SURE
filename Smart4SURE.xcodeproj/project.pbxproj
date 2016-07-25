@@ -1,0 +1,684 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		802409BE1D4692F800100F21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409BD1D4692F800100F21 /* AppDelegate.swift */; };
+		802409C31D4692F800100F21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802409C11D4692F800100F21 /* Main.storyboard */; };
+		802409C51D4692F800100F21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802409C41D4692F800100F21 /* Assets.xcassets */; };
+		802409C81D4692F800100F21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802409C61D4692F800100F21 /* LaunchScreen.storyboard */; };
+		802409D31D4692F800100F21 /* Smart4SURETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409D21D4692F800100F21 /* Smart4SURETests.swift */; };
+		802409DE1D4692F800100F21 /* Smart4SUREUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409DD1D4692F800100F21 /* Smart4SUREUITests.swift */; };
+		80240A0E1D46949500100F21 /* AppLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409EB1D46949500100F21 /* AppLocalization.swift */; };
+		80240A0F1D46949500100F21 /* BridgeInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802409EC1D46949500100F21 /* BridgeInfo.plist */; };
+		80240A101D46949500100F21 /* ColorInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802409ED1D46949500100F21 /* ColorInfo.plist */; };
+		80240A111D46949500100F21 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409EE1D46949500100F21 /* ProfileViewController.swift */; };
+		80240A121D46949500100F21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802409F01D46949500100F21 /* Assets.xcassets */; };
+		80240A131D46949500100F21 /* lilly-staging.pem in Resources */ = {isa = PBXBuildFile; fileRef = 802409F21D46949500100F21 /* lilly-staging.pem */; };
+		80240A141D46949500100F21 /* lilly.pem in Resources */ = {isa = PBXBuildFile; fileRef = 802409F31D46949500100F21 /* lilly.pem */; };
+		80240A151D46949500100F21 /* Contact Us.html in Resources */ = {isa = PBXBuildFile; fileRef = 802409F51D46949500100F21 /* Contact Us.html */; };
+		80240A161D46949500100F21 /* How Long.html in Resources */ = {isa = PBXBuildFile; fileRef = 802409F71D46949500100F21 /* How Long.html */; };
+		80240A171D46949500100F21 /* Instructions.html in Resources */ = {isa = PBXBuildFile; fileRef = 802409F91D46949500100F21 /* Instructions.html */; };
+		80240A181D46949500100F21 /* Missed Session.html in Resources */ = {isa = PBXBuildFile; fileRef = 802409FB1D46949500100F21 /* Missed Session.html */; };
+		80240A191D46949500100F21 /* Learn_section.css in Resources */ = {isa = PBXBuildFile; fileRef = 802409FD1D46949500100F21 /* Learn_section.css */; };
+		80240A1A1D46949500100F21 /* pantspocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 802409FE1D46949500100F21 /* pantspocket.png */; };
+		80240A1B1D46949500100F21 /* CombinedTask.json in Resources */ = {isa = PBXBuildFile; fileRef = 80240A001D46949500100F21 /* CombinedTask.json */; };
+		80240A1C1D46949500100F21 /* MedicationTracking.json in Resources */ = {isa = PBXBuildFile; fileRef = 80240A021D46949500100F21 /* MedicationTracking.json */; };
+		80240A1D1D46949500100F21 /* StudyTracker.json in Resources */ = {isa = PBXBuildFile; fileRef = 80240A041D46949500100F21 /* StudyTracker.json */; };
+		80240A1E1D46949500100F21 /* Smart4SUREActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */; };
+		80240A1F1D46949500100F21 /* Smart4SURELearnInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */; };
+		80240A201D46949500100F21 /* Smart4SURELearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */; };
+		80240A211D46949500100F21 /* Smart4SUREOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A0A1D46949500100F21 /* Smart4SUREOnboardingViewController.swift */; };
+		80240A221D46949500100F21 /* Smart4SUREPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A0B1D46949500100F21 /* Smart4SUREPermissionsViewController.swift */; };
+		80240A231D46949500100F21 /* UIColor+Smart4SURE.m in Sources */ = {isa = PBXBuildFile; fileRef = 80240A0D1D46949500100F21 /* UIColor+Smart4SURE.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		802409CF1D4692F800100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 802409B21D4692F800100F21 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 802409B91D4692F800100F21;
+			remoteInfo = Smart4SURE;
+		};
+		802409DA1D4692F800100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 802409B21D4692F800100F21 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 802409B91D4692F800100F21;
+			remoteInfo = Smart4SURE;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		802409BA1D4692F800100F21 /* Smart4SURE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smart4SURE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		802409BD1D4692F800100F21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		802409C21D4692F800100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		802409C41D4692F800100F21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		802409C71D4692F800100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		802409C91D4692F800100F21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		802409CE1D4692F800100F21 /* Smart4SURETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Smart4SURETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		802409D21D4692F800100F21 /* Smart4SURETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smart4SURETests.swift; sourceTree = "<group>"; };
+		802409D41D4692F800100F21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		802409D91D4692F800100F21 /* Smart4SUREUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Smart4SUREUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		802409DD1D4692F800100F21 /* Smart4SUREUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smart4SUREUITests.swift; sourceTree = "<group>"; };
+		802409DF1D4692F800100F21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		802409EB1D46949500100F21 /* AppLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLocalization.swift; sourceTree = "<group>"; };
+		802409EC1D46949500100F21 /* BridgeInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BridgeInfo.plist; sourceTree = "<group>"; };
+		802409ED1D46949500100F21 /* ColorInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ColorInfo.plist; sourceTree = "<group>"; };
+		802409EE1D46949500100F21 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		802409F01D46949500100F21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		802409F21D46949500100F21 /* lilly-staging.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "lilly-staging.pem"; sourceTree = "<group>"; };
+		802409F31D46949500100F21 /* lilly.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lilly.pem; sourceTree = "<group>"; };
+		802409F61D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/Contact Us.html"; sourceTree = "<group>"; };
+		802409F81D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/How Long.html"; sourceTree = "<group>"; };
+		802409FA1D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Instructions.html; sourceTree = "<group>"; };
+		802409FC1D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/Missed Session.html"; sourceTree = "<group>"; };
+		802409FD1D46949500100F21 /* Learn_section.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Learn_section.css; sourceTree = "<group>"; };
+		802409FE1D46949500100F21 /* pantspocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pantspocket.png; sourceTree = "<group>"; };
+		80240A011D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Base; path = Base.lproj/CombinedTask.json; sourceTree = "<group>"; };
+		80240A031D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Base; path = Base.lproj/MedicationTracking.json; sourceTree = "<group>"; };
+		80240A051D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Base; path = Base.lproj/StudyTracker.json; sourceTree = "<group>"; };
+		80240A061D46949500100F21 /* Smart4SURE-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Smart4SURE-Bridging-Header.h"; sourceTree = "<group>"; };
+		80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREActivityTableViewController.swift; sourceTree = "<group>"; };
+		80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SURELearnInfo.swift; sourceTree = "<group>"; };
+		80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SURELearnViewController.swift; sourceTree = "<group>"; };
+		80240A0A1D46949500100F21 /* Smart4SUREOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREOnboardingViewController.swift; sourceTree = "<group>"; };
+		80240A0B1D46949500100F21 /* Smart4SUREPermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREPermissionsViewController.swift; sourceTree = "<group>"; };
+		80240A0C1D46949500100F21 /* UIColor+Smart4SURE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Smart4SURE.h"; sourceTree = "<group>"; };
+		80240A0D1D46949500100F21 /* UIColor+Smart4SURE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Smart4SURE.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		802409B71D4692F800100F21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802409CB1D4692F800100F21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802409D61D4692F800100F21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		802409B11D4692F800100F21 = {
+			isa = PBXGroup;
+			children = (
+				802409BC1D4692F800100F21 /* Smart4SURE */,
+				802409D11D4692F800100F21 /* Smart4SURETests */,
+				802409DC1D4692F800100F21 /* Smart4SUREUITests */,
+				802409BB1D4692F800100F21 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		802409BB1D4692F800100F21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				802409BA1D4692F800100F21 /* Smart4SURE.app */,
+				802409CE1D4692F800100F21 /* Smart4SURETests.xctest */,
+				802409D91D4692F800100F21 /* Smart4SUREUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		802409BC1D4692F800100F21 /* Smart4SURE */ = {
+			isa = PBXGroup;
+			children = (
+				802409BD1D4692F800100F21 /* AppDelegate.swift */,
+				802409EB1D46949500100F21 /* AppLocalization.swift */,
+				802409EC1D46949500100F21 /* BridgeInfo.plist */,
+				802409ED1D46949500100F21 /* ColorInfo.plist */,
+				802409EE1D46949500100F21 /* ProfileViewController.swift */,
+				802409EF1D46949500100F21 /* Resources */,
+				80240A061D46949500100F21 /* Smart4SURE-Bridging-Header.h */,
+				80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */,
+				80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */,
+				80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */,
+				80240A0A1D46949500100F21 /* Smart4SUREOnboardingViewController.swift */,
+				80240A0B1D46949500100F21 /* Smart4SUREPermissionsViewController.swift */,
+				80240A0C1D46949500100F21 /* UIColor+Smart4SURE.h */,
+				80240A0D1D46949500100F21 /* UIColor+Smart4SURE.m */,
+				802409C11D4692F800100F21 /* Main.storyboard */,
+				802409C41D4692F800100F21 /* Assets.xcassets */,
+				802409C61D4692F800100F21 /* LaunchScreen.storyboard */,
+				802409C91D4692F800100F21 /* Info.plist */,
+			);
+			path = Smart4SURE;
+			sourceTree = "<group>";
+		};
+		802409D11D4692F800100F21 /* Smart4SURETests */ = {
+			isa = PBXGroup;
+			children = (
+				802409D21D4692F800100F21 /* Smart4SURETests.swift */,
+				802409D41D4692F800100F21 /* Info.plist */,
+			);
+			path = Smart4SURETests;
+			sourceTree = "<group>";
+		};
+		802409DC1D4692F800100F21 /* Smart4SUREUITests */ = {
+			isa = PBXGroup;
+			children = (
+				802409DD1D4692F800100F21 /* Smart4SUREUITests.swift */,
+				802409DF1D4692F800100F21 /* Info.plist */,
+			);
+			path = Smart4SUREUITests;
+			sourceTree = "<group>";
+		};
+		802409EF1D46949500100F21 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				802409F01D46949500100F21 /* Assets.xcassets */,
+				802409F11D46949500100F21 /* Certificates */,
+				802409F41D46949500100F21 /* HTML */,
+				802409FF1D46949500100F21 /* Tasks */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		802409F11D46949500100F21 /* Certificates */ = {
+			isa = PBXGroup;
+			children = (
+				802409F21D46949500100F21 /* lilly-staging.pem */,
+				802409F31D46949500100F21 /* lilly.pem */,
+			);
+			path = Certificates;
+			sourceTree = "<group>";
+		};
+		802409F41D46949500100F21 /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				802409F51D46949500100F21 /* Contact Us.html */,
+				802409F71D46949500100F21 /* How Long.html */,
+				802409F91D46949500100F21 /* Instructions.html */,
+				802409FB1D46949500100F21 /* Missed Session.html */,
+				802409FD1D46949500100F21 /* Learn_section.css */,
+				802409FE1D46949500100F21 /* pantspocket.png */,
+			);
+			path = HTML;
+			sourceTree = "<group>";
+		};
+		802409FF1D46949500100F21 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				80240A001D46949500100F21 /* CombinedTask.json */,
+				80240A021D46949500100F21 /* MedicationTracking.json */,
+				80240A041D46949500100F21 /* StudyTracker.json */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		802409B91D4692F800100F21 /* Smart4SURE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 802409E21D4692F800100F21 /* Build configuration list for PBXNativeTarget "Smart4SURE" */;
+			buildPhases = (
+				802409B61D4692F800100F21 /* Sources */,
+				802409B71D4692F800100F21 /* Frameworks */,
+				802409B81D4692F800100F21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Smart4SURE;
+			productName = Smart4SURE;
+			productReference = 802409BA1D4692F800100F21 /* Smart4SURE.app */;
+			productType = "com.apple.product-type.application";
+		};
+		802409CD1D4692F800100F21 /* Smart4SURETests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 802409E51D4692F800100F21 /* Build configuration list for PBXNativeTarget "Smart4SURETests" */;
+			buildPhases = (
+				802409CA1D4692F800100F21 /* Sources */,
+				802409CB1D4692F800100F21 /* Frameworks */,
+				802409CC1D4692F800100F21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				802409D01D4692F800100F21 /* PBXTargetDependency */,
+			);
+			name = Smart4SURETests;
+			productName = Smart4SURETests;
+			productReference = 802409CE1D4692F800100F21 /* Smart4SURETests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		802409D81D4692F800100F21 /* Smart4SUREUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 802409E81D4692F800100F21 /* Build configuration list for PBXNativeTarget "Smart4SUREUITests" */;
+			buildPhases = (
+				802409D51D4692F800100F21 /* Sources */,
+				802409D61D4692F800100F21 /* Frameworks */,
+				802409D71D4692F800100F21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				802409DB1D4692F800100F21 /* PBXTargetDependency */,
+			);
+			name = Smart4SUREUITests;
+			productName = Smart4SUREUITests;
+			productReference = 802409D91D4692F800100F21 /* Smart4SUREUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		802409B21D4692F800100F21 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Sage Bionetworks";
+				TargetAttributes = {
+					802409B91D4692F800100F21 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					802409CD1D4692F800100F21 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 802409B91D4692F800100F21;
+					};
+					802409D81D4692F800100F21 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 802409B91D4692F800100F21;
+					};
+				};
+			};
+			buildConfigurationList = 802409B51D4692F800100F21 /* Build configuration list for PBXProject "Smart4SURE" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 802409B11D4692F800100F21;
+			productRefGroup = 802409BB1D4692F800100F21 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				802409B91D4692F800100F21 /* Smart4SURE */,
+				802409CD1D4692F800100F21 /* Smart4SURETests */,
+				802409D81D4692F800100F21 /* Smart4SUREUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		802409B81D4692F800100F21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80240A101D46949500100F21 /* ColorInfo.plist in Resources */,
+				80240A1B1D46949500100F21 /* CombinedTask.json in Resources */,
+				802409C81D4692F800100F21 /* LaunchScreen.storyboard in Resources */,
+				80240A1A1D46949500100F21 /* pantspocket.png in Resources */,
+				80240A191D46949500100F21 /* Learn_section.css in Resources */,
+				802409C51D4692F800100F21 /* Assets.xcassets in Resources */,
+				802409C31D4692F800100F21 /* Main.storyboard in Resources */,
+				80240A161D46949500100F21 /* How Long.html in Resources */,
+				80240A1D1D46949500100F21 /* StudyTracker.json in Resources */,
+				80240A171D46949500100F21 /* Instructions.html in Resources */,
+				80240A121D46949500100F21 /* Assets.xcassets in Resources */,
+				80240A151D46949500100F21 /* Contact Us.html in Resources */,
+				80240A131D46949500100F21 /* lilly-staging.pem in Resources */,
+				80240A0F1D46949500100F21 /* BridgeInfo.plist in Resources */,
+				80240A141D46949500100F21 /* lilly.pem in Resources */,
+				80240A181D46949500100F21 /* Missed Session.html in Resources */,
+				80240A1C1D46949500100F21 /* MedicationTracking.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802409CC1D4692F800100F21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802409D71D4692F800100F21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		802409B61D4692F800100F21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80240A231D46949500100F21 /* UIColor+Smart4SURE.m in Sources */,
+				80240A1E1D46949500100F21 /* Smart4SUREActivityTableViewController.swift in Sources */,
+				80240A221D46949500100F21 /* Smart4SUREPermissionsViewController.swift in Sources */,
+				80240A111D46949500100F21 /* ProfileViewController.swift in Sources */,
+				80240A0E1D46949500100F21 /* AppLocalization.swift in Sources */,
+				802409BE1D4692F800100F21 /* AppDelegate.swift in Sources */,
+				80240A211D46949500100F21 /* Smart4SUREOnboardingViewController.swift in Sources */,
+				80240A1F1D46949500100F21 /* Smart4SURELearnInfo.swift in Sources */,
+				80240A201D46949500100F21 /* Smart4SURELearnViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802409CA1D4692F800100F21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802409D31D4692F800100F21 /* Smart4SURETests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802409D51D4692F800100F21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802409DE1D4692F800100F21 /* Smart4SUREUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		802409D01D4692F800100F21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 802409B91D4692F800100F21 /* Smart4SURE */;
+			targetProxy = 802409CF1D4692F800100F21 /* PBXContainerItemProxy */;
+		};
+		802409DB1D4692F800100F21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 802409B91D4692F800100F21 /* Smart4SURE */;
+			targetProxy = 802409DA1D4692F800100F21 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		802409C11D4692F800100F21 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				802409C21D4692F800100F21 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		802409C61D4692F800100F21 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				802409C71D4692F800100F21 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		802409F51D46949500100F21 /* Contact Us.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				802409F61D46949500100F21 /* Base */,
+			);
+			name = "Contact Us.html";
+			sourceTree = "<group>";
+		};
+		802409F71D46949500100F21 /* How Long.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				802409F81D46949500100F21 /* Base */,
+			);
+			name = "How Long.html";
+			sourceTree = "<group>";
+		};
+		802409F91D46949500100F21 /* Instructions.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				802409FA1D46949500100F21 /* Base */,
+			);
+			name = Instructions.html;
+			sourceTree = "<group>";
+		};
+		802409FB1D46949500100F21 /* Missed Session.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				802409FC1D46949500100F21 /* Base */,
+			);
+			name = "Missed Session.html";
+			sourceTree = "<group>";
+		};
+		80240A001D46949500100F21 /* CombinedTask.json */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80240A011D46949500100F21 /* Base */,
+			);
+			name = CombinedTask.json;
+			sourceTree = "<group>";
+		};
+		80240A021D46949500100F21 /* MedicationTracking.json */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80240A031D46949500100F21 /* Base */,
+			);
+			name = MedicationTracking.json;
+			sourceTree = "<group>";
+		};
+		80240A041D46949500100F21 /* StudyTracker.json */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80240A051D46949500100F21 /* Base */,
+			);
+			name = StudyTracker.json;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		802409E01D4692F800100F21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		802409E11D4692F800100F21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		802409E31D4692F800100F21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = Smart4SURE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		802409E41D4692F800100F21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = Smart4SURE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		802409E61D4692F800100F21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = Smart4SURETests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURETests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Smart4SURE.app/Smart4SURE";
+			};
+			name = Debug;
+		};
+		802409E71D4692F800100F21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = Smart4SURETests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURETests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Smart4SURE.app/Smart4SURE";
+			};
+			name = Release;
+		};
+		802409E91D4692F800100F21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Smart4SUREUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SUREUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Smart4SURE;
+			};
+			name = Debug;
+		};
+		802409EA1D4692F800100F21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Smart4SUREUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SUREUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Smart4SURE;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		802409B51D4692F800100F21 /* Build configuration list for PBXProject "Smart4SURE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802409E01D4692F800100F21 /* Debug */,
+				802409E11D4692F800100F21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		802409E21D4692F800100F21 /* Build configuration list for PBXNativeTarget "Smart4SURE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802409E31D4692F800100F21 /* Debug */,
+				802409E41D4692F800100F21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		802409E51D4692F800100F21 /* Build configuration list for PBXNativeTarget "Smart4SURETests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802409E61D4692F800100F21 /* Debug */,
+				802409E71D4692F800100F21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		802409E81D4692F800100F21 /* Build configuration list for PBXNativeTarget "Smart4SUREUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802409E91D4692F800100F21 /* Debug */,
+				802409EA1D4692F800100F21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 802409B21D4692F800100F21 /* Project object */;
+}
