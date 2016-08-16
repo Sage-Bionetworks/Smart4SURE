@@ -18,8 +18,6 @@
 		80240A101D46949500100F21 /* ColorInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802409ED1D46949500100F21 /* ColorInfo.plist */; };
 		80240A111D46949500100F21 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409EE1D46949500100F21 /* ProfileViewController.swift */; };
 		80240A121D46949500100F21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802409F01D46949500100F21 /* Assets.xcassets */; };
-		80240A131D46949500100F21 /* lilly-staging.pem in Resources */ = {isa = PBXBuildFile; fileRef = 802409F21D46949500100F21 /* lilly-staging.pem */; };
-		80240A141D46949500100F21 /* lilly.pem in Resources */ = {isa = PBXBuildFile; fileRef = 802409F31D46949500100F21 /* lilly.pem */; };
 		80240A151D46949500100F21 /* Contact Us.html in Resources */ = {isa = PBXBuildFile; fileRef = 802409F51D46949500100F21 /* Contact Us.html */; };
 		80240A161D46949500100F21 /* How Long.html in Resources */ = {isa = PBXBuildFile; fileRef = 802409F71D46949500100F21 /* How Long.html */; };
 		80240A171D46949500100F21 /* Instructions.html in Resources */ = {isa = PBXBuildFile; fileRef = 802409F91D46949500100F21 /* Instructions.html */; };
@@ -46,6 +44,8 @@
 		80240AB51D469B2000100F21 /* openssl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80240AB11D469B1700100F21 /* openssl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80240AD01D46A38A00100F21 /* LearnInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80240ACC1D46A38A00100F21 /* LearnInfo.plist */; };
 		80240AD11D46A38A00100F21 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80240ACE1D46A38A00100F21 /* Onboarding.storyboard */; };
+		8027A8C71D638E5B00DCF4D0 /* BridgeInfo-private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */; };
+		8027A8DE1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -262,8 +262,6 @@
 		802409ED1D46949500100F21 /* ColorInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ColorInfo.plist; sourceTree = "<group>"; };
 		802409EE1D46949500100F21 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		802409F01D46949500100F21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		802409F21D46949500100F21 /* lilly-staging.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "lilly-staging.pem"; sourceTree = "<group>"; };
-		802409F31D46949500100F21 /* lilly.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lilly.pem; sourceTree = "<group>"; };
 		802409F61D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/Contact Us.html"; sourceTree = "<group>"; };
 		802409F81D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/How Long.html"; sourceTree = "<group>"; };
 		802409FA1D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Instructions.html; sourceTree = "<group>"; };
@@ -285,6 +283,8 @@
 		80240AAA1D469B1700100F21 /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = BridgeAppSDK/CMSSupport/openssl/openssl.xcodeproj; sourceTree = "<group>"; };
 		80240ACD1D46A38A00100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Smart4SURE/Base.lproj/LearnInfo.plist; sourceTree = "<group>"; };
 		80240ACF1D46A38A00100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Smart4SURE/Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
+		8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BridgeInfo-private.plist"; path = "../../Private Project Info/Smart4SURE/BridgeInfo-private.plist"; sourceTree = "<group>"; };
+		8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "sure-pd3-parkinson.pem"; path = "../../../../Private Project Info/Smart4SURE/sure-pd3-parkinson.pem"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,8 +391,7 @@
 		802409F11D46949500100F21 /* Certificates */ = {
 			isa = PBXGroup;
 			children = (
-				802409F21D46949500100F21 /* lilly-staging.pem */,
-				802409F31D46949500100F21 /* lilly.pem */,
+				8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */,
 			);
 			path = Certificates;
 			sourceTree = "<group>";
@@ -498,6 +497,7 @@
 			children = (
 				802409C91D4692F800100F21 /* Info.plist */,
 				802409EC1D46949500100F21 /* BridgeInfo.plist */,
+				8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */,
 				802409ED1D46949500100F21 /* ColorInfo.plist */,
 				80240ACC1D46A38A00100F21 /* LearnInfo.plist */,
 			);
@@ -777,13 +777,13 @@
 				80240A171D46949500100F21 /* Instructions.html in Resources */,
 				80240A121D46949500100F21 /* Assets.xcassets in Resources */,
 				80240A151D46949500100F21 /* Contact Us.html in Resources */,
-				80240A131D46949500100F21 /* lilly-staging.pem in Resources */,
 				80240AD01D46A38A00100F21 /* LearnInfo.plist in Resources */,
 				80240A0F1D46949500100F21 /* BridgeInfo.plist in Resources */,
-				80240A141D46949500100F21 /* lilly.pem in Resources */,
+				8027A8C71D638E5B00DCF4D0 /* BridgeInfo-private.plist in Resources */,
 				80240AD11D46A38A00100F21 /* Onboarding.storyboard in Resources */,
 				80240A181D46949500100F21 /* Missed Session.html in Resources */,
 				80240A1C1D46949500100F21 /* MedicationTracking.json in Resources */,
+				8027A8DE1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
