@@ -10,7 +10,7 @@
         <!--Activities-->
         <scene sceneID="A3D-vd-3Su">
             <objects>
-                <tableViewController title="Activities" id="WUV-bw-iZu" customClass="LillyActivityTableViewController" customModule="Smart4SURE" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Activities" id="WUV-bw-iZu" customClass="Smart4SUREActivityTableViewController" customModule="Smart4SURE" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="40" sectionFooterHeight="28" id="hs1-21-HUL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -115,7 +115,7 @@
         <!--Learn-->
         <scene sceneID="M7k-9y-jgc">
             <objects>
-                <tableViewController title="Learn" id="reH-Gt-GuH" customClass="LillyLearnViewController" customModule="Smart4SURE" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Learn" id="reH-Gt-GuH" customClass="Smart4SURELearnViewController" customModule="Smart4SURE" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="xVV-dt-UZr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,7 +180,7 @@
         <!--Settings-->
         <scene sceneID="REE-Ln-pbj">
             <objects>
-                <viewController id="GaL-9W-SO4" customClass="LillyProfileViewController" customModule="Smart4SURE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GaL-9W-SO4" customClass="Smart4SUREProfileViewController" customModule="Smart4SURE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="q17-w1-Jzw"/>
                         <viewControllerLayoutGuide type="bottom" id="w1a-gM-QId"/>
@@ -247,7 +247,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lilly 1.0, build 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIK-Eb-OQQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Smart4SURE 1.0, build 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIK-Eb-OQQ">
                                 <rect key="frame" x="257" y="521" width="87" height="14"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -344,5 +344,4 @@
         <image name="tab_profile" width="24" height="24"/>
         <image name="tab_profile_selected" width="24" height="24"/>
     </resources>
-    <color key="tintColor" red="0.92941176470588238" green="0.15294117647058825" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -2,14 +2,14 @@
 //  Smart4SUREUITests.swift
 //  Smart4SUREUITests
 //
-//  Created by Erin Mounts on 7/25/16.
+//  Created by Shannon Young on 3/22/16.
 //  Copyright © 2016 Sage Bionetworks. All rights reserved.
 //
 
 import XCTest
 
 class Smart4SUREUITests: XCTestCase {
-        
+    
     override func setUp() {
         super.setUp()
         
@@ -18,9 +18,9 @@ class Smart4SUREUITests: XCTestCase {
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        let app = XCUIApplication()
+        app.launchArguments = ["--testId:1230", "--dataGroups:training_user"]
+        app.launch()
     }
     
     override func tearDown() {
@@ -28,9 +28,15 @@ class Smart4SUREUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAutomaticLogin() {
+        let app = XCUIApplication()
+        app.tabBars.buttons["Settings"].tap()
+        let expectedExternalIdText = app.staticTexts["1230"]
+        XCTAssertNotNil(expectedExternalIdText)
     }
     
+    // TODO: syoung 07/19/2016 Data refresh doesn't work with UI Testing and KIF breaks with every change of the
+    // OS. Instead, adding only this one test to set the externalId to a test account with "training_user"
+    // as the only data group. This will facilitate manual testing with a known account. For now, that's the best
+    // that I can find that will work consistently. Work-arounds are all brittle and do not work consistently.
 }

@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>emailForLoginViaExternalId</key>
-	<string>nosuchemail@Smart4SURE.com</string>
+	<string>nosuchemail@nosuchzone.tld</string>
 	<key>studyIdentifier</key>
-	<string>smart4sure</string>
+	<string>study</string>
 	<key>useCache</key>
 	<true/>
 	<key>certificateName</key>
-	<string>smart4sure</string>
+	<string>study</string>
 	<key>schemaMapping</key>
 	<array>
 		<dict>

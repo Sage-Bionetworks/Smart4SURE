@@ -35,13 +35,8 @@ import UIKit
 import BridgeAppSDK
 
 class AppLocalization: Localization {
-    static var appLocalizationBundleForClass = {
-        return NSBundle.init(forClass: AppLocalization.self)
-    }()
     
-    override class var localeBundle: NSBundle {
-        return appLocalizationBundleForClass
-    }
+    static let appLocalizationBundle = NSBundle(forClass: AppLocalization.self)
     
     // MARK: List of the strings used in this module.
     override class var listOfAllLocalizedStrings: [String : String] {
@@ -51,8 +46,8 @@ class AppLocalization: Localization {
     private static var listOfMyLocalizedStrings: [String : String] = {
         return [
             // Profile view controller
-            "PROFILE_VC_SWITCHING_SCHEDULE_FAILED" : NSLocalizedString("PROFILE_VC_SWITCHING_SCHEDULE_FAILED", tableName: nil, bundle: localeBundle, value : "Switching Schedule Failed", comment: "Title for error when switching data groups fails"),
-
+            "PROFILE_VC_SWITCHING_SCHEDULE_FAILED" : NSLocalizedString("PROFILE_VC_SWITCHING_SCHEDULE_FAILED", tableName: nil, bundle: appLocalizationBundle, value : "Switching Schedule Failed", comment: "Title for error when switching data groups fails"),
+            
             ]
     }()
 }

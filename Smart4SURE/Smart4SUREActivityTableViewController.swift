@@ -18,14 +18,20 @@ class Smart4SUREActivityTableViewController: SBAActivityTableViewController {
 }
 
 class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
-
+    
     let kTrainingTaskIdentifier = "1-Training-295f81EF-13CB-4DB4-8223-10A173AA0780"
     let kMedTaskIdentifier = "1-MedicationTracker-20EF8ED2-E461-4C20-9024-F43FCAAAF4C3"
     let kStudyDrugTrackingTaskIdentifier = "1-StudyTracker-408C5ED4-AB61-41d3-AF37-7f44C6A16BBF"
     let kStudyDrugTrackingStepIdentifier = "studyDrugTiming"
     
+    let medicationSchemaIdentifier = "Medication Tracker"
+    let tappingSchemaIdentifier = "Tapping Activity"
+    let voiceSchemaIdentifier = "Voice Activity"
+    let memorySchemaIdentifier = "Memory Activity"
+    let walkingSchemaIdentifier = "Walking Activity"
+    
     func taskViewControllerShouldConfirmCancel(taskViewController: ORKTaskViewController) -> Bool {
-        // syoung 05/23/2016 Always override the default action and do not confirm cancellation of 
+        // syoung 05/23/2016 Always override the default action and do not confirm cancellation of
         // a task. The confirmation UI is confusing to participants who are unfamiliar with Apple
         // conventions. Since this is an app designed for use on a phone specific to a short-term
         // clinical trial, we cannot assume that the user is a typical iPhone user.
@@ -87,9 +93,11 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
             // Filter out non-training and med activities for today
             let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
             let midnightTomorrow = calendar.startOfDayForDate(NSDate(timeIntervalSinceNow: 24*60*60))
-            let tomorrowFilter = NSPredicate(format: "scheduledOn > %@", midnightTomorrow)
+            let tomorrowFilter = NSPredicate(format: "scheduledOn >= %@", midnightTomorrow)
+            let notTrainingFilter = NSCompoundPredicate(notPredicateWithSubpredicate: taskIdFilter)
+            let notTrainingTomorrowFilter = NSCompoundPredicate(andPredicateWithSubpredicates: [tomorrowFilter, notTrainingFilter])
             
-            let filter = NSCompoundPredicate(orPredicateWithSubpredicates: [taskIdFilter, tomorrowFilter])
+            let filter = NSCompoundPredicate(orPredicateWithSubpredicates: [trainingFilter, notTrainingTomorrowFilter])
             let schedules = scheduledActivities.filter({ filter.evaluateWithObject($0) })
             return schedules
             
@@ -124,7 +132,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
                     return true
                 }
                 else {
-                    // If the activity is scheduled for today AND there is already a completed activity 
+                    // If the activity is scheduled for today AND there is already a completed activity
                     // in the list then do not include it in the returned array
                     return !titles.contains(schedule.activity.label)
                 }
@@ -138,6 +146,39 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         let completedFilter = SBBScheduledActivity.finishedTodayPredicate()
         let completedTrainingFilter = NSCompoundPredicate(andPredicateWithSubpredicates: [trainingFilter, completedFilter])
         return scheduledActivities.filter({ completedTrainingFilter.evaluateWithObject($0) }).count >= 1
+    }
+    
+    // Archive validation
+    
+    override func jsonValidationMapping(activityResult activityResult: SBAActivityResult) -> [String : NSPredicate]? {
+        
+        // Include some basic schema validation to check for presence of required json results
+        
+        switch activityResult.schemaIdentifier {
+            
+        case medicationSchemaIdentifier:
+            return [
+                "medicationSelection.json"  : NSPredicate(format: "items <> NULL"),
+                "affectedHand.json"         : NSPredicate(format: "choiceAnswers <> NULL"),
+                "dominantHand.json"         : NSPredicate(format: "choiceAnswers <> NULL"),
+            ];
+            
+        case tappingSchemaIdentifier,
+             voiceSchemaIdentifier,
+             walkingSchemaIdentifier:
+            return [
+                "medicationActivityTiming.json"     : NSPredicate(format: "choiceAnswers <> NULL"),
+            ];
+            
+        case memorySchemaIdentifier:
+            return [
+                "medicationActivityTiming.json"     : NSPredicate(format: "choiceAnswers <> NULL"),
+                "cognitive_memory_spatialspan.json" : NSPredicate(format: "MemoryGameOverallScore <> NULL AND MemoryGameNumberOfGames <> NULL AND MemoryGameNumberOfFailures <> NULL AND MemoryGameGameRecords <> NULL"),
+            ];
+            
+        default:
+            return nil
+        }
     }
     
 }

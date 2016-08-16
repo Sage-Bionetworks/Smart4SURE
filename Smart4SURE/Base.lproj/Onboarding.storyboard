@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h5k-c1-iCp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h5k-c1-iCp">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Lilly Onboarding View Controller-->
+        <!--Smart4SURE Onboarding View Controller-->
         <scene sceneID="9Qf-bx-wfZ">
             <objects>
-                <viewController id="58h-sF-T3Q" customClass="LillyOnboardingViewController" customModule="Lilly" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="58h-sF-T3Q" customClass="Smart4SUREOnboardingViewController" customModule="Smart4SURE" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7E4-zz-qTP"/>
                         <viewControllerLayoutGuide type="bottom" id="Fx2-ei-gYb"/>
@@ -97,7 +98,7 @@
         <!--Permissions-->
         <scene sceneID="bs8-Sb-mEX">
             <objects>
-                <tableViewController storyboardIdentifier="PermissionsViewController" id="fah-hd-pEt" userLabel="Permissions" customClass="LillyPermissionsViewController" customModule="Lilly" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PermissionsViewController" id="fah-hd-pEt" userLabel="Permissions" customClass="Smart4SUREPermissionsViewController" customModule="Smart4SURE" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="195" sectionHeaderHeight="22" sectionFooterHeight="22" id="xDb-b2-3Xb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,7 +127,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PermissionsCell" rowHeight="200" id="b4Z-B6-MJr" customClass="LillyPermissionsCell" customModule="Lilly" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PermissionsCell" rowHeight="200" id="b4Z-B6-MJr" customClass="Smart4SUREPermissionsCell" customModule="Smart4SURE" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="320" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b4Z-B6-MJr" id="Bo5-Cc-2W3">
@@ -231,5 +232,4 @@
             <point key="canvasLocation" x="-112" y="981"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.92941176470588238" green="0.15294117647058825" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
 </document>

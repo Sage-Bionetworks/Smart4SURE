@@ -34,7 +34,18 @@
 		80240A201D46949500100F21 /* Smart4SURELearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */; };
 		80240A211D46949500100F21 /* Smart4SUREOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A0A1D46949500100F21 /* Smart4SUREOnboardingViewController.swift */; };
 		80240A221D46949500100F21 /* Smart4SUREPermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A0B1D46949500100F21 /* Smart4SUREPermissionsViewController.swift */; };
-		80240A231D46949500100F21 /* UIColor+Smart4SURE.m in Sources */ = {isa = PBXBuildFile; fileRef = 80240A0D1D46949500100F21 /* UIColor+Smart4SURE.m */; };
+		80240A991D469AFE00100F21 /* ZipZap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A8C1D469AB600100F21 /* ZipZap.framework */; };
+		80240A9A1D469AFE00100F21 /* ZipZap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A8C1D469AB600100F21 /* ZipZap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80240A9D1D469AFE00100F21 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A7E1D469AA600100F21 /* ResearchKit.framework */; };
+		80240A9E1D469AFE00100F21 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A7E1D469AA600100F21 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80240AA11D469AFE00100F21 /* BridgeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A701D469A9800100F21 /* BridgeSDK.framework */; };
+		80240AA21D469AFE00100F21 /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A701D469A9800100F21 /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80240AA51D469AFE00100F21 /* BridgeAppSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A321D469A2D00100F21 /* BridgeAppSDK.framework */; };
+		80240AA61D469AFE00100F21 /* BridgeAppSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A321D469A2D00100F21 /* BridgeAppSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80240AB41D469B2000100F21 /* openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80240AB11D469B1700100F21 /* openssl.framework */; };
+		80240AB51D469B2000100F21 /* openssl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80240AB11D469B1700100F21 /* openssl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80240AD01D46A38A00100F21 /* LearnInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80240ACC1D46A38A00100F21 /* LearnInfo.plist */; };
+		80240AD11D46A38A00100F21 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80240ACE1D46A38A00100F21 /* Onboarding.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +63,186 @@
 			remoteGlobalIDString = 802409B91D4692F800100F21;
 			remoteInfo = Smart4SURE;
 		};
+		80240A2F1D469A2D00100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A251D469A2D00100F21 /* BridgeAppSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 161479C01BD6CE8F0099A068;
+			remoteInfo = BridgeAppSDKSample;
+		};
+		80240A311D469A2D00100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A251D469A2D00100F21 /* BridgeAppSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 801040B21C5A843D00D26E19;
+			remoteInfo = BridgeAppSDK;
+		};
+		80240A331D469A2D00100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A251D469A2D00100F21 /* BridgeAppSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 801040BB1C5A843D00D26E19;
+			remoteInfo = BridgeAppSDKTests;
+		};
+		80240A6F1D469A9800100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 80855F5019BE258C006601C7;
+			remoteInfo = BridgeSDK;
+		};
+		80240A711D469A9800100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 80855F5B19BE258C006601C7;
+			remoteInfo = BridgeSDKTests;
+		};
+		80240A731D469A9800100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 807AE2871B603309002588BB;
+			remoteInfo = BridgeSDKIntegration;
+		};
+		80240A751D469A9800100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 807AE29F1B60330C002588BB;
+			remoteInfo = BridgeSDKIntegrationTests;
+		};
+		80240A7D1D469AA600100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A771D469AA600100F21 /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B183A5951A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		80240A7F1D469AA600100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A771D469AA600100F21 /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
+			remoteInfo = ResearchKitTests;
+		};
+		80240A8B1D469AB600100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D87BA1F81B3D6DEA00ED7EB3;
+			remoteInfo = "ZipZap (iOS Framework)";
+		};
+		80240A8D1D469AB600100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D899CFB0162C5EEB00112F49;
+			remoteInfo = "ZipZap (iOS Static Library)";
+		};
+		80240A8F1D469AB600100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D8D140D31B423B1100C411B0;
+			remoteInfo = "ZipZap (OS X Framework)";
+		};
+		80240A911D469AB600100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D899CF82162C5EC100112F49;
+			remoteInfo = "ZipZap (OS X Static Library)";
+		};
+		80240A931D469AB600100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BF8624CB1BB7495200C12EEE;
+			remoteInfo = "ZipZap (tvOS Framework)";
+		};
+		80240A951D469AB600100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BF8624EF1BB74B1F00C12EEE;
+			remoteInfo = "ZipZap (tvOS Static Library)";
+		};
+		80240A971D469AB600100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D899CF96162C5EC100112F49;
+			remoteInfo = ZipZapTests;
+		};
+		80240A9B1D469AFE00100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D87BA1F71B3D6DEA00ED7EB3;
+			remoteInfo = "ZipZap (iOS Framework)";
+		};
+		80240A9F1D469AFE00100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A771D469AA600100F21 /* ResearchKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B183A4731A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		80240AA31D469AFE00100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 80855F4F19BE258C006601C7;
+			remoteInfo = BridgeSDK;
+		};
+		80240AA71D469AFE00100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240A251D469A2D00100F21 /* BridgeAppSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 801040B11C5A843D00D26E19;
+			remoteInfo = BridgeAppSDK;
+		};
+		80240AB01D469B1700100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240AAA1D469B1700100F21 /* openssl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60674AE31B30A93900A1917D;
+			remoteInfo = openssl;
+		};
+		80240AB21D469B1700100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240AAA1D469B1700100F21 /* openssl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60674AEE1B30A93900A1917D;
+			remoteInfo = opensslTests;
+		};
+		80240AB61D469B2000100F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80240AAA1D469B1700100F21 /* openssl.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 60674AE21B30A93900A1917D;
+			remoteInfo = openssl;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		80240AA91D469AFF00100F21 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				80240AB51D469B2000100F21 /* openssl.framework in Embed Frameworks */,
+				80240A9E1D469AFE00100F21 /* ResearchKit.framework in Embed Frameworks */,
+				80240A9A1D469AFE00100F21 /* ZipZap.framework in Embed Frameworks */,
+				80240AA61D469AFE00100F21 /* BridgeAppSDK.framework in Embed Frameworks */,
+				80240AA21D469AFE00100F21 /* BridgeSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		802409BA1D4692F800100F21 /* Smart4SURE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smart4SURE.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,14 +273,18 @@
 		80240A011D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Base; path = Base.lproj/CombinedTask.json; sourceTree = "<group>"; };
 		80240A031D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Base; path = Base.lproj/MedicationTracking.json; sourceTree = "<group>"; };
 		80240A051D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Base; path = Base.lproj/StudyTracker.json; sourceTree = "<group>"; };
-		80240A061D46949500100F21 /* Smart4SURE-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Smart4SURE-Bridging-Header.h"; sourceTree = "<group>"; };
 		80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREActivityTableViewController.swift; sourceTree = "<group>"; };
 		80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SURELearnInfo.swift; sourceTree = "<group>"; };
 		80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SURELearnViewController.swift; sourceTree = "<group>"; };
 		80240A0A1D46949500100F21 /* Smart4SUREOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREOnboardingViewController.swift; sourceTree = "<group>"; };
 		80240A0B1D46949500100F21 /* Smart4SUREPermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREPermissionsViewController.swift; sourceTree = "<group>"; };
-		80240A0C1D46949500100F21 /* UIColor+Smart4SURE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Smart4SURE.h"; sourceTree = "<group>"; };
-		80240A0D1D46949500100F21 /* UIColor+Smart4SURE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Smart4SURE.m"; sourceTree = "<group>"; };
+		80240A251D469A2D00100F21 /* BridgeAppSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BridgeAppSDK.xcodeproj; path = BridgeAppSDK/BridgeAppSDK.xcodeproj; sourceTree = "<group>"; };
+		80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BridgeSDK.xcodeproj; path = BridgeAppSDK/BridgeSDK/BridgeSDK.xcodeproj; sourceTree = "<group>"; };
+		80240A771D469AA600100F21 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = BridgeAppSDK/ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
+		80240A811D469AB600100F21 /* ZipZap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipZap.xcodeproj; path = BridgeAppSDK/ZipZap/ZipZap.xcodeproj; sourceTree = "<group>"; };
+		80240AAA1D469B1700100F21 /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = BridgeAppSDK/CMSSupport/openssl/openssl.xcodeproj; sourceTree = "<group>"; };
+		80240ACD1D46A38A00100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Smart4SURE/Base.lproj/LearnInfo.plist; sourceTree = "<group>"; };
+		80240ACF1D46A38A00100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Smart4SURE/Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +292,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80240AB41D469B2000100F21 /* openssl.framework in Frameworks */,
+				80240A9D1D469AFE00100F21 /* ResearchKit.framework in Frameworks */,
+				80240A991D469AFE00100F21 /* ZipZap.framework in Frameworks */,
+				80240AA51D469AFE00100F21 /* BridgeAppSDK.framework in Frameworks */,
+				80240AA11D469AFE00100F21 /* BridgeSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +323,7 @@
 				802409BC1D4692F800100F21 /* Smart4SURE */,
 				802409D11D4692F800100F21 /* Smart4SURETests */,
 				802409DC1D4692F800100F21 /* Smart4SUREUITests */,
+				80240A241D469A1700100F21 /* Frameworks */,
 				802409BB1D4692F800100F21 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -142,23 +342,19 @@
 			isa = PBXGroup;
 			children = (
 				802409BD1D4692F800100F21 /* AppDelegate.swift */,
-				802409EB1D46949500100F21 /* AppLocalization.swift */,
-				802409EC1D46949500100F21 /* BridgeInfo.plist */,
-				802409ED1D46949500100F21 /* ColorInfo.plist */,
 				802409EE1D46949500100F21 /* ProfileViewController.swift */,
+				80240AD21D46A3D400100F21 /* Localization */,
 				802409EF1D46949500100F21 /* Resources */,
-				80240A061D46949500100F21 /* Smart4SURE-Bridging-Header.h */,
+				80240AD31D46A44900100F21 /* Supporting Files */,
 				80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */,
 				80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */,
 				80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */,
 				80240A0A1D46949500100F21 /* Smart4SUREOnboardingViewController.swift */,
 				80240A0B1D46949500100F21 /* Smart4SUREPermissionsViewController.swift */,
-				80240A0C1D46949500100F21 /* UIColor+Smart4SURE.h */,
-				80240A0D1D46949500100F21 /* UIColor+Smart4SURE.m */,
 				802409C11D4692F800100F21 /* Main.storyboard */,
 				802409C41D4692F800100F21 /* Assets.xcassets */,
 				802409C61D4692F800100F21 /* LaunchScreen.storyboard */,
-				802409C91D4692F800100F21 /* Info.plist */,
+				80240ACE1D46A38A00100F21 /* Onboarding.storyboard */,
 			);
 			path = Smart4SURE;
 			sourceTree = "<group>";
@@ -224,6 +420,90 @@
 			path = Tasks;
 			sourceTree = "<group>";
 		};
+		80240A241D469A1700100F21 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				80240AAA1D469B1700100F21 /* openssl.xcodeproj */,
+				80240A811D469AB600100F21 /* ZipZap.xcodeproj */,
+				80240A771D469AA600100F21 /* ResearchKit.xcodeproj */,
+				80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */,
+				80240A251D469A2D00100F21 /* BridgeAppSDK.xcodeproj */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80240A261D469A2D00100F21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80240A301D469A2D00100F21 /* BridgeAppSDKSample.app */,
+				80240A321D469A2D00100F21 /* BridgeAppSDK.framework */,
+				80240A341D469A2D00100F21 /* BridgeAppSDKTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80240A631D469A9800100F21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80240A701D469A9800100F21 /* BridgeSDK.framework */,
+				80240A721D469A9800100F21 /* BridgeSDKTests.xctest */,
+				80240A741D469A9800100F21 /* BridgeSDKIntegration.app */,
+				80240A761D469A9800100F21 /* BridgeSDKIntegrationTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80240A781D469AA600100F21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80240A7E1D469AA600100F21 /* ResearchKit.framework */,
+				80240A801D469AA600100F21 /* ResearchKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80240A821D469AB600100F21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80240A8C1D469AB600100F21 /* ZipZap.framework */,
+				80240A8E1D469AB600100F21 /* libZipZap.a */,
+				80240A901D469AB600100F21 /* ZipZap.framework */,
+				80240A921D469AB600100F21 /* libZipZap.a */,
+				80240A941D469AB600100F21 /* ZipZap.framework */,
+				80240A961D469AB600100F21 /* libZipZap.a */,
+				80240A981D469AB600100F21 /* ZipZapTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80240AAB1D469B1700100F21 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80240AB11D469B1700100F21 /* openssl.framework */,
+				80240AB31D469B1700100F21 /* opensslTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80240AD21D46A3D400100F21 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				802409EB1D46949500100F21 /* AppLocalization.swift */,
+			);
+			name = Localization;
+			sourceTree = "<group>";
+		};
+		80240AD31D46A44900100F21 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				802409C91D4692F800100F21 /* Info.plist */,
+				802409EC1D46949500100F21 /* BridgeInfo.plist */,
+				802409ED1D46949500100F21 /* ColorInfo.plist */,
+				80240ACC1D46A38A00100F21 /* LearnInfo.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -234,10 +514,16 @@
 				802409B61D4692F800100F21 /* Sources */,
 				802409B71D4692F800100F21 /* Frameworks */,
 				802409B81D4692F800100F21 /* Resources */,
+				80240AA91D469AFF00100F21 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				80240A9C1D469AFE00100F21 /* PBXTargetDependency */,
+				80240AA01D469AFE00100F21 /* PBXTargetDependency */,
+				80240AA41D469AFE00100F21 /* PBXTargetDependency */,
+				80240AA81D469AFE00100F21 /* PBXTargetDependency */,
+				80240AB71D469B2000100F21 /* PBXTargetDependency */,
 			);
 			name = Smart4SURE;
 			productName = Smart4SURE;
@@ -314,6 +600,28 @@
 			mainGroup = 802409B11D4692F800100F21;
 			productRefGroup = 802409BB1D4692F800100F21 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 80240A261D469A2D00100F21 /* Products */;
+					ProjectRef = 80240A251D469A2D00100F21 /* BridgeAppSDK.xcodeproj */;
+				},
+				{
+					ProductGroup = 80240A631D469A9800100F21 /* Products */;
+					ProjectRef = 80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */;
+				},
+				{
+					ProductGroup = 80240AAB1D469B1700100F21 /* Products */;
+					ProjectRef = 80240AAA1D469B1700100F21 /* openssl.xcodeproj */;
+				},
+				{
+					ProductGroup = 80240A781D469AA600100F21 /* Products */;
+					ProjectRef = 80240A771D469AA600100F21 /* ResearchKit.xcodeproj */;
+				},
+				{
+					ProductGroup = 80240A821D469AB600100F21 /* Products */;
+					ProjectRef = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				802409B91D4692F800100F21 /* Smart4SURE */,
@@ -322,6 +630,135 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		80240A301D469A2D00100F21 /* BridgeAppSDKSample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = BridgeAppSDKSample.app;
+			remoteRef = 80240A2F1D469A2D00100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A321D469A2D00100F21 /* BridgeAppSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BridgeAppSDK.framework;
+			remoteRef = 80240A311D469A2D00100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A341D469A2D00100F21 /* BridgeAppSDKTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BridgeAppSDKTests.xctest;
+			remoteRef = 80240A331D469A2D00100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A701D469A9800100F21 /* BridgeSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BridgeSDK.framework;
+			remoteRef = 80240A6F1D469A9800100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A721D469A9800100F21 /* BridgeSDKTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BridgeSDKTests.xctest;
+			remoteRef = 80240A711D469A9800100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A741D469A9800100F21 /* BridgeSDKIntegration.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = BridgeSDKIntegration.app;
+			remoteRef = 80240A731D469A9800100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A761D469A9800100F21 /* BridgeSDKIntegrationTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BridgeSDKIntegrationTests.xctest;
+			remoteRef = 80240A751D469A9800100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A7E1D469AA600100F21 /* ResearchKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ResearchKit.framework;
+			remoteRef = 80240A7D1D469AA600100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A801D469AA600100F21 /* ResearchKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ResearchKitTests.xctest;
+			remoteRef = 80240A7F1D469AA600100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A8C1D469AB600100F21 /* ZipZap.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ZipZap.framework;
+			remoteRef = 80240A8B1D469AB600100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A8E1D469AB600100F21 /* libZipZap.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libZipZap.a;
+			remoteRef = 80240A8D1D469AB600100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A901D469AB600100F21 /* ZipZap.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ZipZap.framework;
+			remoteRef = 80240A8F1D469AB600100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A921D469AB600100F21 /* libZipZap.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libZipZap.a;
+			remoteRef = 80240A911D469AB600100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A941D469AB600100F21 /* ZipZap.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ZipZap.framework;
+			remoteRef = 80240A931D469AB600100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A961D469AB600100F21 /* libZipZap.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libZipZap.a;
+			remoteRef = 80240A951D469AB600100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240A981D469AB600100F21 /* ZipZapTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ZipZapTests.xctest;
+			remoteRef = 80240A971D469AB600100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240AB11D469B1700100F21 /* openssl.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = openssl.framework;
+			remoteRef = 80240AB01D469B1700100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80240AB31D469B1700100F21 /* opensslTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = opensslTests.xctest;
+			remoteRef = 80240AB21D469B1700100F21 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		802409B81D4692F800100F21 /* Resources */ = {
@@ -341,8 +778,10 @@
 				80240A121D46949500100F21 /* Assets.xcassets in Resources */,
 				80240A151D46949500100F21 /* Contact Us.html in Resources */,
 				80240A131D46949500100F21 /* lilly-staging.pem in Resources */,
+				80240AD01D46A38A00100F21 /* LearnInfo.plist in Resources */,
 				80240A0F1D46949500100F21 /* BridgeInfo.plist in Resources */,
 				80240A141D46949500100F21 /* lilly.pem in Resources */,
+				80240AD11D46A38A00100F21 /* Onboarding.storyboard in Resources */,
 				80240A181D46949500100F21 /* Missed Session.html in Resources */,
 				80240A1C1D46949500100F21 /* MedicationTracking.json in Resources */,
 			);
@@ -369,7 +808,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80240A231D46949500100F21 /* UIColor+Smart4SURE.m in Sources */,
 				80240A1E1D46949500100F21 /* Smart4SUREActivityTableViewController.swift in Sources */,
 				80240A221D46949500100F21 /* Smart4SUREPermissionsViewController.swift in Sources */,
 				80240A111D46949500100F21 /* ProfileViewController.swift in Sources */,
@@ -409,6 +847,31 @@
 			isa = PBXTargetDependency;
 			target = 802409B91D4692F800100F21 /* Smart4SURE */;
 			targetProxy = 802409DA1D4692F800100F21 /* PBXContainerItemProxy */;
+		};
+		80240A9C1D469AFE00100F21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ZipZap (iOS Framework)";
+			targetProxy = 80240A9B1D469AFE00100F21 /* PBXContainerItemProxy */;
+		};
+		80240AA01D469AFE00100F21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ResearchKit;
+			targetProxy = 80240A9F1D469AFE00100F21 /* PBXContainerItemProxy */;
+		};
+		80240AA41D469AFE00100F21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BridgeSDK;
+			targetProxy = 80240AA31D469AFE00100F21 /* PBXContainerItemProxy */;
+		};
+		80240AA81D469AFE00100F21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BridgeAppSDK;
+			targetProxy = 80240AA71D469AFE00100F21 /* PBXContainerItemProxy */;
+		};
+		80240AB71D469B2000100F21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openssl;
+			targetProxy = 80240AB61D469B2000100F21 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -483,6 +946,24 @@
 				80240A051D46949500100F21 /* Base */,
 			);
 			name = StudyTracker.json;
+			sourceTree = "<group>";
+		};
+		80240ACC1D46A38A00100F21 /* LearnInfo.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80240ACD1D46A38A00100F21 /* Base */,
+			);
+			name = LearnInfo.plist;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		80240ACE1D46A38A00100F21 /* Onboarding.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80240ACF1D46A38A00100F21 /* Base */,
+			);
+			name = Onboarding.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -576,6 +1057,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURE;
@@ -589,6 +1071,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURE;
@@ -661,6 +1144,7 @@
 				802409E41D4692F800100F21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		802409E51D4692F800100F21 /* Build configuration list for PBXNativeTarget "Smart4SURETests" */ = {
 			isa = XCConfigurationList;
@@ -669,6 +1153,7 @@
 				802409E71D4692F800100F21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		802409E81D4692F800100F21 /* Build configuration list for PBXNativeTarget "Smart4SUREUITests" */ = {
 			isa = XCConfigurationList;
@@ -677,6 +1162,7 @@
 				802409EA1D4692F800100F21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
