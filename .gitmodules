@@ -1,3 +1,0 @@
-[submodule "BridgeAppSDK"]
-	path = BridgeAppSDK
-	url = ssh://git@github.com/Sage-Bionetworks/BridgeAppSDK.git
