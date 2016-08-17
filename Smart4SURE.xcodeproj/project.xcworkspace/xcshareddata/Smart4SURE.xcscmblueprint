@@ -1,23 +1,26 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "E9C430A0781C198D8EC7D287EE17758484C5391F",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "82DF43EF5CA016D15C41E0AF1AF686E9973475B7" : 0,
     "A312D9A806D0D2A0881387E6F394BB84B63BC0CD" : 0,
-    "0B6D8AAAD0FF4C01212E6AB2D110619FA685281D" : 0,
-    "CEE2E2DA3B415DB70C257504A5BA6B611A730B63" : 0,
     "9CF6181E3789E3853840089C16D4B9FDDB9B31E2" : 0,
-    "DEDD58F0BAF28034A74179391A23AC2E0219CDC3" : 0
+    "DEDD58F0BAF28034A74179391A23AC2E0219CDC3" : 0,
+    "0B6D8AAAD0FF4C01212E6AB2D110619FA685281D" : 0,
+    "82DF43EF5CA016D15C41E0AF1AF686E9973475B7" : 0,
+    "E9C430A0781C198D8EC7D287EE17758484C5391F" : 0,
+    "CEE2E2DA3B415DB70C257504A5BA6B611A730B63" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C28D3A5D-5794-46EA-A82E-B7180C6CCE38",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "82DF43EF5CA016D15C41E0AF1AF686E9973475B7" : "Smart4SURE\/BridgeAppSDK\/ZipZap\/",
     "A312D9A806D0D2A0881387E6F394BB84B63BC0CD" : "Smart4SURE\/BridgeAppSDK\/",
-    "0B6D8AAAD0FF4C01212E6AB2D110619FA685281D" : "Smart4SURE\/BridgeAppSDK\/CMSSupport\/",
-    "CEE2E2DA3B415DB70C257504A5BA6B611A730B63" : "Smart4SURE\/BridgeAppSDK\/BridgeSDK\/",
     "9CF6181E3789E3853840089C16D4B9FDDB9B31E2" : "Smart4SURE\/BridgeAppSDK\/ResearchKit\/",
-    "DEDD58F0BAF28034A74179391A23AC2E0219CDC3" : "Smart4SURE\/BridgeAppSDK\/BridgeSDK\/Submodules\/RNCryptor\/"
+    "DEDD58F0BAF28034A74179391A23AC2E0219CDC3" : "Smart4SURE\/BridgeAppSDK\/BridgeSDK\/Submodules\/RNCryptor\/",
+    "0B6D8AAAD0FF4C01212E6AB2D110619FA685281D" : "Smart4SURE\/BridgeAppSDK\/CMSSupport\/",
+    "82DF43EF5CA016D15C41E0AF1AF686E9973475B7" : "Smart4SURE\/BridgeAppSDK\/ZipZap\/",
+    "E9C430A0781C198D8EC7D287EE17758484C5391F" : "Smart4SURE\/",
+    "CEE2E2DA3B415DB70C257504A5BA6B611A730B63" : "Smart4SURE\/BridgeAppSDK\/BridgeSDK\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Smart4SURE",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -52,6 +55,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/RNCryptor\/RNCryptor.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DEDD58F0BAF28034A74179391A23AC2E0219CDC3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/Sage-Bionetworks\/Smart4SURE.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E9C430A0781C198D8EC7D287EE17758484C5391F"
     }
   ]
 }
