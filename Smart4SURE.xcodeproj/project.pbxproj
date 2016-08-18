@@ -271,7 +271,7 @@
 		80240A811D469AB600100F21 /* ZipZap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipZap.xcodeproj; path = BridgeAppSDK/ZipZap/ZipZap.xcodeproj; sourceTree = "<group>"; };
 		80240AAA1D469B1700100F21 /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = BridgeAppSDK/CMSSupport/openssl/openssl.xcodeproj; sourceTree = "<group>"; };
 		80240ACD1D46A38A00100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Smart4SURE/Base.lproj/LearnInfo.plist; sourceTree = "<group>"; };
-		8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BridgeInfo-private.plist"; path = "../../Private Project Info/Smart4SURE/BridgeInfo-private.plist"; sourceTree = "<group>"; };
+		8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BridgeInfo-private.plist"; path = "../iOSPrivateProjectInfo/Smart4SURE/BridgeInfo-private.plist"; sourceTree = SOURCE_ROOT; };
 		8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sure-pd3-parkinson.pem"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -377,7 +377,7 @@
 				8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */,
 			);
 			name = Certificates;
-			path = "../Private Project Info/Smart4SURE";
+			path = ../iOSPrivateProjectInfo/Smart4SURE;
 			sourceTree = SOURCE_ROOT;
 		};
 		802409F41D46949500100F21 /* HTML */ = {
