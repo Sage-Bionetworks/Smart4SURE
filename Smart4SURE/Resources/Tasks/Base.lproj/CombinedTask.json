@@ -1,5 +1,6 @@
 {
-    "taskIdentifier"    : "1-Combo-295f81EF-13CB-4DB4-8223-10A173AA0780",
+    "taskIdentifier"    : "Activity Session",
+    "schemaIdentifier"  : "Activity Session",
     "identifier"        : "Activity Session",
     "steps"         :
     [
@@ -10,8 +11,33 @@
      "text"         : "A session includes four activities. It may take 5 minutes to complete.",
      },
      {
-     "resourceName"            : "MedicationTracking",
-     "classType"               : "TrackedDataObjectCollection",
+     "identifier"   : "permissions",
+     "type"         : "permissions",
+     "title"        : "Permissions",
+     "text"         : "The following permissions are required for this activity. Please change these permissions via the iPhone Settings app before continuing.",
+     "items"        : ["coremotion", "microphone"],
+     "optional"     : false,
+     },
+     {
+     "identifier"       : "takingLevodopa",
+     "type"             : "boolean",
+     "text"             : "Are you currently taking any medication containing levodopa? (For example: Sinemet, Sinemet CR, Stalevo, Parcopa, Rytary)",
+     "skipIdentifier"   : "levodopaFrequency",
+     "skipIfPassed"     : false,
+     "expectedAnswer"   : true,
+     "optional"         : false,
+     },
+     {
+     "identifier"   : "levodopaFrequency",
+     "type"         : "timingRange",
+     "text"         : "When was the last time you took any medication containing levodopa? (For example: Sinemet, Sinemet CR, Stalevo, Parcopa, Rytary)",
+     "items"        : [{"min": 0, "max": 30, "unit": "minutes"},
+                       {"min": 30, "max": 60, "unit": "minutes"},
+                       {"min": 1, "max": 2, "unit": "hours"},
+                       {"min": 2, "max": 4, "unit": "hours"},
+                       {"min": 4, "max": 8, "unit": "hours"},
+                       {"min": 8, "unit": "hours"}],
+     "optional"     : false,
      },
      {
      "taskIdentifier"            : "Tapping",
