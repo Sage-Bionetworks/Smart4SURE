@@ -1,0 +1,19 @@
+{
+    "steps" :
+    [
+     {
+     "identifier"   : "registration",
+     "type"         : "externalID",
+     "options"      : { "keyboardType" : "numberPad" },
+     },
+     {
+     "identifier"   : "permissions",
+     "type"         : "permissions",
+     },
+     {
+     "identifier"   : "completion",
+     "type"         : "onboardingCompletion",
+     "text"         : "You’ll be asked to complete an activity session each week on the same day (+/- 1 day) and at about the same time (+/- 1hour).\n\nWe’ll also ask you to fill-in surveys.\n\nNew activities and surveys may appear over the course of the study.",
+     },
+     ]
+}
