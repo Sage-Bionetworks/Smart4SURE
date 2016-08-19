@@ -5,6 +5,7 @@
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "A312D9A806D0D2A0881387E6F394BB84B63BC0CD" : 0,
+    "7B75DA84B8E1F6334D9C57E512D2DBBD450ED521" : 0,
     "9CF6181E3789E3853840089C16D4B9FDDB9B31E2" : 0,
     "DEDD58F0BAF28034A74179391A23AC2E0219CDC3" : 0,
     "0B6D8AAAD0FF4C01212E6AB2D110619FA685281D" : 0,
@@ -15,6 +16,7 @@
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C28D3A5D-5794-46EA-A82E-B7180C6CCE38",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "A312D9A806D0D2A0881387E6F394BB84B63BC0CD" : "Smart4SURE\/BridgeAppSDK\/",
+    "7B75DA84B8E1F6334D9C57E512D2DBBD450ED521" : "iOSPrivateProjectInfo\/",
     "9CF6181E3789E3853840089C16D4B9FDDB9B31E2" : "Smart4SURE\/BridgeAppSDK\/ResearchKit\/",
     "DEDD58F0BAF28034A74179391A23AC2E0219CDC3" : "Smart4SURE\/BridgeAppSDK\/BridgeSDK\/Submodules\/RNCryptor\/",
     "0B6D8AAAD0FF4C01212E6AB2D110619FA685281D" : "Smart4SURE\/BridgeAppSDK\/CMSSupport\/",
@@ -30,6 +32,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Sage-Bionetworks\/CMSSupport.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0B6D8AAAD0FF4C01212E6AB2D110619FA685281D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Sage-Bionetworks\/iOSPrivateProjectInfo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7B75DA84B8E1F6334D9C57E512D2DBBD450ED521"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/pixelglow\/ZipZap.git",
