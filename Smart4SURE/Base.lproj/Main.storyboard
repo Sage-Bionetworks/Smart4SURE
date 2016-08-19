@@ -120,9 +120,49 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="pFA-33-ewd">
-                            <rect key="frame" x="0.0" y="152" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="152" width="600" height="85.5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version 1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Lg-B9-FeU">
+                                    <rect key="frame" x="265" y="51" width="70.5" height="14.5"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SGk-OB-Zcm">
+                                    <rect key="frame" x="222.5" y="23" width="154.5" height="19.5"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Participant ID: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOJ-Aw-VVf">
+                                            <rect key="frame" x="0.0" y="0.0" width="106.5" height="19.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfz-no-LBJ">
+                                            <rect key="frame" x="108" y="0.0" width="46.5" height="19.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Hfz-no-LBJ" secondAttribute="bottom" id="GC0-sY-vt3"/>
+                                        <constraint firstAttribute="bottom" secondItem="qOJ-Aw-VVf" secondAttribute="bottom" id="M1n-Fi-dNu"/>
+                                        <constraint firstItem="qOJ-Aw-VVf" firstAttribute="leading" secondItem="SGk-OB-Zcm" secondAttribute="leading" id="WYL-vP-IC1"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hfz-no-LBJ" secondAttribute="trailing" id="tJg-6C-57u"/>
+                                        <constraint firstItem="Hfz-no-LBJ" firstAttribute="leading" secondItem="qOJ-Aw-VVf" secondAttribute="trailing" constant="2" id="v94-94-j2X"/>
+                                        <constraint firstItem="qOJ-Aw-VVf" firstAttribute="top" secondItem="SGk-OB-Zcm" secondAttribute="top" id="yp2-dl-BtB"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="0Lg-B9-FeU" firstAttribute="top" secondItem="SGk-OB-Zcm" secondAttribute="bottom" constant="8" id="8lI-Mr-zB5"/>
+                                <constraint firstItem="0Lg-B9-FeU" firstAttribute="bottom" secondItem="pFA-33-ewd" secondAttribute="bottomMargin" constant="-12" id="KGP-t8-l9Y"/>
+                                <constraint firstItem="0Lg-B9-FeU" firstAttribute="centerX" secondItem="pFA-33-ewd" secondAttribute="centerX" id="O4E-Ua-dv1"/>
+                                <constraint firstItem="SGk-OB-Zcm" firstAttribute="centerX" secondItem="pFA-33-ewd" secondAttribute="centerX" id="Uyj-YC-Z3L"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BasicCell" textLabel="All-ky-dAw" style="IBUITableViewCellStyleDefault" id="Zwr-D7-FVA">
@@ -152,6 +192,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Learn" id="Hod-2c-y3B"/>
+                    <connections>
+                        <outlet property="participantIDLabel" destination="Hfz-no-LBJ" id="IZd-UK-Y93"/>
+                        <outlet property="versionLabel" destination="0Lg-B9-FeU" id="Frz-7o-zx1"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBI-SJ-nbD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

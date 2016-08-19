@@ -34,9 +34,25 @@
 import UIKit
 import BridgeAppSDK
 
-class Smart4SURELearnViewController: UITableViewController {
+class Smart4SURELearnViewController: UITableViewController , SBASharedInfoController {
+    
+    lazy var sharedAppDelegate: SBAAppInfoDelegate = {
+        return UIApplication.sharedApplication().delegate as! SBAAppInfoDelegate
+    }()
     
     private let learnInfo : Smart4SURELearnInfo = Smart4SURELearnInfoPList()
+    
+    @IBOutlet weak var participantIDLabel: UILabel!
+    @IBOutlet weak var versionLabel: UILabel!
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        participantIDLabel.text = sharedUser.externalId
+        
+        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString")
+        versionLabel.text = "\(Localization.localizedAppName) \(version!), build \(NSBundle.mainBundle().appVersion())"
+    }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return learnInfo.count
