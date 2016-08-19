@@ -1,6 +1,6 @@
 //
-//  Smart4SUREUITests.swift
-//  Smart4SUREUITests
+//  Smart4SUREOnboardingViewController.swift
+//  Smart4SURE
 //
 //  Copyright © 2016 Sage Bionetworks. All rights reserved.
 //
@@ -31,37 +31,33 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-import XCTest
+import ResearchKit
+import BridgeAppSDK
 
-class Smart4SUREUITests: XCTestCase {
+class Smart4SUREOnboardingViewController: SBATaskViewController, ORKTaskViewControllerDelegate {
     
-    override func setUp() {
-        super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        let app = XCUIApplication()
-        app.launchArguments = ["--testId:990001", "--dataGroups:training_user,test_user"]
-        app.launch()
+    init() {
+        let factory = SBASurveyFactory(jsonNamed: "Onboarding")
+        let task = factory?.createTaskWithIdentifier("onboarding")
+        super.init(task: task, taskRunUUID: nil)
+        self.delegate = self
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
-    func testAutomaticLogin() {
-        let app = XCUIApplication()
-        app.tabBars.buttons["Settings"].tap()
-        let expectedExternalIdText = app.staticTexts["1230"]
-        XCTAssertNotNil(expectedExternalIdText)
+    // MARK: ORKTaskViewControllerDelegate
+    
+    func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
+        if let appDelegate = UIApplication.sharedApplication().delegate as? SBABridgeAppSDKDelegate {
+            appDelegate.showAppropriateViewController(true)
+        }
     }
     
-    // TODO: syoung 07/19/2016 Data refresh doesn't work with UI Testing and KIF breaks with every change of the
-    // OS. Instead, adding only this one test to set the externalId to a test account with "training_user"
-    // as the only data group. This will facilitate manual testing with a known account. For now, that's the best
-    // that I can find that will work consistently. Work-arounds are all brittle and do not work consistently.
+    func taskViewController(taskViewController: ORKTaskViewController, stepViewControllerWillAppear stepViewController: ORKStepViewController) {
+        // Do not show the cancel button or back button
+        stepViewController.cancelButtonItem = UIBarButtonItem()
+        stepViewController.backButtonItem = UIBarButtonItem()
+    }
 }
