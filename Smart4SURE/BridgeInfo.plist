@@ -14,33 +14,39 @@
 	<array>
 		<dict>
 			<key>schemaIdentifier</key>
+			<string>Tremor Activity</string>
+			<key>schemaRevision</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>schemaIdentifier</key>
 			<string>Tapping Activity</string>
 			<key>schemaRevision</key>
-			<integer>5</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>schemaIdentifier</key>
 			<string>Voice Activity</string>
 			<key>schemaRevision</key>
-			<integer>5</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>schemaIdentifier</key>
 			<string>Memory Activity</string>
 			<key>schemaRevision</key>
-			<integer>7</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>schemaIdentifier</key>
 			<string>Walking Activity</string>
 			<key>schemaRevision</key>
-			<integer>6</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>schemaIdentifier</key>
 			<string>Activity Session</string>
 			<key>schemaRevision</key>
-			<integer>3</integer>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>taskMapping</key>

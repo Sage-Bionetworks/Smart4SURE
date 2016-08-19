@@ -76,6 +76,15 @@
                                     }]
      },
      {
+     "taskIdentifier"            : "Tremor",
+     "schemaIdentifier"          : "Tremor Activity",
+     "taskType"                  : "tremor",
+     "localizedSteps"            : [{
+                                    "identifier" : "instruction1",
+                                    "detailText" : "Tap Next to begin."
+                                    }]
+     },
+     {
      "taskIdentifier"            : "Walking",
      "schemaIdentifier"          : "Walking Activity",
      "taskType"                  : "walking",

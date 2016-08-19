@@ -23,7 +23,6 @@
 		80240A191D46949500100F21 /* Learn_section.css in Resources */ = {isa = PBXBuildFile; fileRef = 802409FD1D46949500100F21 /* Learn_section.css */; };
 		80240A1A1D46949500100F21 /* pantspocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 802409FE1D46949500100F21 /* pantspocket.png */; };
 		80240A1B1D46949500100F21 /* CombinedTask.json in Resources */ = {isa = PBXBuildFile; fileRef = 80240A001D46949500100F21 /* CombinedTask.json */; };
-		80240A1C1D46949500100F21 /* MedicationTracking.json in Resources */ = {isa = PBXBuildFile; fileRef = 80240A021D46949500100F21 /* MedicationTracking.json */; };
 		80240A1E1D46949500100F21 /* Smart4SUREActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */; };
 		80240A1F1D46949500100F21 /* Smart4SURELearnInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */; };
 		80240A201D46949500100F21 /* Smart4SURELearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */; };
@@ -263,7 +262,6 @@
 		802409FD1D46949500100F21 /* Learn_section.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Learn_section.css; sourceTree = "<group>"; };
 		802409FE1D46949500100F21 /* pantspocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pantspocket.png; sourceTree = "<group>"; };
 		80240A011D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Base; path = Base.lproj/CombinedTask.json; sourceTree = "<group>"; };
-		80240A031D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Base; path = Base.lproj/MedicationTracking.json; sourceTree = "<group>"; };
 		80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREActivityTableViewController.swift; sourceTree = "<group>"; };
 		80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SURELearnInfo.swift; sourceTree = "<group>"; };
 		80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SURELearnViewController.swift; sourceTree = "<group>"; };
@@ -403,7 +401,6 @@
 			children = (
 				FF5051D61D6663F50065E677 /* Onboarding.json */,
 				80240A001D46949500100F21 /* CombinedTask.json */,
-				80240A021D46949500100F21 /* MedicationTracking.json */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -769,7 +766,6 @@
 				8027A8C71D638E5B00DCF4D0 /* BridgeInfo-private.plist in Resources */,
 				80240A181D46949500100F21 /* Missed Session.html in Resources */,
 				FF5051D71D6663F50065E677 /* Onboarding.json in Resources */,
-				80240A1C1D46949500100F21 /* MedicationTracking.json in Resources */,
 				8027A8DE1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -915,14 +911,6 @@
 				80240A011D46949500100F21 /* Base */,
 			);
 			name = CombinedTask.json;
-			sourceTree = "<group>";
-		};
-		80240A021D46949500100F21 /* MedicationTracking.json */ = {
-			isa = PBXVariantGroup;
-			children = (
-				80240A031D46949500100F21 /* Base */,
-			);
-			name = MedicationTracking.json;
 			sourceTree = "<group>";
 		};
 		80240ACC1D46A38A00100F21 /* LearnInfo.plist */ = {
