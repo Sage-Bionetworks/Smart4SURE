@@ -39,6 +39,7 @@
 		80240AD01D46A38A00100F21 /* LearnInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80240ACC1D46A38A00100F21 /* LearnInfo.plist */; };
 		8027A8C71D638E5B00DCF4D0 /* BridgeInfo-private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */; };
 		8027A8DE1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */; };
+		FF46AA0C1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */; };
 		FF5051D71D6663F50065E677 /* Onboarding.json in Resources */ = {isa = PBXBuildFile; fileRef = FF5051D61D6663F50065E677 /* Onboarding.json */; };
 		FF5051D91D6675A50065E677 /* Smart4SUREOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */; };
 /* End PBXBuildFile section */
@@ -273,6 +274,7 @@
 		80240ACD1D46A38A00100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Smart4SURE/Base.lproj/LearnInfo.plist; sourceTree = "<group>"; };
 		8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BridgeInfo-private.plist"; path = "../iOSPrivateProjectInfo/Smart4SURE/BridgeInfo-private.plist"; sourceTree = SOURCE_ROOT; };
 		8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sure-pd3-parkinson.pem"; sourceTree = "<group>"; };
+		FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREDashboardViewController.swift; sourceTree = "<group>"; };
 		FF5051D61D6663F50065E677 /* Onboarding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Onboarding.json; sourceTree = "<group>"; };
 		FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREOnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -333,6 +335,7 @@
 			children = (
 				802409BD1D4692F800100F21 /* AppDelegate.swift */,
 				80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */,
+				FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */,
 				80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */,
 				80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */,
 				FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */,
@@ -797,6 +800,7 @@
 				802409BE1D4692F800100F21 /* AppDelegate.swift in Sources */,
 				80240A1F1D46949500100F21 /* Smart4SURELearnInfo.swift in Sources */,
 				80240A201D46949500100F21 /* Smart4SURELearnViewController.swift in Sources */,
+				FF46AA0C1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

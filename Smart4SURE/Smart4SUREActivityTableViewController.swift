@@ -34,6 +34,14 @@
 import BridgeSDK
 import BridgeAppSDK
 
+class S4S: NSObject {
+    
+    static let kActivitySessionTaskId = "1-Combined"
+    static let kTrainingSessionTaskId = "1-Training-Combined"
+    
+    static let kComboPredicate = NSPredicate(format:"finishedOn = NULL AND taskIdentifier = %@", kActivitySessionTaskId)
+}
+
 class Smart4SUREActivityTableViewController: SBAActivityTableViewController {
     
     override var scheduledActivityManager : SBAScheduledActivityManager  {
@@ -44,6 +52,59 @@ class Smart4SUREActivityTableViewController: SBAActivityTableViewController {
 
 class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
     
-    // TODO: syoung 08/17/2016 Implement customizations
+    override init() {
+        super.init()
+        self.daysAhead = 10
+        self.sections = [.expiredYesterday, .today, .keepGoing, .comingWeek]
+    }
+    
+    override func loadActivities(scheduledActivities: [SBBScheduledActivity]) {
+        // Filter the schedules before passing to super
+        let schedules = filterSchedules(scheduledActivities)
+        super.loadActivities(schedules)
+    }
+    
+    func filterSchedules(scheduledActivities: [SBBScheduledActivity]) -> [SBBScheduledActivity] {
+        
+        let schedules = scheduledActivities.map { (schedule) -> [SBBScheduledActivity] in
+            
+            // If this is not a combo schedule then return the schedule
+            guard S4S.kComboPredicate.evaluateWithObject(schedule) else { return [schedule] }
+            
+            // Split the schedule into three days
+            let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+            var scheduleMidnightDate = calendar.startOfDayForDate(schedule.scheduledOn)
+            let scheduledOnComponents = calendar.components([.Hour, .Minute], fromDate: schedule.scheduledOn)
+            let expiredOnComponents = calendar.components([.Hour, .Minute], fromDate: schedule.expiresOn)
+            
+            var activities: [SBBScheduledActivity] = []
+            for _ in 0 ..< 3 {
+                
+                // Pull the date for 3 days in a row and union with the time for start/end
+                // Need to check the year/month/day because these can cross calendar boundaries
+                let dateComponents = calendar.components([.Year, .Month, .Day], fromDate: scheduleMidnightDate)
+                
+                scheduledOnComponents.year = dateComponents.year
+                scheduledOnComponents.month = dateComponents.month
+                scheduledOnComponents.day = dateComponents.day
+                
+                expiredOnComponents.year = dateComponents.year
+                expiredOnComponents.month = dateComponents.month
+                expiredOnComponents.day = dateComponents.day
+                
+                let activity = schedule.copy() as! SBBScheduledActivity
+                activity.scheduledOn = calendar.dateFromComponents(scheduledOnComponents)
+                activity.expiresOn = calendar.dateFromComponents(expiredOnComponents)
+                activities.append(activity)
+                
+                scheduleMidnightDate = scheduleMidnightDate.dateByAddingTimeInterval(24 * 60 * 60)
+            }
+            
+            return activities
+            
+        }.flatMap({ $0 })
+
+        return schedules
+    }
     
 }
