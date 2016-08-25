@@ -122,11 +122,9 @@ class Smart4SURETests: XCTestCase {
         XCTAssertEqual(expiredTime2, expectedExpired)
         XCTAssertEqual(expiredTime3, expectedExpired)
         
-        let day1 = calendar.component(.Day, fromDate: scheduleDay1.scheduledOn)
-        let day2 = calendar.component(.Day, fromDate: scheduleDay2.scheduledOn)
-        let day3 = calendar.component(.Day, fromDate: scheduleDay3.scheduledOn)
-        XCTAssertEqual(day2, day1 + 1)
-        XCTAssertEqual(day3, day1 + 2)
+        let dayInterval = NSTimeInterval(24 * 60 * 60)
+        XCTAssertEqual(scheduleDay1.scheduledOn.dateByAddingTimeInterval(dayInterval), scheduleDay2.scheduledOn)
+        XCTAssertEqual(scheduleDay1.scheduledOn.dateByAddingTimeInterval(2 * dayInterval), scheduleDay3.scheduledOn)
     }
     
     // MARK: helper methods
