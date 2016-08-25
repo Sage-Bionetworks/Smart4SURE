@@ -34,6 +34,90 @@
 import UIKit
 import BridgeAppSDK
 
-class Smart4SUREDashboardViewController: UITableViewController {
+class Smart4SUREDashboardViewController: SBAActivityTableViewController, SBAScheduledActivityDataSource, NSFetchedResultsControllerDelegate {
+    
+    override var scheduledActivityDataSource: SBAScheduledActivityDataSource  {
+        return self
+    }
+    
+    var scheduledActivityManager: Smart4SUREScheduledActivityManager {
+        return Smart4SUREScheduledActivityManager.sharedManager
+    }
+    
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        let fetchRequest = NSFetchRequest(entityName: "ScheduledActivity")
+        let sortDescriptor = NSSortDescriptor(key: "scheduledOn", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.predicate = NSPredicate(format: "(expiresOn <> NULL AND expiresOn < %@) OR (finishedOn <> NULL)", NSDate())
+        
+        let frc = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: self.scheduledActivityManager.managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil)
+        
+        frc.delegate = self
+        
+        return frc
+    }()
+
+    func reloadData() {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("Failed to fetch results: \(error)")
+        }
+    }
+    
+    func numberOfSections() -> Int {
+        guard let sections = fetchedResultsController.sections else { return 0 }
+        return sections.count
+    }
+    
+    func numberOfRowsInSection(section: Int) -> Int {
+        guard let sections = fetchedResultsController.sections else { return 0 }
+        return sections[section].numberOfObjects
+    }
+    
+    func scheduledActivityAtIndexPath(indexPath: NSIndexPath) -> SBBScheduledActivity? {
+        guard let mo = fetchedResultsController.objectAtIndexPath(indexPath) as? ScheduledActivity else { return nil }
+        let schedule = SBBScheduledActivity()
+        
+        
+        schedule.guid = mo.guid
+        schedule.scheduledOn = mo.scheduledOn
+        schedule.expiresOn = mo.expiresOn
+        schedule.startedOn = mo.startedOn
+        schedule.finishedOn = mo.finishedOn
+        schedule.persistent = mo.persistent
+        schedule.status = mo.status
+        
+        schedule.activity = SBBActivity()
+        schedule.activity.label = mo.label
+        if let finishedOn = mo.finishedOn {
+            let format = NSLocalizedString("Completed: %@", comment: "Label for a completed activity")
+            let dateString = NSDateFormatter.localizedStringFromDate(finishedOn, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
+            schedule.activity.labelDetail = String.localizedStringWithFormat(format, dateString)
+        }
+        else if let expiresOn = mo.expiresOn {
+            let format = NSLocalizedString("Expired: %@", comment: "Label for a completed activity")
+            let dateString = NSDateFormatter.localizedStringFromDate(expiresOn, dateStyle: .ShortStyle, timeStyle: .ShortStyle)
+            schedule.activity.labelDetail = String.localizedStringWithFormat(format, dateString)
+        }
+        
+        return schedule
+    }
+    
+    func shouldShowTaskForIndexPath(indexPath: NSIndexPath) -> Bool {
+        return false
+    }
+    
+    override func configureCell(cell: UITableViewCell, tableView: UITableView, indexPath: NSIndexPath) {
+        super.configureCell(cell, tableView: tableView, indexPath: indexPath)
+        guard let activityCell = cell as? SBAActivityTableViewCell else { return }
+        
+        // Always show the title cell color as black
+        activityCell.titleLabel.textColor = UIColor.blackColor()
+    }
 
 }

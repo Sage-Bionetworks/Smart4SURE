@@ -40,6 +40,11 @@
 		8027A8C71D638E5B00DCF4D0 /* BridgeInfo-private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */; };
 		8027A8DE1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */; };
 		FF46AA0C1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */; };
+		FF46AA631D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA621D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift */; };
+		FF46AA651D6E5908006AD42B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF46AA641D6E5908006AD42B /* CoreData.framework */; };
+		FF46AA701D6F7880006AD42B /* Smart4SURE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA6E1D6F7880006AD42B /* Smart4SURE.xcdatamodeld */; };
+		FF46AA771D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA751D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift */; };
+		FF46AA781D6F7E2D006AD42B /* ScheduledActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA761D6F7E2D006AD42B /* ScheduledActivity.swift */; };
 		FF5051D71D6663F50065E677 /* Onboarding.json in Resources */ = {isa = PBXBuildFile; fileRef = FF5051D61D6663F50065E677 /* Onboarding.json */; };
 		FF5051D91D6675A50065E677 /* Smart4SUREOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */; };
 /* End PBXBuildFile section */
@@ -275,6 +280,11 @@
 		8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BridgeInfo-private.plist"; path = "../iOSPrivateProjectInfo/Smart4SURE/BridgeInfo-private.plist"; sourceTree = SOURCE_ROOT; };
 		8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sure-pd3-parkinson.pem"; sourceTree = "<group>"; };
 		FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREDashboardViewController.swift; sourceTree = "<group>"; };
+		FF46AA621D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREScheduledActivityManager.swift; sourceTree = "<group>"; };
+		FF46AA641D6E5908006AD42B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FF46AA6F1D6F7880006AD42B /* Smart4SURE.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Smart4SURE.xcdatamodel; sourceTree = "<group>"; };
+		FF46AA751D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScheduledActivity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FF46AA761D6F7E2D006AD42B /* ScheduledActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledActivity.swift; sourceTree = "<group>"; };
 		FF5051D61D6663F50065E677 /* Onboarding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Onboarding.json; sourceTree = "<group>"; };
 		FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREOnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,6 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF46AA651D6E5908006AD42B /* CoreData.framework in Frameworks */,
 				80240AB41D469B2000100F21 /* openssl.framework in Frameworks */,
 				80240A9D1D469AFE00100F21 /* ResearchKit.framework in Frameworks */,
 				80240A991D469AFE00100F21 /* ZipZap.framework in Frameworks */,
@@ -339,8 +350,10 @@
 				80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */,
 				80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */,
 				FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */,
+				FF46AA621D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift */,
 				802409C11D4692F800100F21 /* Main.storyboard */,
 				802409C61D4692F800100F21 /* LaunchScreen.storyboard */,
+				FF46AA791D6F9770006AD42B /* Core Data */,
 				80240AD21D46A3D400100F21 /* Localization */,
 				802409EF1D46949500100F21 /* Resources */,
 				80240AD31D46A44900100F21 /* Supporting Files */,
@@ -373,6 +386,7 @@
 				802409F11D46949500100F21 /* Certificates */,
 				802409F41D46949500100F21 /* HTML */,
 				802409FF1D46949500100F21 /* Tasks */,
+				FF46AA6E1D6F7880006AD42B /* Smart4SURE.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -411,6 +425,7 @@
 		80240A241D469A1700100F21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF46AA641D6E5908006AD42B /* CoreData.framework */,
 				80240AAA1D469B1700100F21 /* openssl.xcodeproj */,
 				80240A811D469AB600100F21 /* ZipZap.xcodeproj */,
 				80240A771D469AA600100F21 /* ResearchKit.xcodeproj */,
@@ -491,6 +506,15 @@
 				80240ACC1D46A38A00100F21 /* LearnInfo.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FF46AA791D6F9770006AD42B /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				FF46AA761D6F7E2D006AD42B /* ScheduledActivity.swift */,
+				FF46AA751D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -795,8 +819,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				80240A1E1D46949500100F21 /* Smart4SUREActivityTableViewController.swift in Sources */,
+				FF46AA631D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift in Sources */,
 				FF5051D91D6675A50065E677 /* Smart4SUREOnboardingViewController.swift in Sources */,
 				80240A0E1D46949500100F21 /* AppLocalization.swift in Sources */,
+				FF46AA701D6F7880006AD42B /* Smart4SURE.xcdatamodeld in Sources */,
+				FF46AA771D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift in Sources */,
+				FF46AA781D6F7E2D006AD42B /* ScheduledActivity.swift in Sources */,
 				802409BE1D4692F800100F21 /* AppDelegate.swift in Sources */,
 				80240A1F1D46949500100F21 /* Smart4SURELearnInfo.swift in Sources */,
 				80240A201D46949500100F21 /* Smart4SURELearnViewController.swift in Sources */,
@@ -1125,6 +1153,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FF46AA6E1D6F7880006AD42B /* Smart4SURE.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FF46AA6F1D6F7880006AD42B /* Smart4SURE.xcdatamodel */,
+			);
+			currentVersion = FF46AA6F1D6F7880006AD42B /* Smart4SURE.xcdatamodel */;
+			path = Smart4SURE.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 802409B21D4692F800100F21 /* Project object */;
 }

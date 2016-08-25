@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+    <entity name="ScheduledActivity" representedClassName=".ScheduledActivity" syncable="YES">
+        <attribute name="expiresOn" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="finishedOn" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="guid" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="label" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="persistent" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="scheduledOn" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="startedOn" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <userInfo>
+            <entry key="entityIDKeyPath" value="guid"/>
+        </userInfo>
+    </entity>
+    <elements>
+        <element name="ScheduledActivity" positionX="-45" positionY="0" width="128" height="180"/>
+    </elements>
+</model>
