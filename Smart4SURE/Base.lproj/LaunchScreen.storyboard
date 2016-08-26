@@ -54,14 +54,14 @@
                                                 <attributedString key="attributedText">
                                                     <fragment content="Smart">
                                                         <attributes>
-                                                            <color key="NSColor" red="0.96078431372549022" green="0.43137254901960786" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="NSColor" red="0.5725490196078431" green="0.81568627450980391" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                                             <font key="NSFont" size="32" name="HelveticaNeue"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                         </attributes>
                                                     </fragment>
                                                     <fragment content="4">
                                                         <attributes>
-                                                            <color key="NSColor" red="0.96078431372549022" green="0.43137254901960786" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="NSColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <font key="NSFont" size="32" name="HelveticaNeue-Italic"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                         </attributes>

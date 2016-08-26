@@ -3,6 +3,12 @@
 <plist version="1.0">
 <dict>
 	<key>primaryTintColor</key>
+	<string>#ee11d1</string>
+	<key>pinkBrandColor</key>
 	<string>#F56EE3</string>
+	<key>yellowBrandColor</key>
+	<string>#FFFF00</string>
+	<key>greenBrandColor</key>
+	<string>#92D050</string>
 </dict>
 </plist>
