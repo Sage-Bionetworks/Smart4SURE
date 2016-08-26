@@ -166,7 +166,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BasicCell" textLabel="All-ky-dAw" style="IBUITableViewCellStyleDefault" id="Zwr-D7-FVA">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LearnCell" textLabel="All-ky-dAw" imageView="Nrv-Rh-NZk" style="IBUITableViewCellStyleDefault" id="Zwr-D7-FVA" customClass="LearnMoreTableViewCell" customModule="Smart4SURE" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zwr-D7-FVA" id="953-4B-m8o">
@@ -174,12 +174,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="All-ky-dAw">
-                                            <rect key="frame" x="15" y="0.0" width="550" height="59.5"/>
+                                            <rect key="frame" x="57" y="0.0" width="508" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="contact-us-icon" id="Nrv-Rh-NZk">
+                                            <rect key="frame" x="15" y="16" width="27" height="27"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -371,6 +375,7 @@
     </scenes>
     <resources>
         <image name="completion-check" width="88" height="88"/>
+        <image name="contact-us-icon" width="27" height="27"/>
         <image name="tab_activities" width="23" height="23"/>
         <image name="tab_activities_selected" width="23" height="23"/>
         <image name="tab_dashboard" width="29" height="21"/>

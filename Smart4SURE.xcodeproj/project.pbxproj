@@ -47,6 +47,7 @@
 		FF46AA781D6F7E2D006AD42B /* ScheduledActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA761D6F7E2D006AD42B /* ScheduledActivity.swift */; };
 		FF5051D71D6663F50065E677 /* Onboarding.json in Resources */ = {isa = PBXBuildFile; fileRef = FF5051D61D6663F50065E677 /* Onboarding.json */; };
 		FF5051D91D6675A50065E677 /* Smart4SUREOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */; };
+		FF8359921D70C6AC0028B899 /* Withdrawl.html in Resources */ = {isa = PBXBuildFile; fileRef = FF8359901D70C6AC0028B899 /* Withdrawl.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -287,6 +288,7 @@
 		FF46AA761D6F7E2D006AD42B /* ScheduledActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledActivity.swift; sourceTree = "<group>"; };
 		FF5051D61D6663F50065E677 /* Onboarding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Onboarding.json; sourceTree = "<group>"; };
 		FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREOnboardingViewController.swift; sourceTree = "<group>"; };
+		FF8359911D70C6AC0028B899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Withdrawl.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -402,6 +404,7 @@
 		802409F41D46949500100F21 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
+				FF8359901D70C6AC0028B899 /* Withdrawl.html */,
 				802409F51D46949500100F21 /* Contact Us.html */,
 				802409F71D46949500100F21 /* How Long.html */,
 				802409F91D46949500100F21 /* Instructions.html */,
@@ -791,6 +794,7 @@
 				80240AD01D46A38A00100F21 /* LearnInfo.plist in Resources */,
 				80240A0F1D46949500100F21 /* BridgeInfo.plist in Resources */,
 				8027A8C71D638E5B00DCF4D0 /* BridgeInfo-private.plist in Resources */,
+				FF8359921D70C6AC0028B899 /* Withdrawl.html in Resources */,
 				80240A181D46949500100F21 /* Missed Session.html in Resources */,
 				FF5051D71D6663F50065E677 /* Onboarding.json in Resources */,
 				8027A8DE1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem in Resources */,
@@ -952,6 +956,14 @@
 			);
 			name = LearnInfo.plist;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		FF8359901D70C6AC0028B899 /* Withdrawl.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF8359911D70C6AC0028B899 /* Base */,
+			);
+			name = Withdrawl.html;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

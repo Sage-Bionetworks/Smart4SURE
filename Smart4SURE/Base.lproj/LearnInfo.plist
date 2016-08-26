@@ -36,6 +36,14 @@
 			<key>iconImage</key>
 			<string>contact-us-icon</string>
 		</dict>
+		<dict>
+			<key>title</key>
+			<string>How do I quit the study?</string>
+			<key>details</key>
+			<string>Withdrawl</string>
+			<key>iconImage</key>
+			<string>exit-arrow-icon</string>
+		</dict>
 	</array>
 </dict>
 </plist>
