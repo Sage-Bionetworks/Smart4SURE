@@ -594,6 +594,7 @@
 				TargetAttributes = {
 					802409B91D4692F800100F21 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 4B822CZK9N;
 					};
 					802409CD1D4692F800100F21 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1057,8 +1058,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1071,8 +1074,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
