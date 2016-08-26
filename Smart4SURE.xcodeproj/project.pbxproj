@@ -386,7 +386,6 @@
 				802409F11D46949500100F21 /* Certificates */,
 				802409F41D46949500100F21 /* HTML */,
 				802409FF1D46949500100F21 /* Tasks */,
-				FF46AA6E1D6F7880006AD42B /* Smart4SURE.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -511,6 +510,7 @@
 		FF46AA791D6F9770006AD42B /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				FF46AA6E1D6F7880006AD42B /* Smart4SURE.xcdatamodeld */,
 				FF46AA761D6F7E2D006AD42B /* ScheduledActivity.swift */,
 				FF46AA751D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift */,
 			);
@@ -1161,7 +1161,8 @@
 				FF46AA6F1D6F7880006AD42B /* Smart4SURE.xcdatamodel */,
 			);
 			currentVersion = FF46AA6F1D6F7880006AD42B /* Smart4SURE.xcdatamodel */;
-			path = Smart4SURE.xcdatamodeld;
+			name = Smart4SURE.xcdatamodeld;
+			path = Resources/Smart4SURE.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
