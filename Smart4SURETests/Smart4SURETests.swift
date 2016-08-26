@@ -100,6 +100,59 @@ class Smart4SURETests: XCTestCase {
         checkTimeSplit(Array(activitySchedules[1..<4]))
     }
     
+    func test7DayWorkaround_Training() {
+        
+        let registeredOn = NSDate().dateAtMilitaryTime(7)
+        let trainingFinishedOn = NSDate().dateAtMilitaryTime(9)
+        
+        let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire")
+        let trainingTask = createTrainingSession(registeredOn, finishedOn: trainingFinishedOn)
+        let initialSchedules = [trainingTask, pdq8]
+        
+        let manager = Smart4SUREScheduledActivityManager()
+        
+        // -- method under test
+        let schedules = manager.filterSchedules(initialSchedules)
+        
+        // Check that the activity schedules are split across 3 days
+        // AND that the schedules are added - this is a work-around for the server-side limitation of
+        // not getting a full 10 days schedule
+        let activitySchedules = schedules.filter({ $0.taskIdentifier == "1-Combined"})
+        XCTAssertEqual(activitySchedules.count, 3)
+        
+        guard activitySchedules.count == 3 else { return }
+        
+        checkTimeSplit(Array(activitySchedules))
+    }
+    
+    func test7DayWorkaround_Activity() {
+        
+        let scheduledOn = NSDate().dateAtMilitaryTime(10)
+        let finishedOn = NSDate().dateAtMilitaryTime(11)
+        
+        let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire")
+        let completedTask = createScheduledActivity("1-Combined", label: "Activity Session",
+                                                    scheduledOn: scheduledOn, finishedOn: finishedOn, expiresOn: scheduledOn.dateByAddingTimeInterval(50 * 60 * 60))
+        let initialSchedules = [completedTask, pdq8]
+        
+        let manager = Smart4SUREScheduledActivityManager()
+        
+        // -- method under test
+        let schedules = manager.filterSchedules(initialSchedules)
+        
+        // Check that the activity schedules are split across 3 days
+        // AND that the schedules are added - this is a work-around for the server-side limitation of
+        // not getting a full 10 days schedule
+        let activitySchedules = schedules.filter({ $0.taskIdentifier == "1-Combined"})
+        XCTAssertEqual(activitySchedules.count, 4)
+        
+        guard activitySchedules.count == 4 else { return }
+        
+        checkTimeSplit(Array(activitySchedules[1..<4]))
+    }
+    
+    // MARK: helper methods
+    
     func checkTimeSplit(schedules:[SBBScheduledActivity]) {
         guard schedules.count == 3 else { return }
         
@@ -125,9 +178,13 @@ class Smart4SURETests: XCTestCase {
         let dayInterval = NSTimeInterval(24 * 60 * 60)
         XCTAssertEqual(scheduleDay1.scheduledOn.dateByAddingTimeInterval(dayInterval), scheduleDay2.scheduledOn)
         XCTAssertEqual(scheduleDay1.scheduledOn.dateByAddingTimeInterval(2 * dayInterval), scheduleDay3.scheduledOn)
+        
+        for schedule in schedules {
+            XCTAssertNotNil(schedule.activity)
+            XCTAssertEqual(schedule.taskIdentifier, "1-Combined")
+            XCTAssertNil(schedule.finishedOn)
+        }
     }
-    
-    // MARK: helper methods
     
     func createTrainingSession(registeredOn: NSDate, finishedOn: NSDate?) -> SBBScheduledActivity {
         return createScheduledActivity("1-Training-Combined", label: "Training Session",

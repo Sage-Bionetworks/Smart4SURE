@@ -42,6 +42,7 @@ class S4S: NSObject {
     static let kTrainingSessionTaskId = "1-Training-Combined"
     
     static let kComboPredicate = NSPredicate(format:"finishedOn = NULL AND taskIdentifier = %@", kActivitySessionTaskId)
+    static let kTrainingPredicate = NSPredicate(format:"finishedOn = NULL AND taskIdentifier = %@", kTrainingSessionTaskId)
     static let kActiveTaskPredicate = NSPredicate(format:"taskIdentifier = %@ OR taskIdentifier = %@", kActivitySessionTaskId, kTrainingSessionTaskId)
 }
 
@@ -53,19 +54,47 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         super.init()
         self.daysBehind = 7
         self.daysAhead = 10
-        self.sections = [.expiredYesterday, .today, .keepGoing, .comingWeek]
+        self.sections = [.expiredYesterday, .today, .keepGoing, .comingUp]
     }
     
     override func loadActivities(scheduledActivities: [SBBScheduledActivity]) {
-        // Filter the schedules before passing to super
+        // cache the schedules beofre filtering
         updateSchedules(scheduledActivities)
+        // Filter the schedules before passing to super
         let schedules = filterSchedules(scheduledActivities)
         super.loadActivities(schedules)
     }
     
     func filterSchedules(scheduledActivities: [SBBScheduledActivity]) -> [SBBScheduledActivity] {
         
-        let schedules = scheduledActivities.map { (schedule) -> [SBBScheduledActivity] in
+        var allSchedules = scheduledActivities
+        let schedulePredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [S4S.kComboPredicate, S4S.kTrainingPredicate])
+        if (scheduledActivities.filter({ schedulePredicate.evaluateWithObject($0)}).count == 0) {
+            let finishedPredicate = NSPredicate(format: "finishedOn <> NULL")
+            let filter = NSCompoundPredicate(andPredicateWithSubpredicates: [finishedPredicate, S4S.kActiveTaskPredicate])
+            if let schedule = scheduledActivities.filter({ filter.evaluateWithObject($0) }).last {
+                // Add an activity that is 7 days from the scheduled time of the previous activity
+                let activity = schedule.copy() as! SBBScheduledActivity
+                activity.finishedOn = nil
+                activity.startedOn = nil
+                activity.guid = NSUUID().UUIDString
+                if (activity.taskIdentifier == S4S.kActivitySessionTaskId) {
+                    // If pulling from a previous regularly scheduled activity then adjust the start/end date
+                    activity.scheduledOn = schedule.scheduledOn.dateByAddingTimeInterval(7 * 24 * 60 * 60)
+                    activity.expiresOn = schedule.expiresOn.dateByAddingTimeInterval(7 * 24 * 60 * 60)
+                }
+                else {
+                    // Otherwise, need to get even more hack-y and use a hardcoded start time
+                    activity.scheduledOn = schedule.finishedOn.dateByAddingTimeInterval(7 * 24 * 60 * 60).dateAtMilitaryTime(10)
+                    activity.expiresOn = activity.scheduledOn.dateByAddingTimeInterval(50 * 60 * 60)
+                }
+                activity.activity.label = NSLocalizedString("Activity Session", comment: "")
+                activity.activity.task.identifier = S4S.kActivitySessionTaskId
+                allSchedules.append(activity)
+            }
+        }
+        
+        let schedules = allSchedules.map { (schedule) -> [SBBScheduledActivity] in
             
             // If this is not a combo schedule then return the schedule
             guard S4S.kComboPredicate.evaluateWithObject(schedule) else { return [schedule] }
@@ -91,9 +120,18 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
                 expiredOnComponents.month = dateComponents.month
                 expiredOnComponents.day = dateComponents.day
                 
+                // Modify the scheduled time and detail
                 let activity = schedule.copy() as! SBBScheduledActivity
                 activity.scheduledOn = calendar.dateFromComponents(scheduledOnComponents)
                 activity.expiresOn = calendar.dateFromComponents(expiredOnComponents)
+                if !SBBScheduledActivity.scheduledTodayPredicate().evaluateWithObject(activity) {
+                    let format = NSLocalizedString("%@ until %@", comment: "")
+                    let dateString = NSDateFormatter.localizedStringFromDate(activity.scheduledOn, dateStyle: .MediumStyle, timeStyle: .NoStyle)
+                    let timeString = NSDateFormatter.localizedStringFromDate(activity.expiresOn, dateStyle: .NoStyle, timeStyle: .ShortStyle).lowercaseString
+                    activity.activity.labelDetail = String.localizedStringWithFormat(format, dateString, timeString)
+                }
+                
+                // Add to the list
                 activities.append(activity)
                 
                 scheduleMidnightDate = scheduleMidnightDate.dateByAddingTimeInterval(24 * 60 * 60)
@@ -101,7 +139,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
             
             return activities
             
-            }.flatMap({ $0 })
+        }.flatMap({ $0 })
         
         return schedules
     }
@@ -232,6 +270,15 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
             }
         }
     }
+    
+}
 
+extension NSDate {
+    
+    func dateAtMilitaryTime(time: NSTimeInterval) -> NSDate {
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        let hour: NSTimeInterval = 60 * 60
+        return calendar.startOfDayForDate(self).dateByAddingTimeInterval(time * hour)
+    }
     
 }
