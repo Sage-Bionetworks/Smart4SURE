@@ -67,7 +67,19 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
     
     func filterSchedules(scheduledActivities: [SBBScheduledActivity]) -> [SBBScheduledActivity] {
         
-        var allSchedules = scheduledActivities
+        // TODO: FIXME!! syoung 08/26/2016 work-around for a bug where scheduled activities are listed more than once
+        var allSchedules: [SBBScheduledActivity] = []
+        var guids: [String] = []
+        for schedule in scheduledActivities {
+            if !guids.contains(schedule.activity.guid) {
+                guids.append(schedule.activity.guid)
+                let schedules = splitSchedule(schedule)
+                allSchedules.appendContentsOf(schedules)
+            }
+        }
+        
+        // TODO: FIXME!! syoung 08/26/2016 work-around for a bug where the full needed 10 days ahead aren't returned
+        // by the server.
         let schedulePredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [S4S.kComboPredicate, S4S.kTrainingPredicate])
         if (scheduledActivities.filter({ schedulePredicate.evaluateWithObject($0)}).count == 0) {
             let finishedPredicate = NSPredicate(format: "finishedOn <> NULL")
@@ -90,59 +102,61 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
                 }
                 activity.activity.label = NSLocalizedString("Activity Session", comment: "")
                 activity.activity.task.identifier = S4S.kActivitySessionTaskId
-                allSchedules.append(activity)
+                
+                let schedules = splitSchedule(activity)
+                allSchedules.appendContentsOf(schedules)
             }
         }
         
-        let schedules = allSchedules.map { (schedule) -> [SBBScheduledActivity] in
+        return allSchedules
+    }
+    
+    func splitSchedule(schedule: SBBScheduledActivity) -> [SBBScheduledActivity] {
+    
+        // If this is not a combo schedule then return the schedule
+        guard S4S.kComboPredicate.evaluateWithObject(schedule) else { return [schedule] }
+        
+        // Split the schedule into three days
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        var scheduleMidnightDate = calendar.startOfDayForDate(schedule.scheduledOn)
+        let scheduledOnComponents = calendar.components([.Hour, .Minute], fromDate: schedule.scheduledOn)
+        let expiredOnComponents = calendar.components([.Hour, .Minute], fromDate: schedule.expiresOn)
+        
+        var activities: [SBBScheduledActivity] = []
+        for _ in 0 ..< 3 {
+        
+            // Pull the date for 3 days in a row and union with the time for start/end
+            // Need to check the year/month/day because these can cross calendar boundaries
+            let dateComponents = calendar.components([.Year, .Month, .Day], fromDate: scheduleMidnightDate)
             
-            // If this is not a combo schedule then return the schedule
-            guard S4S.kComboPredicate.evaluateWithObject(schedule) else { return [schedule] }
+            scheduledOnComponents.year = dateComponents.year
+            scheduledOnComponents.month = dateComponents.month
+            scheduledOnComponents.day = dateComponents.day
             
-            // Split the schedule into three days
-            let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-            var scheduleMidnightDate = calendar.startOfDayForDate(schedule.scheduledOn)
-            let scheduledOnComponents = calendar.components([.Hour, .Minute], fromDate: schedule.scheduledOn)
-            let expiredOnComponents = calendar.components([.Hour, .Minute], fromDate: schedule.expiresOn)
+            expiredOnComponents.year = dateComponents.year
+            expiredOnComponents.month = dateComponents.month
+            expiredOnComponents.day = dateComponents.day
             
-            var activities: [SBBScheduledActivity] = []
-            for _ in 0 ..< 3 {
-                
-                // Pull the date for 3 days in a row and union with the time for start/end
-                // Need to check the year/month/day because these can cross calendar boundaries
-                let dateComponents = calendar.components([.Year, .Month, .Day], fromDate: scheduleMidnightDate)
-                
-                scheduledOnComponents.year = dateComponents.year
-                scheduledOnComponents.month = dateComponents.month
-                scheduledOnComponents.day = dateComponents.day
-                
-                expiredOnComponents.year = dateComponents.year
-                expiredOnComponents.month = dateComponents.month
-                expiredOnComponents.day = dateComponents.day
-                
-                // Modify the scheduled time and detail
-                let activity = schedule.copy() as! SBBScheduledActivity
-                activity.scheduledOn = calendar.dateFromComponents(scheduledOnComponents)
-                activity.expiresOn = calendar.dateFromComponents(expiredOnComponents)
-                if !SBBScheduledActivity.scheduledTodayPredicate().evaluateWithObject(activity) {
-                    let format = NSLocalizedString("%@ until %@", comment: "")
-                    let dateString = NSDateFormatter.localizedStringFromDate(activity.scheduledOn, dateStyle: .MediumStyle, timeStyle: .NoStyle)
-                    let timeString = NSDateFormatter.localizedStringFromDate(activity.expiresOn, dateStyle: .NoStyle, timeStyle: .ShortStyle).lowercaseString
-                    activity.activity.labelDetail = String.localizedStringWithFormat(format, dateString, timeString)
-                }
-                
-                // Add to the list
-                activities.append(activity)
-                
-                scheduleMidnightDate = scheduleMidnightDate.dateByAddingTimeInterval(24 * 60 * 60)
+            // Modify the scheduled time and detail
+            let activity = schedule.copy() as! SBBScheduledActivity
+            activity.scheduledOn = calendar.dateFromComponents(scheduledOnComponents)
+            activity.expiresOn = calendar.dateFromComponents(expiredOnComponents)
+            if !SBBScheduledActivity.scheduledTodayPredicate().evaluateWithObject(activity) {
+            let format = NSLocalizedString("%@ until %@", comment: "")
+            let dateString = NSDateFormatter.localizedStringFromDate(activity.scheduledOn, dateStyle: .MediumStyle, timeStyle: .NoStyle)
+            let timeString = NSDateFormatter.localizedStringFromDate(activity.expiresOn, dateStyle: .NoStyle, timeStyle: .ShortStyle).lowercaseString
+            activity.activity.labelDetail = String.localizedStringWithFormat(format, dateString, timeString)
             }
             
-            return activities
+            // Add to the list
+            activities.append(activity)
             
-        }.flatMap({ $0 })
+            scheduleMidnightDate = scheduleMidnightDate.dateByAddingTimeInterval(24 * 60 * 60)
+        }
         
-        return schedules
+        return activities
     }
+    
     
     // MARK: - Update schedule
     
