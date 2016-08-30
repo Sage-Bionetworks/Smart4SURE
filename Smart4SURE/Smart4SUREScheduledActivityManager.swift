@@ -40,6 +40,7 @@ class S4S: NSObject {
     
     static let kActivitySessionTaskId = "1-Combined"
     static let kTrainingSessionTaskId = "1-Training-Combined"
+    static let kNumberOfDays = 3
     
     static let kComboPredicate = NSPredicate(format:"finishedOn = NULL AND taskIdentifier = %@", kActivitySessionTaskId)
     static let kTrainingPredicate = NSPredicate(format:"finishedOn = NULL AND taskIdentifier = %@", kTrainingSessionTaskId)
@@ -63,6 +64,15 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         // Filter the schedules before passing to super
         let schedules = filterSchedules(scheduledActivities)
         super.loadActivities(schedules)
+    }
+    
+    override func messageForUnavailableSchedule(schedule: SBBScheduledActivity) -> String {
+        guard schedule.taskIdentifier == S4S.kActivitySessionTaskId, let endTime = schedule.expiresTime else {
+            return super.messageForUnavailableSchedule(schedule)
+        }
+        let format = NSLocalizedString("This activity is available from %@ until %@ for %@ days. You only need to complete the activity on one of the available days" , comment: "")
+        let numberOfDays = NSNumberFormatter.localizedStringFromNumber(NSNumber(integer: S4S.kNumberOfDays), numberStyle: .SpellOutStyle)
+        return String.localizedStringWithFormat(format, schedule.scheduledTime, endTime, numberOfDays)
     }
     
     func filterSchedules(scheduledActivities: [SBBScheduledActivity]) -> [SBBScheduledActivity] {
@@ -123,7 +133,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         let expiredOnComponents = calendar.components([.Hour, .Minute], fromDate: schedule.expiresOn)
         
         var activities: [SBBScheduledActivity] = []
-        for _ in 0 ..< 3 {
+        for _ in 0 ..< S4S.kNumberOfDays {
         
             // Pull the date for 3 days in a row and union with the time for start/end
             // Need to check the year/month/day because these can cross calendar boundaries
