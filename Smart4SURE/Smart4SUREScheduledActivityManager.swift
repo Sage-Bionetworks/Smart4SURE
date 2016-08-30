@@ -77,18 +77,15 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
     
     func filterSchedules(scheduledActivities: [SBBScheduledActivity]) -> [SBBScheduledActivity] {
         
-        // TODO: FIXME!! syoung 08/26/2016 work-around for a bug where scheduled activities are listed more than once
+        // Take the schedules and copy them to a new array, spliting the "Activity Session" schedule
+        // over 3 days.
         var allSchedules: [SBBScheduledActivity] = []
-        var guids: [String] = []
         for schedule in scheduledActivities {
-            if !guids.contains(schedule.activity.guid) {
-                guids.append(schedule.activity.guid)
-                let schedules = splitSchedule(schedule)
-                allSchedules.appendContentsOf(schedules)
-            }
+            let schedules = splitSchedule(schedule)
+            allSchedules.appendContentsOf(schedules)
         }
         
-        // TODO: FIXME!! syoung 08/26/2016 work-around for a bug where the full needed 10 days ahead aren't returned
+        // TODO: FIXME!! syoung 08/26/2016 BRIDGE-1458 work-around for a bug where the full needed 10 days ahead aren't returned
         // by the server.
         let schedulePredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [S4S.kComboPredicate, S4S.kTrainingPredicate])
         if (scheduledActivities.filter({ schedulePredicate.evaluateWithObject($0)}).count == 0) {
@@ -151,16 +148,11 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
             let activity = schedule.copy() as! SBBScheduledActivity
             activity.scheduledOn = calendar.dateFromComponents(scheduledOnComponents)
             activity.expiresOn = calendar.dateFromComponents(expiredOnComponents)
-            if !SBBScheduledActivity.scheduledTodayPredicate().evaluateWithObject(activity) {
-            let format = NSLocalizedString("%@ until %@", comment: "")
-            let dateString = NSDateFormatter.localizedStringFromDate(activity.scheduledOn, dateStyle: .MediumStyle, timeStyle: .NoStyle)
-            let timeString = NSDateFormatter.localizedStringFromDate(activity.expiresOn, dateStyle: .NoStyle, timeStyle: .ShortStyle).lowercaseString
-            activity.activity.labelDetail = String.localizedStringWithFormat(format, dateString, timeString)
-            }
             
             // Add to the list
             activities.append(activity)
             
+            // Forward the date by 1 day
             scheduleMidnightDate = scheduleMidnightDate.dateByAddingTimeInterval(24 * 60 * 60)
         }
         
