@@ -42,17 +42,17 @@
                                 <rect key="frame" x="20" y="72" width="560" height="405"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FinalLogo_02" translatesAutoresizingMaskIntoConstraints="NO" id="4DD-kU-YQZ">
-                                        <rect key="frame" x="19" y="0.0" width="522" height="404.5"/>
+                                        <rect key="frame" x="78" y="0.0" width="404.5" height="404.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="4DD-kU-YQZ" secondAttribute="height" multiplier="523:405" id="2oU-3L-zS8"/>
+                                            <constraint firstAttribute="width" secondItem="4DD-kU-YQZ" secondAttribute="height" multiplier="1:1" id="2oU-3L-zS8"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4DD-kU-YQZ" secondAttribute="trailing" constant="-60" id="hbg-74-Rtm"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4DD-kU-YQZ" secondAttribute="trailing" id="hbg-74-Rtm"/>
                                     <constraint firstItem="4DD-kU-YQZ" firstAttribute="centerX" secondItem="Zo1-XI-Mdq" secondAttribute="centerX" id="j72-Hf-vL4"/>
-                                    <constraint firstItem="4DD-kU-YQZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zo1-XI-Mdq" secondAttribute="leading" constant="-60" id="jsN-80-l7P"/>
+                                    <constraint firstItem="4DD-kU-YQZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Zo1-XI-Mdq" secondAttribute="leading" id="jsN-80-l7P"/>
                                     <constraint firstItem="4DD-kU-YQZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Zo1-XI-Mdq" secondAttribute="top" id="rj6-wK-uTw"/>
                                     <constraint firstAttribute="bottom" secondItem="4DD-kU-YQZ" secondAttribute="bottom" id="w4B-1j-ExR"/>
                                 </constraints>
@@ -137,6 +137,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FinalLogo_02" width="792" height="612"/>
+        <image name="FinalLogo_02" width="520" height="520"/>
     </resources>
 </document>
