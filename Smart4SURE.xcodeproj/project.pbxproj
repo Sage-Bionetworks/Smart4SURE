@@ -47,6 +47,7 @@
 		FF46AA781D6F7E2D006AD42B /* ScheduledActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA761D6F7E2D006AD42B /* ScheduledActivity.swift */; };
 		FF5051D71D6663F50065E677 /* Onboarding.json in Resources */ = {isa = PBXBuildFile; fileRef = FF5051D61D6663F50065E677 /* Onboarding.json */; };
 		FF5051D91D6675A50065E677 /* Smart4SUREOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */; };
+		FF722C1C1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF722C1B1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift */; };
 		FF8359921D70C6AC0028B899 /* Withdrawl.html in Resources */ = {isa = PBXBuildFile; fileRef = FF8359901D70C6AC0028B899 /* Withdrawl.html */; };
 /* End PBXBuildFile section */
 
@@ -288,6 +289,7 @@
 		FF46AA761D6F7E2D006AD42B /* ScheduledActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledActivity.swift; sourceTree = "<group>"; };
 		FF5051D61D6663F50065E677 /* Onboarding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Onboarding.json; sourceTree = "<group>"; };
 		FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREOnboardingViewController.swift; sourceTree = "<group>"; };
+		FF722C1B1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Smart4SURENewsfeedTableViewController.swift; path = Resources/Smart4SURENewsfeedTableViewController.swift; sourceTree = "<group>"; };
 		FF8359911D70C6AC0028B899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Withdrawl.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -351,6 +353,7 @@
 				FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */,
 				80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */,
 				80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */,
+				FF722C1B1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift */,
 				FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */,
 				FF46AA621D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift */,
 				802409C11D4692F800100F21 /* Main.storyboard */,
@@ -823,6 +826,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF722C1C1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift in Sources */,
 				80240A1E1D46949500100F21 /* Smart4SUREActivityTableViewController.swift in Sources */,
 				FF46AA631D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift in Sources */,
 				FF5051D91D6675A50065E677 /* Smart4SUREOnboardingViewController.swift in Sources */,

@@ -10,6 +10,8 @@
 	<true/>
 	<key>certificateName</key>
 	<string>study</string>
+	<key>newsfeedURL</key>
+	<string>https://nosuchnewsfeed.blogspot.com/feeds/posts/default?alt=rss</string>
 	<key>schemaMapping</key>
 	<array>
 		<dict>

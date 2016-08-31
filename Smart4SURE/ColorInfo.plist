@@ -10,5 +10,7 @@
 	<string>#FFFF00</string>
 	<key>greenBrandColor</key>
 	<string>#92D050</string>
+	<key>newsfeedHighlightColor</key>
+	<string>#FFFF80</string>
 </dict>
 </plist>
