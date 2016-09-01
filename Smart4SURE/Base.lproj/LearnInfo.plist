@@ -5,6 +5,14 @@
 	<key>rowItems</key>
 	<array>
 		<dict>
+			<key>iconImage</key>
+			<string>about-icon</string>
+			<key>details</key>
+			<string>About</string>
+			<key>title</key>
+			<string>About this study</string>
+		</dict>
+		<dict>
 			<key>title</key>
 			<string>Instructions</string>
 			<key>details</key>

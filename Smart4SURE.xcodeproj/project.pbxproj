@@ -39,6 +39,7 @@
 		80240AD01D46A38A00100F21 /* LearnInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80240ACC1D46A38A00100F21 /* LearnInfo.plist */; };
 		8027A8C71D638E5B00DCF4D0 /* BridgeInfo-private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */; };
 		8027A8DE1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */; };
+		FF3A7AEE1D78C0150073CE96 /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = FF3A7AEC1D78C0150073CE96 /* About.html */; };
 		FF46AA0C1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */; };
 		FF46AA631D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA621D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift */; };
 		FF46AA651D6E5908006AD42B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF46AA641D6E5908006AD42B /* CoreData.framework */; };
@@ -281,6 +282,7 @@
 		80240ACD1D46A38A00100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Smart4SURE/Base.lproj/LearnInfo.plist; sourceTree = "<group>"; };
 		8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BridgeInfo-private.plist"; path = "../iOSPrivateProjectInfo/Smart4SURE/BridgeInfo-private.plist"; sourceTree = SOURCE_ROOT; };
 		8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sure-pd3-parkinson.pem"; sourceTree = "<group>"; };
+		FF3A7AED1D78C0150073CE96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/About.html; sourceTree = "<group>"; };
 		FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREDashboardViewController.swift; sourceTree = "<group>"; };
 		FF46AA621D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREScheduledActivityManager.swift; sourceTree = "<group>"; };
 		FF46AA641D6E5908006AD42B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -407,6 +409,7 @@
 		802409F41D46949500100F21 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
+				FF3A7AEC1D78C0150073CE96 /* About.html */,
 				FF8359901D70C6AC0028B899 /* Withdrawl.html */,
 				802409F51D46949500100F21 /* Contact Us.html */,
 				802409F71D46949500100F21 /* How Long.html */,
@@ -791,6 +794,7 @@
 				80240A1A1D46949500100F21 /* pantspocket.png in Resources */,
 				80240A191D46949500100F21 /* Learn_section.css in Resources */,
 				802409C31D4692F800100F21 /* Main.storyboard in Resources */,
+				FF3A7AEE1D78C0150073CE96 /* About.html in Resources */,
 				80240A161D46949500100F21 /* How Long.html in Resources */,
 				80240A171D46949500100F21 /* Instructions.html in Resources */,
 				80240A121D46949500100F21 /* Assets.xcassets in Resources */,
@@ -961,6 +965,14 @@
 			);
 			name = LearnInfo.plist;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		FF3A7AEC1D78C0150073CE96 /* About.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF3A7AED1D78C0150073CE96 /* Base */,
+			);
+			name = About.html;
 			sourceTree = "<group>";
 		};
 		FF8359901D70C6AC0028B899 /* Withdrawl.html */ = {
