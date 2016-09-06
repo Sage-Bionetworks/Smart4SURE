@@ -12,7 +12,6 @@
 		802409C81D4692F800100F21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802409C61D4692F800100F21 /* LaunchScreen.storyboard */; };
 		802409D31D4692F800100F21 /* Smart4SURETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409D21D4692F800100F21 /* Smart4SURETests.swift */; };
 		802409DE1D4692F800100F21 /* Smart4SUREUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409DD1D4692F800100F21 /* Smart4SUREUITests.swift */; };
-		80240A0E1D46949500100F21 /* AppLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409EB1D46949500100F21 /* AppLocalization.swift */; };
 		80240A0F1D46949500100F21 /* BridgeInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802409EC1D46949500100F21 /* BridgeInfo.plist */; };
 		80240A101D46949500100F21 /* ColorInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802409ED1D46949500100F21 /* ColorInfo.plist */; };
 		80240A121D46949500100F21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802409F01D46949500100F21 /* Assets.xcassets */; };
@@ -260,7 +259,6 @@
 		802409D91D4692F800100F21 /* Smart4SUREUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Smart4SUREUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		802409DD1D4692F800100F21 /* Smart4SUREUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smart4SUREUITests.swift; sourceTree = "<group>"; };
 		802409DF1D4692F800100F21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		802409EB1D46949500100F21 /* AppLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLocalization.swift; sourceTree = "<group>"; };
 		802409EC1D46949500100F21 /* BridgeInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BridgeInfo.plist; sourceTree = "<group>"; };
 		802409ED1D46949500100F21 /* ColorInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ColorInfo.plist; sourceTree = "<group>"; };
 		802409F01D46949500100F21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -361,7 +359,6 @@
 				802409C11D4692F800100F21 /* Main.storyboard */,
 				802409C61D4692F800100F21 /* LaunchScreen.storyboard */,
 				FF46AA791D6F9770006AD42B /* Core Data */,
-				80240AD21D46A3D400100F21 /* Localization */,
 				802409EF1D46949500100F21 /* Resources */,
 				80240AD31D46A44900100F21 /* Supporting Files */,
 			);
@@ -494,14 +491,6 @@
 				80240AB31D469B1700100F21 /* opensslTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		80240AD21D46A3D400100F21 /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				802409EB1D46949500100F21 /* AppLocalization.swift */,
-			);
-			name = Localization;
 			sourceTree = "<group>";
 		};
 		80240AD31D46A44900100F21 /* Supporting Files */ = {
@@ -834,7 +823,6 @@
 				80240A1E1D46949500100F21 /* Smart4SUREActivityTableViewController.swift in Sources */,
 				FF46AA631D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift in Sources */,
 				FF5051D91D6675A50065E677 /* Smart4SUREOnboardingViewController.swift in Sources */,
-				80240A0E1D46949500100F21 /* AppLocalization.swift in Sources */,
 				FF46AA701D6F7880006AD42B /* Smart4SURE.xcdatamodeld in Sources */,
 				FF46AA771D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift in Sources */,
 				FF46AA781D6F7E2D006AD42B /* ScheduledActivity.swift in Sources */,
@@ -1075,6 +1063,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 3;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1091,6 +1080,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 3;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
