@@ -83,36 +83,6 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
             allSchedules.appendContentsOf(schedules)
         }
         
-//        // TODO: FIXME!! syoung 08/26/2016 BRIDGE-1458 work-around for a bug where the full needed 10 days ahead aren't returned
-//        // by the server.
-//        let schedulePredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [S4S.kComboPredicate, S4S.kTrainingPredicate])
-//        if (scheduledActivities.filter({ schedulePredicate.evaluateWithObject($0)}).count == 0) {
-//            let finishedPredicate = NSPredicate(format: "finishedOn <> NULL")
-//            let filter = NSCompoundPredicate(andPredicateWithSubpredicates: [finishedPredicate, S4S.kActiveTaskPredicate])
-//            if let schedule = scheduledActivities.filter({ filter.evaluateWithObject($0) }).last {
-//                // Add an activity that is 7 days from the scheduled time of the previous activity
-//                let activity = schedule.copy() as! SBBScheduledActivity
-//                activity.finishedOn = nil
-//                activity.startedOn = nil
-//                activity.guid = NSUUID().UUIDString
-//                if (activity.taskIdentifier == S4S.kActivitySessionTaskId) {
-//                    // If pulling from a previous regularly scheduled activity then adjust the start/end date
-//                    activity.scheduledOn = schedule.scheduledOn.dateByAddingTimeInterval(7 * 24 * 60 * 60)
-//                    activity.expiresOn = schedule.expiresOn.dateByAddingTimeInterval(7 * 24 * 60 * 60)
-//                }
-//                else {
-//                    // Otherwise, need to get even more hack-y and use a hardcoded start time
-//                    activity.scheduledOn = schedule.finishedOn.dateByAddingTimeInterval(7 * 24 * 60 * 60).dateAtMilitaryTime(10)
-//                    activity.expiresOn = activity.scheduledOn.dateByAddingTimeInterval(50 * 60 * 60)
-//                }
-//                activity.activity.label = NSLocalizedString("Activity Session", comment: "")
-//                activity.activity.task.identifier = S4S.kActivitySessionTaskId
-//                
-//                let schedules = splitSchedule(activity)
-//                allSchedules.appendContentsOf(schedules)
-//            }
-//        }
-        
         return allSchedules
     }
     
