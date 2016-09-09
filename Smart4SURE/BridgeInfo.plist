@@ -6,10 +6,14 @@
 	<string>nosuchemail@nosuchzone.tld</string>
 	<key>studyIdentifier</key>
 	<string>study</string>
-	<key>useCache</key>
-	<true/>
+	<key>cacheDaysAhead</key>
+	<integer>10</integer>
+	<key>cacheDaysBehind</key>
+	<integer>7</integer>
 	<key>certificateName</key>
 	<string>study</string>
+	<key>newsfeedURL</key>
+	<string>https://nosuchnewsfeed.blogspot.com/feeds/posts/default?alt=rss</string>
 	<key>schemaMapping</key>
 	<array>
 		<dict>
@@ -46,7 +50,7 @@
 			<key>schemaIdentifier</key>
 			<string>Activity Session</string>
 			<key>schemaRevision</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 	</array>
 	<key>taskMapping</key>

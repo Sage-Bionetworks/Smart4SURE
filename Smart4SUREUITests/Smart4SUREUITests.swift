@@ -54,10 +54,6 @@ class Smart4SUREUITests: XCTestCase {
     }
     
     func testAutomaticLogin() {
-        let app = XCUIApplication()
-        app.tabBars.buttons["Settings"].tap()
-        let expectedExternalIdText = app.staticTexts["1230"]
-        XCTAssertNotNil(expectedExternalIdText)
     }
     
     // TODO: syoung 07/19/2016 Data refresh doesn't work with UI Testing and KIF breaks with every change of the

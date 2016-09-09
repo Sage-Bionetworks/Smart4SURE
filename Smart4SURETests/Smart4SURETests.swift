@@ -34,6 +34,9 @@
 import XCTest
 @testable import Smart4SURE
 
+import BridgeAppSDK
+import BridgeSDK
+
 class Smart4SURETests: XCTestCase {
     
     override func setUp() {
@@ -46,16 +49,220 @@ class Smart4SURETests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testDivideComboSessionByThree() {
+        
+        let registeredOn = NSDate().dateAtMilitaryTime(7)
+        let trainingFinishedOn = NSDate().dateAtMilitaryTime(11)
+        
+        let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire")
+        let trainingTask = createTrainingSession(registeredOn, finishedOn: trainingFinishedOn)
+        let activities = createActivitySessions(trainingFinishedOn)
+        let initialSchedules = [trainingTask, pdq8] + activities
+        
+        let manager = Smart4SUREScheduledActivityManager()
+        
+        // -- method under test
+        let schedules = manager.filterSchedules(initialSchedules)
+        
+        // Check that the activity schedules are split across 3 days
+        let activitySchedules = schedules.filter({ $0.taskIdentifier == "1-Combined"})
+        XCTAssertEqual(activitySchedules.count, 6)
+        
+        guard activitySchedules.count == 6 else { return }
+        
+        checkTimeSplit(Array(activitySchedules[0..<3]))
+        checkTimeSplit(Array(activitySchedules[3..<6]))
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+    func testDivideComboSessionByThree_WithCompleted() {
+        
+        let trainingFinishedOn = NSDate().dateAtMilitaryTime(11).dateByAddingTimeInterval(-8 * 24 * 60 * 60)
+        
+        let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire")
+        let activities = createActivitySessions(trainingFinishedOn)
+        let initialSchedules = [pdq8] + activities
+        
+        // Mark the activity as finished
+        activities[0].finishedOn = NSDate().dateAtMilitaryTime(10.5)
+        
+        let manager = Smart4SUREScheduledActivityManager()
+        
+        // -- method under test
+        let schedules = manager.filterSchedules(initialSchedules)
+        
+        // Check that the activity schedules are split across 3 days
+        // But only for the activity that has *not* been completed
+        let activitySchedules = schedules.filter({ $0.taskIdentifier == "1-Combined"})
+        XCTAssertEqual(activitySchedules.count, 4)
+        
+        guard activitySchedules.count == 4 else { return }
+        
+        checkTimeSplit(Array(activitySchedules[1..<4]))
+    }
+    
+    func test7DayWorkaround_Training() {
+        
+        let registeredOn = NSDate().dateAtMilitaryTime(7)
+        let trainingFinishedOn = NSDate().dateAtMilitaryTime(9)
+        
+        let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire")
+        let trainingTask = createTrainingSession(registeredOn, finishedOn: trainingFinishedOn)
+        let initialSchedules = [trainingTask, pdq8]
+        
+        let manager = Smart4SUREScheduledActivityManager()
+        
+        // -- method under test
+        let schedules = manager.filterSchedules(initialSchedules)
+        
+        // Check that the activity schedules are split across 3 days
+        // AND that the schedules are added - this is a work-around for the server-side limitation of
+        // not getting a full 10 days schedule
+        let activitySchedules = schedules.filter({ $0.taskIdentifier == "1-Combined"})
+        XCTAssertEqual(activitySchedules.count, 3)
+        
+        guard activitySchedules.count == 3 else { return }
+        
+        checkTimeSplit(Array(activitySchedules))
+    }
+    
+    func test7DayWorkaround_Activity() {
+        
+        let scheduledOn = NSDate().dateAtMilitaryTime(10)
+        let finishedOn = NSDate().dateAtMilitaryTime(11)
+        
+        let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire")
+        let completedTask = createScheduledActivity("1-Combined", label: "Activity Session",
+                                                    scheduledOn: scheduledOn, finishedOn: finishedOn, expiresOn: scheduledOn.dateByAddingTimeInterval(50 * 60 * 60))
+        let initialSchedules = [completedTask, pdq8]
+        
+        let manager = Smart4SUREScheduledActivityManager()
+        
+        // -- method under test
+        let schedules = manager.filterSchedules(initialSchedules)
+        
+        // Check that the activity schedules are split across 3 days
+        // AND that the schedules are added - this is a work-around for the server-side limitation of
+        // not getting a full 10 days schedule
+        let activitySchedules = schedules.filter({ $0.taskIdentifier == "1-Combined"})
+        XCTAssertEqual(activitySchedules.count, 4)
+        
+        guard activitySchedules.count == 4 else { return }
+        
+        checkTimeSplit(Array(activitySchedules[1..<4]))
+    }
+    
+    // MARK: helper methods
+    
+    func checkTimeSplit(schedules:[SBBScheduledActivity]) {
+        guard schedules.count == 3 else { return }
+        
+        let scheduleDay1 = schedules[0]
+        let scheduleDay2 = schedules[1]
+        let scheduleDay3 = schedules[2]
+        
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        
+        let expectedTime = "10:00 am"
+        XCTAssertEqual(scheduleDay1.scheduledTime, expectedTime)
+        XCTAssertEqual(scheduleDay2.scheduledTime, expectedTime)
+        XCTAssertEqual(scheduleDay3.scheduledTime, expectedTime)
+        
+        let expiredTime1 = calendar.component(.Hour, fromDate: scheduleDay1.expiresOn)
+        let expiredTime2 = calendar.component(.Hour, fromDate: scheduleDay2.expiresOn)
+        let expiredTime3 = calendar.component(.Hour, fromDate: scheduleDay3.expiresOn)
+        let expectedExpired = 12
+        XCTAssertEqual(expiredTime1, expectedExpired)
+        XCTAssertEqual(expiredTime2, expectedExpired)
+        XCTAssertEqual(expiredTime3, expectedExpired)
+        
+        let dayInterval = NSTimeInterval(24 * 60 * 60)
+        XCTAssertEqual(scheduleDay1.scheduledOn.dateByAddingTimeInterval(dayInterval), scheduleDay2.scheduledOn)
+        XCTAssertEqual(scheduleDay1.scheduledOn.dateByAddingTimeInterval(2 * dayInterval), scheduleDay3.scheduledOn)
+        
+        for schedule in schedules {
+            XCTAssertNotNil(schedule.activity)
+            XCTAssertEqual(schedule.taskIdentifier, "1-Combined")
+            XCTAssertNil(schedule.finishedOn)
         }
     }
     
+    func createTrainingSession(registeredOn: NSDate, finishedOn: NSDate?) -> SBBScheduledActivity {
+        return createScheduledActivity("1-Training-Combined", label: "Training Session",
+                scheduledOn: registeredOn, finishedOn: finishedOn, expiresOn: nil)
+    }
+    
+    func createActivitySessions(trainingFinishedOn: NSDate = NSDate()) -> [SBBScheduledActivity] {
+        
+        var schedules: [SBBScheduledActivity] = []
+        
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        let hour: NSTimeInterval = 60 * 60
+        let day: NSTimeInterval = 24 * hour
+        let week: NSTimeInterval = 7 * day
+        var midnight = calendar.startOfDayForDate(trainingFinishedOn.dateByAddingTimeInterval(week))
+        
+        for _ in 1...2 {
+
+            let scheduledOn = midnight.dateByAddingTimeInterval(10 * hour)
+            let expiredOn = scheduledOn.dateByAddingTimeInterval(2*day + 2*hour)
+            let schedule = createScheduledActivity("1-Combined", label: "Activity Session", scheduledOn: scheduledOn, finishedOn: nil, expiresOn: expiredOn)
+            schedules.append(schedule)
+            
+            // Advance midnight by 1 week
+            midnight = midnight.dateByAddingTimeInterval(week)
+        }
+        
+        return schedules
+    }
+    
+    func createScheduledActivity(taskId: String, label: String, scheduledOn:NSDate = NSDate(), finishedOn:NSDate? = nil, expiresOn:NSDate? = nil) -> SBBScheduledActivity {
+        
+        let schedule = SBBScheduledActivity()
+        schedule.guid = NSUUID().UUIDString
+        schedule.activity = SBBActivity()
+        schedule.activity.label = label
+        schedule.activity.guid = NSUUID().UUIDString
+        schedule.activity.task = SBBTaskReference()
+        schedule.activity.task.identifier = taskId
+        schedule.scheduledOn = scheduledOn
+        schedule.expiresOn = expiresOn
+        schedule.finishedOn = finishedOn
+        return schedule
+    }
+    
+    func createScheduledSurvey(taskId: String, label: String, scheduledOn:NSDate = NSDate(), finishedOn:NSDate? = nil, expiresOn:NSDate? = nil) -> SBBScheduledActivity {
+        
+        let schedule = SBBScheduledActivity()
+        schedule.guid = NSUUID().UUIDString
+        schedule.activity = SBBActivity()
+        schedule.activity.label = label
+        schedule.activity.guid = NSUUID().UUIDString
+        schedule.activity.survey = SBBSurveyReference()
+        schedule.activity.survey.guid = NSUUID().UUIDString
+        schedule.activity.survey.href = schedule.activity.survey.guid
+        schedule.activity.survey.identifier = taskId
+        schedule.scheduledOn = scheduledOn
+        schedule.expiresOn = expiresOn
+        schedule.finishedOn = finishedOn
+        return schedule
+    }
+    
+}
+
+extension NSDate {
+    
+    func dateAtMilitaryTime(time: NSTimeInterval) -> NSDate {
+        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        let hour: NSTimeInterval = 60 * 60
+        return calendar.startOfDayForDate(self).dateByAddingTimeInterval(time * hour)
+    }
+    
+}
+
+extension Array {
+    
+    func elementAtIndex(index: Int) -> Element? {
+        guard index < self.count else { return nil }
+        return self[index]
+    }
 }

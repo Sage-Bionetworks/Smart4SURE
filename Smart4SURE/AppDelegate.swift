@@ -94,5 +94,38 @@ class AppDelegate: SBAAppDelegate {
         }
         return nil
     }
+    
+    override func applicationDidBecomeActive(application: UIApplication) {
+        super.applicationDidBecomeActive(application)
+        
+        // Listen for updates to the news feed
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(newsfeedUpdated), name: SBANewsFeedUpdateNotificationKey, object: nil)
+        newsfeedManager.fetchFeedWithCompletion(nil)
+    }
+    
+    override func applicationWillResignActive(application: UIApplication) {
+        super.applicationWillResignActive(application)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: SBANewsFeedUpdateNotificationKey, object: nil)
+    }
+    
+    lazy var newsfeedManager: SBANewsFeedManager = {
+        return SBANewsFeedManager()
+    }()
+    
+    func newsfeedUpdated(notification: NSNotification) {
+        updateNewsFeedBadge()
+    }
+    
+    func updateNewsFeedBadge() {
+        guard let tabController = window?.rootViewController as? UITabBarController,
+            let tabItem = tabController.tabBar.items?.filter({ $0.tag == Smart4SURENewsfeedTableViewController.tabItemTag }).first
+        else {
+            return
+        }
+        
+        let unreadCount = newsfeedManager.unreadPostsCount()
+        tabItem.badgeValue = (unreadCount == 0) ? nil : "\(unreadCount)"
+    }
+    
 }
 

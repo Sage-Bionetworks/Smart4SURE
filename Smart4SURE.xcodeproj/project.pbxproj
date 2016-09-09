@@ -12,7 +12,6 @@
 		802409C81D4692F800100F21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 802409C61D4692F800100F21 /* LaunchScreen.storyboard */; };
 		802409D31D4692F800100F21 /* Smart4SURETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409D21D4692F800100F21 /* Smart4SURETests.swift */; };
 		802409DE1D4692F800100F21 /* Smart4SUREUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409DD1D4692F800100F21 /* Smart4SUREUITests.swift */; };
-		80240A0E1D46949500100F21 /* AppLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802409EB1D46949500100F21 /* AppLocalization.swift */; };
 		80240A0F1D46949500100F21 /* BridgeInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802409EC1D46949500100F21 /* BridgeInfo.plist */; };
 		80240A101D46949500100F21 /* ColorInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 802409ED1D46949500100F21 /* ColorInfo.plist */; };
 		80240A121D46949500100F21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 802409F01D46949500100F21 /* Assets.xcassets */; };
@@ -39,8 +38,17 @@
 		80240AD01D46A38A00100F21 /* LearnInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80240ACC1D46A38A00100F21 /* LearnInfo.plist */; };
 		8027A8C71D638E5B00DCF4D0 /* BridgeInfo-private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */; };
 		8027A8DE1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */; };
+		FF3A7AEE1D78C0150073CE96 /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = FF3A7AEC1D78C0150073CE96 /* About.html */; };
+		FF46AA0C1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */; };
+		FF46AA631D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA621D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift */; };
+		FF46AA651D6E5908006AD42B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF46AA641D6E5908006AD42B /* CoreData.framework */; };
+		FF46AA701D6F7880006AD42B /* Smart4SURE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA6E1D6F7880006AD42B /* Smart4SURE.xcdatamodeld */; };
+		FF46AA771D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA751D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift */; };
+		FF46AA781D6F7E2D006AD42B /* ScheduledActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA761D6F7E2D006AD42B /* ScheduledActivity.swift */; };
 		FF5051D71D6663F50065E677 /* Onboarding.json in Resources */ = {isa = PBXBuildFile; fileRef = FF5051D61D6663F50065E677 /* Onboarding.json */; };
 		FF5051D91D6675A50065E677 /* Smart4SUREOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */; };
+		FF722C1C1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF722C1B1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift */; };
+		FF8359921D70C6AC0028B899 /* Withdrawl.html in Resources */ = {isa = PBXBuildFile; fileRef = FF8359901D70C6AC0028B899 /* Withdrawl.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -251,7 +259,6 @@
 		802409D91D4692F800100F21 /* Smart4SUREUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Smart4SUREUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		802409DD1D4692F800100F21 /* Smart4SUREUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Smart4SUREUITests.swift; sourceTree = "<group>"; };
 		802409DF1D4692F800100F21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		802409EB1D46949500100F21 /* AppLocalization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLocalization.swift; sourceTree = "<group>"; };
 		802409EC1D46949500100F21 /* BridgeInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BridgeInfo.plist; sourceTree = "<group>"; };
 		802409ED1D46949500100F21 /* ColorInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ColorInfo.plist; sourceTree = "<group>"; };
 		802409F01D46949500100F21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -273,8 +280,17 @@
 		80240ACD1D46A38A00100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Smart4SURE/Base.lproj/LearnInfo.plist; sourceTree = "<group>"; };
 		8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BridgeInfo-private.plist"; path = "../iOSPrivateProjectInfo/Smart4SURE/BridgeInfo-private.plist"; sourceTree = SOURCE_ROOT; };
 		8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sure-pd3-parkinson.pem"; sourceTree = "<group>"; };
+		FF3A7AED1D78C0150073CE96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/About.html; sourceTree = "<group>"; };
+		FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREDashboardViewController.swift; sourceTree = "<group>"; };
+		FF46AA621D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREScheduledActivityManager.swift; sourceTree = "<group>"; };
+		FF46AA641D6E5908006AD42B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FF46AA6F1D6F7880006AD42B /* Smart4SURE.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Smart4SURE.xcdatamodel; sourceTree = "<group>"; };
+		FF46AA751D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScheduledActivity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FF46AA761D6F7E2D006AD42B /* ScheduledActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduledActivity.swift; sourceTree = "<group>"; };
 		FF5051D61D6663F50065E677 /* Onboarding.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Onboarding.json; sourceTree = "<group>"; };
 		FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREOnboardingViewController.swift; sourceTree = "<group>"; };
+		FF722C1B1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Smart4SURENewsfeedTableViewController.swift; path = Resources/Smart4SURENewsfeedTableViewController.swift; sourceTree = "<group>"; };
+		FF8359911D70C6AC0028B899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Withdrawl.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +298,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF46AA651D6E5908006AD42B /* CoreData.framework in Frameworks */,
 				80240AB41D469B2000100F21 /* openssl.framework in Frameworks */,
 				80240A9D1D469AFE00100F21 /* ResearchKit.framework in Frameworks */,
 				80240A991D469AFE00100F21 /* ZipZap.framework in Frameworks */,
@@ -333,12 +350,15 @@
 			children = (
 				802409BD1D4692F800100F21 /* AppDelegate.swift */,
 				80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */,
+				FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */,
 				80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */,
 				80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */,
+				FF722C1B1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift */,
 				FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */,
+				FF46AA621D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift */,
 				802409C11D4692F800100F21 /* Main.storyboard */,
 				802409C61D4692F800100F21 /* LaunchScreen.storyboard */,
-				80240AD21D46A3D400100F21 /* Localization */,
+				FF46AA791D6F9770006AD42B /* Core Data */,
 				802409EF1D46949500100F21 /* Resources */,
 				80240AD31D46A44900100F21 /* Supporting Files */,
 			);
@@ -386,6 +406,8 @@
 		802409F41D46949500100F21 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
+				FF3A7AEC1D78C0150073CE96 /* About.html */,
+				FF8359901D70C6AC0028B899 /* Withdrawl.html */,
 				802409F51D46949500100F21 /* Contact Us.html */,
 				802409F71D46949500100F21 /* How Long.html */,
 				802409F91D46949500100F21 /* Instructions.html */,
@@ -408,6 +430,7 @@
 		80240A241D469A1700100F21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF46AA641D6E5908006AD42B /* CoreData.framework */,
 				80240AAA1D469B1700100F21 /* openssl.xcodeproj */,
 				80240A811D469AB600100F21 /* ZipZap.xcodeproj */,
 				80240A771D469AA600100F21 /* ResearchKit.xcodeproj */,
@@ -470,14 +493,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		80240AD21D46A3D400100F21 /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				802409EB1D46949500100F21 /* AppLocalization.swift */,
-			);
-			name = Localization;
-			sourceTree = "<group>";
-		};
 		80240AD31D46A44900100F21 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -488,6 +503,16 @@
 				80240ACC1D46A38A00100F21 /* LearnInfo.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FF46AA791D6F9770006AD42B /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				FF46AA6E1D6F7880006AD42B /* Smart4SURE.xcdatamodeld */,
+				FF46AA761D6F7E2D006AD42B /* ScheduledActivity.swift */,
+				FF46AA751D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -564,6 +589,7 @@
 				TargetAttributes = {
 					802409B91D4692F800100F21 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 4B822CZK9N;
 					};
 					802409CD1D4692F800100F21 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -757,6 +783,7 @@
 				80240A1A1D46949500100F21 /* pantspocket.png in Resources */,
 				80240A191D46949500100F21 /* Learn_section.css in Resources */,
 				802409C31D4692F800100F21 /* Main.storyboard in Resources */,
+				FF3A7AEE1D78C0150073CE96 /* About.html in Resources */,
 				80240A161D46949500100F21 /* How Long.html in Resources */,
 				80240A171D46949500100F21 /* Instructions.html in Resources */,
 				80240A121D46949500100F21 /* Assets.xcassets in Resources */,
@@ -764,6 +791,7 @@
 				80240AD01D46A38A00100F21 /* LearnInfo.plist in Resources */,
 				80240A0F1D46949500100F21 /* BridgeInfo.plist in Resources */,
 				8027A8C71D638E5B00DCF4D0 /* BridgeInfo-private.plist in Resources */,
+				FF8359921D70C6AC0028B899 /* Withdrawl.html in Resources */,
 				80240A181D46949500100F21 /* Missed Session.html in Resources */,
 				FF5051D71D6663F50065E677 /* Onboarding.json in Resources */,
 				8027A8DE1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem in Resources */,
@@ -791,12 +819,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF722C1C1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift in Sources */,
 				80240A1E1D46949500100F21 /* Smart4SUREActivityTableViewController.swift in Sources */,
+				FF46AA631D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift in Sources */,
 				FF5051D91D6675A50065E677 /* Smart4SUREOnboardingViewController.swift in Sources */,
-				80240A0E1D46949500100F21 /* AppLocalization.swift in Sources */,
+				FF46AA701D6F7880006AD42B /* Smart4SURE.xcdatamodeld in Sources */,
+				FF46AA771D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift in Sources */,
+				FF46AA781D6F7E2D006AD42B /* ScheduledActivity.swift in Sources */,
 				802409BE1D4692F800100F21 /* AppDelegate.swift in Sources */,
 				80240A1F1D46949500100F21 /* Smart4SURELearnInfo.swift in Sources */,
 				80240A201D46949500100F21 /* Smart4SURELearnViewController.swift in Sources */,
+				FF46AA0C1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +955,22 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		FF3A7AEC1D78C0150073CE96 /* About.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF3A7AED1D78C0150073CE96 /* Base */,
+			);
+			name = About.html;
+			sourceTree = "<group>";
+		};
+		FF8359901D70C6AC0028B899 /* Withdrawl.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF8359911D70C6AC0028B899 /* Base */,
+			);
+			name = Withdrawl.html;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1013,8 +1062,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 4;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1027,8 +1079,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 4;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1121,6 +1176,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FF46AA6E1D6F7880006AD42B /* Smart4SURE.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FF46AA6F1D6F7880006AD42B /* Smart4SURE.xcdatamodel */,
+			);
+			currentVersion = FF46AA6F1D6F7880006AD42B /* Smart4SURE.xcdatamodel */;
+			name = Smart4SURE.xcdatamodeld;
+			path = Resources/Smart4SURE.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 802409B21D4692F800100F21 /* Project object */;
 }

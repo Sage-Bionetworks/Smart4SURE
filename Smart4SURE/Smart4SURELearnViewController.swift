@@ -69,13 +69,13 @@ class Smart4SURELearnViewController: UITableViewController , SBASharedInfoContro
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("LearnCell", forIndexPath: indexPath)
         guard let item = self.itemForRowAtIndexPath(indexPath) else { return cell }
         
         cell.textLabel?.text = item.title
         
         let finder = SBAResourceFinder()
-        cell.imageView?.image = finder.imageNamed(item.iconImage)
+        cell.imageView?.image = finder.imageNamed(item.iconImage)?.imageWithRenderingMode(.AlwaysTemplate)
         
         return cell
     }
@@ -93,4 +93,23 @@ class Smart4SURELearnViewController: UITableViewController , SBASharedInfoContro
         }
     }
     
+}
+
+class LearnMoreTableViewCell: UITableViewCell {
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        if let imageView = self.imageView {
+            let originalCenter = imageView.center
+            let originalFrame = imageView.frame
+            let size: CGFloat = 27
+            imageView.frame = CGRect(x: originalFrame.origin.x, y: originalCenter.y - size/2.0, width: size, height: size)
+            
+            var originalTextFrame = self.textLabel!.frame
+            originalTextFrame.origin.x = CGRectGetMaxX(imageView.frame) + 16
+            self.textLabel?.frame = originalTextFrame
+        }
+    }
+
 }

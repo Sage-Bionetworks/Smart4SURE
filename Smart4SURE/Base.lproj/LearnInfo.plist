@@ -5,6 +5,14 @@
 	<key>rowItems</key>
 	<array>
 		<dict>
+			<key>iconImage</key>
+			<string>about-icon</string>
+			<key>details</key>
+			<string>About</string>
+			<key>title</key>
+			<string>About this study</string>
+		</dict>
+		<dict>
 			<key>title</key>
 			<string>Instructions</string>
 			<key>details</key>
@@ -35,6 +43,14 @@
 			<string>Contact Us</string>
 			<key>iconImage</key>
 			<string>contact-us-icon</string>
+		</dict>
+		<dict>
+			<key>title</key>
+			<string>How do I quit the study?</string>
+			<key>details</key>
+			<string>Withdrawl</string>
+			<key>iconImage</key>
+			<string>exit-arrow-icon</string>
 		</dict>
 	</array>
 </dict>

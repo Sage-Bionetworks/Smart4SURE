@@ -36,14 +36,14 @@ import BridgeAppSDK
 
 class Smart4SUREActivityTableViewController: SBAActivityTableViewController {
     
-    override var scheduledActivityManager : SBAScheduledActivityManager  {
-        return _scheduledActivityManager
+    override var scheduledActivityDataSource: SBAScheduledActivityDataSource  {
+        return Smart4SUREScheduledActivityManager.sharedManager
     }
-    private let _scheduledActivityManager : SBAScheduledActivityManager = Smart4SUREScheduledActivityManager()
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        Smart4SUREScheduledActivityManager.sharedManager.delegate = self
+    }
 }
 
-class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
-    
-    // TODO: syoung 08/17/2016 Implement customizations
-    
-}
+
