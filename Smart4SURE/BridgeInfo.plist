@@ -14,6 +14,10 @@
 	<string>study</string>
 	<key>newsfeedURL</key>
 	<string>https://nosuchnewsfeed.blogspot.com/feeds/posts/default?alt=rss</string>
+	<key>appUpdateURL</key>
+	<string>https://d19ciaektlu7h7.cloudfront.net/Smart4SURE.html</string>
+	<key>logoImageName</key>
+	<string>FinalLogo_02</string>
 	<key>schemaMapping</key>
 	<array>
 		<dict>
