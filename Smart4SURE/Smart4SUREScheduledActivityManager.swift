@@ -76,11 +76,15 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
     func filterSchedules(scheduledActivities: [SBBScheduledActivity]) -> [SBBScheduledActivity] {
         
         // Take the schedules and copy them to a new array, spliting the "Activity Session" schedule
-        // over 3 days.
+        // over 3 days. If there are more than one split schedule, then only include the first.
         var allSchedules: [SBBScheduledActivity] = []
+        var splitScheduleFound: Bool = false
         for schedule in scheduledActivities {
             let schedules = splitSchedule(schedule)
-            allSchedules.appendContentsOf(schedules)
+            if !splitScheduleFound || schedules.count == 1 {
+                allSchedules.appendContentsOf(schedules)
+                splitScheduleFound = splitScheduleFound || (schedules.count > 1)
+            }
         }
         
         return allSchedules
