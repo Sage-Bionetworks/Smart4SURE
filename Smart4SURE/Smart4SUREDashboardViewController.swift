@@ -75,14 +75,13 @@ class Smart4SUREDashboardViewController: SBAActivityTableViewController, SBASche
     }
     
     func numberOfRowsInSection(section: Int) -> Int {
-        guard let sections = fetchedResultsController.sections else { return 0 }
-        return sections[section].numberOfObjects
+        guard let sections = fetchedResultsController.sections else { return 1 }
+        return sections[section].numberOfObjects > 0 ? sections[section].numberOfObjects : 1
     }
-    
+
     func scheduledActivityAtIndexPath(indexPath: NSIndexPath) -> SBBScheduledActivity? {
         guard let mo = fetchedResultsController.objectAtIndexPath(indexPath) as? ScheduledActivity else { return nil }
         let schedule = SBBScheduledActivity()
-        
         
         schedule.guid = mo.guid
         schedule.scheduledOn = mo.scheduledOn
@@ -110,6 +109,14 @@ class Smart4SUREDashboardViewController: SBAActivityTableViewController, SBASche
     
     func shouldShowTaskForIndexPath(indexPath: NSIndexPath) -> Bool {
         return false
+    }
+    
+    override func dequeueReusableCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
+        guard let count = fetchedResultsController.sections?.first?.numberOfObjects where count > 0 else {
+            tableView.separatorStyle = .None
+            return tableView.dequeueReusableCellWithIdentifier("EmptyCell", forIndexPath: indexPath)
+        }
+        return super.dequeueReusableCell(tableView, indexPath: indexPath)
     }
     
     override func configureCell(cell: UITableViewCell, tableView: UITableView, indexPath: NSIndexPath) {
