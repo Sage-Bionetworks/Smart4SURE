@@ -36,6 +36,14 @@ import BridgeAppSDK
 
 class Smart4SUREDashboardViewController: SBAActivityTableViewController, SBAScheduledActivityDataSource, NSFetchedResultsControllerDelegate {
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Since this is a read-only table that is only changed while not visible on screen,
+        // just fetch and reload the table.
+        self.reloadData()
+    }
+    
     override var scheduledActivityDataSource: SBAScheduledActivityDataSource  {
         return self
     }
@@ -62,10 +70,19 @@ class Smart4SUREDashboardViewController: SBAActivityTableViewController, SBASche
     }()
 
     func reloadData() {
-        do {
-            try fetchedResultsController.performFetch()
-        } catch let error as NSError {
-            print("Failed to fetch results: \(error)")
+        // Always run on main thread
+        dispatch_async(dispatch_get_main_queue()) {
+            do {
+                // perform the fetch
+                try self.fetchedResultsController.performFetch()
+                
+                // reload table
+                self.refreshControl?.endRefreshing()
+                self.tableView.reloadData()
+                
+            } catch let error as NSError {
+                print("Failed to fetch results: \(error)")
+            }
         }
     }
     
