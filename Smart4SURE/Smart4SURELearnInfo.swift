@@ -88,7 +88,7 @@ protocol Smart4SURELearnInfo: class {
 
 class Smart4SURELearnInfoPList : NSObject, Smart4SURELearnInfo {
     
-    private var rowItems: [Smart4SURELearnItem]!
+    fileprivate var rowItems: [Smart4SURELearnItem]!
     
     convenience override init() {
         self.init(name: "LearnInfo")!
@@ -96,7 +96,7 @@ class Smart4SURELearnInfoPList : NSObject, Smart4SURELearnInfo {
     
     init?(name: String) {
         super.init()
-        guard let plist = SBAResourceFinder().plistNamed(name) else {
+        guard let plist = SBAResourceFinder.shared.plist(forResource: name) else {
             assertionFailure("\(name) plist file not found in the resource bundle")
             return nil
         }

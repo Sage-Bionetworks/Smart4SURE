@@ -39,7 +39,7 @@ class Smart4SURENewsfeedTableViewController: UITableViewController {
     static let tabItemTag = 4
     
     var newsfeedManager: SBANewsFeedManager {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.newsfeedManager
     }
     
@@ -56,31 +56,31 @@ class Smart4SURENewsfeedTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsfeed.count > 0 ? newsfeed.count : 1
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // If there aren't any news feed items then return the empty cell
         guard newsfeed.count > 0 else {
-            tableView.separatorStyle = .None
-            return tableView.dequeueReusableCellWithIdentifier("EmptyCell", forIndexPath: indexPath)
+            tableView.separatorStyle = .none
+            return tableView.dequeueReusableCell(withIdentifier: "EmptyCell", for: indexPath)
         }
         
         // Otherwise build the news feed cell
-        tableView.separatorStyle = .SingleLine
-        let cell = tableView.dequeueReusableCellWithIdentifier("NewsfeedCell", forIndexPath: indexPath)
+        tableView.separatorStyle = .singleLine
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsfeedCell", for: indexPath)
         guard let newsCell = cell as? SBANewsfeedTableViewCell else { return cell }
         
         let item = newsfeed[indexPath.row]
         newsCell.titleLabel.text = item.title
         
-        if let data = (item.itemDescription as NSString).dataUsingEncoding(NSUTF8StringEncoding) {
+        if let data = (item.itemDescription as NSString).data(using: String.Encoding.utf8.rawValue) {
             do {
                 let attributedText = try NSAttributedString(data: data, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
                 newsCell.subtitleLabel.text = attributedText.string
@@ -89,26 +89,26 @@ class Smart4SURENewsfeedTableViewController: UITableViewController {
             }
         }
         
-        newsCell.dateLabel.text = NSDateFormatter.localizedStringFromDate(item.pubDate, dateStyle: .ShortStyle, timeStyle: .NoStyle)
-        newsCell.hasRead = newsfeedManager.hasUserReadPostWithURL(item.link)
+        newsCell.dateLabel.text = DateFormatter.localizedString(from: item.pubDate, dateStyle: .short, timeStyle: .none)
+        newsCell.hasRead = newsfeedManager.hasUserReadPost(withURL: item.link)
         
         return cell
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let cell = sender as? SBANewsfeedTableViewCell,
-            let indexPath = self.tableView.indexPathForCell(cell) where indexPath.row < newsfeed.count,
-            let vc = segue.destinationViewController as? SBAWebViewController {
+            let indexPath = self.tableView.indexPath(for: cell) , indexPath.row < newsfeed.count,
+            let vc = segue.destination as? SBAWebViewController {
             // Hook up the title and the url for the webview controller
 
             let newsItem = newsfeed[indexPath.row]
             vc.title = newsItem.title
             
-            let encodedURLString = (newsItem.link as NSString).stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-            vc.url = NSURL(string: encodedURLString)
-            
-            newsfeedManager.userDidReadPostWithURL(newsItem.link)
+            let encodedURLString = newsItem.link.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+            vc.url = URL(string: encodedURLString)
+        
+            newsfeedManager.userDidReadPost(withURL: newsItem.link)
             cell.hasRead = true
         }
     }

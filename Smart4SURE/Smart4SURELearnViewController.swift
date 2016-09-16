@@ -37,56 +37,56 @@ import BridgeAppSDK
 class Smart4SURELearnViewController: UITableViewController , SBASharedInfoController {
     
     lazy var sharedAppDelegate: SBAAppInfoDelegate = {
-        return UIApplication.sharedApplication().delegate as! SBAAppInfoDelegate
+        return UIApplication.shared.delegate as! SBAAppInfoDelegate
     }()
     
-    private let learnInfo : Smart4SURELearnInfo = Smart4SURELearnInfoPList()
+    fileprivate let learnInfo : Smart4SURELearnInfo = Smart4SURELearnInfoPList()
     
     @IBOutlet weak var participantIDLabel: UILabel!
     @IBOutlet weak var versionLabel: UILabel!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         participantIDLabel.text = sharedUser.externalId
         
-        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString")
-        versionLabel.text = "\(Localization.localizedAppName) \(version!), build \(NSBundle.mainBundle().appVersion())"
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")
+        versionLabel.text = "\(Localization.localizedAppName) \(version!), build \(Bundle.main.appVersion())"
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return learnInfo.count
     }
     
-    func itemForRowAtIndexPath(indexPath: NSIndexPath) -> Smart4SURELearnItem? {
-        guard let item = learnInfo[indexPath.row] else {
-            assertionFailure("no learn item at index \(indexPath.row)")
+    func itemForRowAtIndexPath(_ indexPath: IndexPath) -> Smart4SURELearnItem? {
+        guard let item = learnInfo[(indexPath as NSIndexPath).row] else {
+            assertionFailure("no learn item at index \((indexPath as NSIndexPath).row)")
             return nil
         }
 
         return item
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("LearnCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LearnCell", for: indexPath)
         guard let item = self.itemForRowAtIndexPath(indexPath) else { return cell }
         
         cell.textLabel?.text = item.title
         
-        let finder = SBAResourceFinder()
-        cell.imageView?.image = finder.imageNamed(item.iconImage)?.imageWithRenderingMode(.AlwaysTemplate)
+        let image = SBAResourceFinder.shared.image(forResource: item.iconImage)?.withRenderingMode(.alwaysTemplate)
+        cell.imageView?.image = image
         
         return cell
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         if let cell = sender as? UITableViewCell,
-           let indexPath = self.tableView.indexPathForCell(cell),
+           let indexPath = self.tableView.indexPath(for: cell),
            let learnItem = self.itemForRowAtIndexPath(indexPath),
-           let url = SBAResourceFinder().urlNamed(learnItem.details, withExtension:"html"),
-           let vc = segue.destinationViewController as? SBAWebViewController {
+           let url = SBAResourceFinder.shared.url(forResource: learnItem.details, withExtension:"html"),
+           let vc = segue.destination as? SBAWebViewController {
             // Hook up the title and the url for the webview controller
             vc.title = learnItem.title
             vc.url = url
@@ -107,7 +107,7 @@ class LearnMoreTableViewCell: UITableViewCell {
             imageView.frame = CGRect(x: originalFrame.origin.x, y: originalCenter.y - size/2.0, width: size, height: size)
             
             var originalTextFrame = self.textLabel!.frame
-            originalTextFrame.origin.x = CGRectGetMaxX(imageView.frame) + 16
+            originalTextFrame.origin.x = imageView.frame.maxX + 16
             self.textLabel?.frame = originalTextFrame
         }
     }

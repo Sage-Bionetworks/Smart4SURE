@@ -40,7 +40,7 @@ class Smart4SUREActivityTableViewController: SBAActivityTableViewController {
         return Smart4SUREScheduledActivityManager.sharedManager
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         Smart4SUREScheduledActivityManager.sharedManager.delegate = self
     }
