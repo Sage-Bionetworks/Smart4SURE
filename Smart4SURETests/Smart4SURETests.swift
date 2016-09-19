@@ -51,8 +51,8 @@ class Smart4SURETests: XCTestCase {
     
     func testDivideComboSessionByThree() {
         
-        let registeredOn = NSDate().dateAtMilitaryTime(7)
-        let trainingFinishedOn = NSDate().dateAtMilitaryTime(11)
+        let registeredOn = Date().dateAtMilitaryTime(7)
+        let trainingFinishedOn = Date().dateAtMilitaryTime(11)
         
         let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire")
         let trainingTask = createTrainingSession(registeredOn, finishedOn: trainingFinishedOn)
@@ -75,14 +75,14 @@ class Smart4SURETests: XCTestCase {
     
     func testDivideComboSessionByThree_WithCompleted() {
         
-        let trainingFinishedOn = NSDate().dateAtMilitaryTime(11).dateByAddingTimeInterval(-8 * 24 * 60 * 60)
+        let trainingFinishedOn = Date().dateAtMilitaryTime(11).addingTimeInterval(-8 * 24 * 60 * 60)
         
         let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire")
         let activities = createActivitySessions(trainingFinishedOn)
         let initialSchedules = [pdq8] + activities
         
         // Mark the activity as finished
-        activities[0].finishedOn = NSDate().dateAtMilitaryTime(10.5)
+        activities[0].finishedOn = Date().dateAtMilitaryTime(10.5)
         
         let manager = Smart4SUREScheduledActivityManager()
         
@@ -101,31 +101,31 @@ class Smart4SURETests: XCTestCase {
     
     // MARK: helper methods
     
-    func checkTimeSplit(schedules:[SBBScheduledActivity]) {
+    func checkTimeSplit(_ schedules:[SBBScheduledActivity]) {
         guard schedules.count == 3 else { return }
         
         let scheduleDay1 = schedules[0]
         let scheduleDay2 = schedules[1]
         let scheduleDay3 = schedules[2]
         
-        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         
         let expectedTime = "10:00 AM"
         XCTAssertEqual(scheduleDay1.scheduledTime, expectedTime)
         XCTAssertEqual(scheduleDay2.scheduledTime, expectedTime)
         XCTAssertEqual(scheduleDay3.scheduledTime, expectedTime)
         
-        let expiredTime1 = calendar.component(.Hour, fromDate: scheduleDay1.expiresOn)
-        let expiredTime2 = calendar.component(.Hour, fromDate: scheduleDay2.expiresOn)
-        let expiredTime3 = calendar.component(.Hour, fromDate: scheduleDay3.expiresOn)
+        let expiredTime1 = (calendar as NSCalendar).component(.hour, from: scheduleDay1.expiresOn)
+        let expiredTime2 = (calendar as NSCalendar).component(.hour, from: scheduleDay2.expiresOn)
+        let expiredTime3 = (calendar as NSCalendar).component(.hour, from: scheduleDay3.expiresOn)
         let expectedExpired = 12
         XCTAssertEqual(expiredTime1, expectedExpired)
         XCTAssertEqual(expiredTime2, expectedExpired)
         XCTAssertEqual(expiredTime3, expectedExpired)
         
-        let dayInterval = NSTimeInterval(24 * 60 * 60)
-        XCTAssertEqual(scheduleDay1.scheduledOn.dateByAddingTimeInterval(dayInterval), scheduleDay2.scheduledOn)
-        XCTAssertEqual(scheduleDay1.scheduledOn.dateByAddingTimeInterval(2 * dayInterval), scheduleDay3.scheduledOn)
+        let dayInterval = TimeInterval(24 * 60 * 60)
+        XCTAssertEqual(scheduleDay1.scheduledOn.addingTimeInterval(dayInterval), scheduleDay2.scheduledOn)
+        XCTAssertEqual(scheduleDay1.scheduledOn.addingTimeInterval(2 * dayInterval), scheduleDay3.scheduledOn)
         
         for schedule in schedules {
             XCTAssertNotNil(schedule.activity)
@@ -134,42 +134,42 @@ class Smart4SURETests: XCTestCase {
         }
     }
     
-    func createTrainingSession(registeredOn: NSDate, finishedOn: NSDate?) -> SBBScheduledActivity {
+    func createTrainingSession(_ registeredOn: Date, finishedOn: Date?) -> SBBScheduledActivity {
         return createScheduledActivity("1-Training-Combined", label: "Training Session",
                 scheduledOn: registeredOn, finishedOn: finishedOn, expiresOn: nil)
     }
     
-    func createActivitySessions(trainingFinishedOn: NSDate = NSDate()) -> [SBBScheduledActivity] {
+    func createActivitySessions(_ trainingFinishedOn: Date = Date()) -> [SBBScheduledActivity] {
         
         var schedules: [SBBScheduledActivity] = []
         
-        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        let hour: NSTimeInterval = 60 * 60
-        let day: NSTimeInterval = 24 * hour
-        let week: NSTimeInterval = 7 * day
-        var midnight = calendar.startOfDayForDate(trainingFinishedOn.dateByAddingTimeInterval(week))
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let hour: TimeInterval = 60 * 60
+        let day: TimeInterval = 24 * hour
+        let week: TimeInterval = 7 * day
+        var midnight = calendar.startOfDay(for: trainingFinishedOn.addingTimeInterval(week))
         
         for _ in 1...2 {
 
-            let scheduledOn = midnight.dateByAddingTimeInterval(10 * hour)
-            let expiredOn = scheduledOn.dateByAddingTimeInterval(2*day + 2*hour)
+            let scheduledOn = midnight.addingTimeInterval(10 * hour)
+            let expiredOn = scheduledOn.addingTimeInterval(2*day + 2*hour)
             let schedule = createScheduledActivity("1-Combined", label: "Activity Session", scheduledOn: scheduledOn, finishedOn: nil, expiresOn: expiredOn)
             schedules.append(schedule)
             
             // Advance midnight by 1 week
-            midnight = midnight.dateByAddingTimeInterval(week)
+            midnight = midnight.addingTimeInterval(week)
         }
         
         return schedules
     }
     
-    func createScheduledActivity(taskId: String, label: String, scheduledOn:NSDate = NSDate(), finishedOn:NSDate? = nil, expiresOn:NSDate? = nil) -> SBBScheduledActivity {
+    func createScheduledActivity(_ taskId: String, label: String, scheduledOn:Date = Date(), finishedOn:Date? = nil, expiresOn:Date? = nil) -> SBBScheduledActivity {
         
         let schedule = SBBScheduledActivity()
-        schedule.guid = NSUUID().UUIDString
+        schedule.guid = UUID().uuidString
         schedule.activity = SBBActivity()
         schedule.activity.label = label
-        schedule.activity.guid = NSUUID().UUIDString
+        schedule.activity.guid = UUID().uuidString
         schedule.activity.task = SBBTaskReference()
         schedule.activity.task.identifier = taskId
         schedule.scheduledOn = scheduledOn
@@ -178,15 +178,15 @@ class Smart4SURETests: XCTestCase {
         return schedule
     }
     
-    func createScheduledSurvey(taskId: String, label: String, scheduledOn:NSDate = NSDate(), finishedOn:NSDate? = nil, expiresOn:NSDate? = nil) -> SBBScheduledActivity {
+    func createScheduledSurvey(_ taskId: String, label: String, scheduledOn:Date = Date(), finishedOn:Date? = nil, expiresOn:Date? = nil) -> SBBScheduledActivity {
         
         let schedule = SBBScheduledActivity()
-        schedule.guid = NSUUID().UUIDString
+        schedule.guid = UUID().uuidString
         schedule.activity = SBBActivity()
         schedule.activity.label = label
-        schedule.activity.guid = NSUUID().UUIDString
+        schedule.activity.guid = UUID().uuidString
         schedule.activity.survey = SBBSurveyReference()
-        schedule.activity.survey.guid = NSUUID().UUIDString
+        schedule.activity.survey.guid = UUID().uuidString
         schedule.activity.survey.href = schedule.activity.survey.guid
         schedule.activity.survey.identifier = taskId
         schedule.scheduledOn = scheduledOn
@@ -197,19 +197,19 @@ class Smart4SURETests: XCTestCase {
     
 }
 
-extension NSDate {
+extension Date {
     
-    func dateAtMilitaryTime(time: NSTimeInterval) -> NSDate {
-        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        let hour: NSTimeInterval = 60 * 60
-        return calendar.startOfDayForDate(self).dateByAddingTimeInterval(time * hour)
+    func dateAtMilitaryTime(_ time: TimeInterval) -> Date {
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let hour: TimeInterval = 60 * 60
+        return calendar.startOfDay(for: self).addingTimeInterval(time * hour)
     }
     
 }
 
 extension Array {
     
-    func elementAtIndex(index: Int) -> Element? {
+    func elementAtIndex(_ index: Int) -> Element? {
         guard index < self.count else { return nil }
         return self[index]
     }

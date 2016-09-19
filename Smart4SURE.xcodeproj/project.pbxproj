@@ -49,6 +49,7 @@
 		FF5051D91D6675A50065E677 /* Smart4SUREOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */; };
 		FF722C1C1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF722C1B1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift */; };
 		FF8359921D70C6AC0028B899 /* Withdrawl.html in Resources */ = {isa = PBXBuildFile; fileRef = FF8359901D70C6AC0028B899 /* Withdrawl.html */; };
+		FF84AAA71D8CAFA600ABD54C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF84AAA61D8CAFA600ABD54C /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,6 +292,8 @@
 		FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREOnboardingViewController.swift; sourceTree = "<group>"; };
 		FF722C1B1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Smart4SURENewsfeedTableViewController.swift; path = Resources/Smart4SURENewsfeedTableViewController.swift; sourceTree = "<group>"; };
 		FF8359911D70C6AC0028B899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Withdrawl.html; sourceTree = "<group>"; };
+		FF84AAA31D8CAF8300ABD54C /* Smart4SURE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Smart4SURE.entitlements; sourceTree = "<group>"; };
+		FF84AAA61D8CAFA600ABD54C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +305,7 @@
 				80240AB41D469B2000100F21 /* openssl.framework in Frameworks */,
 				80240A9D1D469AFE00100F21 /* ResearchKit.framework in Frameworks */,
 				80240A991D469AFE00100F21 /* ZipZap.framework in Frameworks */,
+				FF84AAA71D8CAFA600ABD54C /* HealthKit.framework in Frameworks */,
 				80240AA51D469AFE00100F21 /* BridgeAppSDK.framework in Frameworks */,
 				80240AA11D469AFE00100F21 /* BridgeSDK.framework in Frameworks */,
 			);
@@ -430,6 +434,7 @@
 		80240A241D469A1700100F21 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF84AAA61D8CAFA600ABD54C /* HealthKit.framework */,
 				FF46AA641D6E5908006AD42B /* CoreData.framework */,
 				80240AAA1D469B1700100F21 /* openssl.xcodeproj */,
 				80240A811D469AB600100F21 /* ZipZap.xcodeproj */,
@@ -496,6 +501,7 @@
 		80240AD31D46A44900100F21 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF84AAA31D8CAF8300ABD54C /* Smart4SURE.entitlements */,
 				802409C91D4692F800100F21 /* Info.plist */,
 				802409EC1D46949500100F21 /* BridgeInfo.plist */,
 				8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */,
@@ -590,13 +596,27 @@
 					802409B91D4692F800100F21 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 4B822CZK9N;
+						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					802409CD1D4692F800100F21 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 802409B91D4692F800100F21;
 					};
 					802409D81D4692F800100F21 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 802409B91D4692F800100F21;
 					};
 				};
@@ -1062,8 +1082,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Smart4SURE/Smart4SURE.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -1071,6 +1092,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1079,14 +1101,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Smart4SURE/Smart4SURE.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1098,6 +1122,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURETests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Smart4SURE.app/Smart4SURE";
 			};
 			name = Debug;
@@ -1110,6 +1135,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURETests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Smart4SURE.app/Smart4SURE";
 			};
 			name = Release;
@@ -1121,6 +1147,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SUREUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Smart4SURE;
 			};
 			name = Debug;
@@ -1132,6 +1159,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SUREUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = Smart4SURE;
 			};
 			name = Release;

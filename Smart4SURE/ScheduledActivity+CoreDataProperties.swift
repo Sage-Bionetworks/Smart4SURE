@@ -14,12 +14,12 @@ import CoreData
 
 extension ScheduledActivity {
 
-    @NSManaged var expiresOn: NSDate?
-    @NSManaged var finishedOn: NSDate?
+    @NSManaged var expiresOn: Date?
+    @NSManaged var finishedOn: Date?
     @NSManaged var guid: String?
     @NSManaged var persistent: NSNumber?
-    @NSManaged var scheduledOn: NSDate?
-    @NSManaged var startedOn: NSDate?
+    @NSManaged var scheduledOn: Date?
+    @NSManaged var startedOn: Date?
     @NSManaged var status: String?
     @NSManaged var taskIdentifier: String?
     @NSManaged var label: String?
