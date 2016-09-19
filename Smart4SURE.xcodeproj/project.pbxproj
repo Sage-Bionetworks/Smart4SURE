@@ -50,6 +50,9 @@
 		FF722C1C1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF722C1B1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift */; };
 		FF8359921D70C6AC0028B899 /* Withdrawl.html in Resources */ = {isa = PBXBuildFile; fileRef = FF8359901D70C6AC0028B899 /* Withdrawl.html */; };
 		FF84AAA71D8CAFA600ABD54C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF84AAA61D8CAFA600ABD54C /* HealthKit.framework */; };
+		FF84AB001D907A9D00ABD54C /* SURE-PD3.png in Resources */ = {isa = PBXBuildFile; fileRef = FF84AAFD1D907A9D00ABD54C /* SURE-PD3.png */; };
+		FF84AB011D907A9D00ABD54C /* mgh.png in Resources */ = {isa = PBXBuildFile; fileRef = FF84AAFE1D907A9D00ABD54C /* mgh.png */; };
+		FF84AB021D907A9D00ABD54C /* meliora.png in Resources */ = {isa = PBXBuildFile; fileRef = FF84AAFF1D907A9D00ABD54C /* meliora.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -294,6 +297,9 @@
 		FF8359911D70C6AC0028B899 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/Withdrawl.html; sourceTree = "<group>"; };
 		FF84AAA31D8CAF8300ABD54C /* Smart4SURE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Smart4SURE.entitlements; sourceTree = "<group>"; };
 		FF84AAA61D8CAFA600ABD54C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		FF84AAFD1D907A9D00ABD54C /* SURE-PD3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SURE-PD3.png"; sourceTree = "<group>"; };
+		FF84AAFE1D907A9D00ABD54C /* mgh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mgh.png; sourceTree = "<group>"; };
+		FF84AAFF1D907A9D00ABD54C /* meliora.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meliora.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +416,9 @@
 		802409F41D46949500100F21 /* HTML */ = {
 			isa = PBXGroup;
 			children = (
+				FF84AAFD1D907A9D00ABD54C /* SURE-PD3.png */,
+				FF84AAFE1D907A9D00ABD54C /* mgh.png */,
+				FF84AAFF1D907A9D00ABD54C /* meliora.png */,
 				FF3A7AEC1D78C0150073CE96 /* About.html */,
 				FF8359901D70C6AC0028B899 /* Withdrawl.html */,
 				802409F51D46949500100F21 /* Contact Us.html */,
@@ -801,11 +810,14 @@
 				80240A1B1D46949500100F21 /* CombinedTask.json in Resources */,
 				802409C81D4692F800100F21 /* LaunchScreen.storyboard in Resources */,
 				80240A1A1D46949500100F21 /* pantspocket.png in Resources */,
+				FF84AB001D907A9D00ABD54C /* SURE-PD3.png in Resources */,
 				80240A191D46949500100F21 /* Learn_section.css in Resources */,
 				802409C31D4692F800100F21 /* Main.storyboard in Resources */,
 				FF3A7AEE1D78C0150073CE96 /* About.html in Resources */,
 				80240A161D46949500100F21 /* How Long.html in Resources */,
 				80240A171D46949500100F21 /* Instructions.html in Resources */,
+				FF84AB021D907A9D00ABD54C /* meliora.png in Resources */,
+				FF84AB011D907A9D00ABD54C /* mgh.png in Resources */,
 				80240A121D46949500100F21 /* Assets.xcassets in Resources */,
 				80240A151D46949500100F21 /* Contact Us.html in Resources */,
 				80240AD01D46A38A00100F21 /* LearnInfo.plist in Resources */,
