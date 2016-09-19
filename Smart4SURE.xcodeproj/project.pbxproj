@@ -352,7 +352,6 @@
 		802409BC1D4692F800100F21 /* Smart4SURE */ = {
 			isa = PBXGroup;
 			children = (
-				FF84AAA31D8CAF8300ABD54C /* Smart4SURE.entitlements */,
 				802409BD1D4692F800100F21 /* AppDelegate.swift */,
 				80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */,
 				FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */,
@@ -502,6 +501,7 @@
 		80240AD31D46A44900100F21 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FF84AAA31D8CAF8300ABD54C /* Smart4SURE.entitlements */,
 				802409C91D4692F800100F21 /* Info.plist */,
 				802409EC1D46949500100F21 /* BridgeInfo.plist */,
 				8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */,
