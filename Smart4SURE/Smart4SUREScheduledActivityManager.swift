@@ -125,7 +125,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
             activities.append(activity)
             
             // Forward the date by 1 day
-            scheduleMidnightDate = scheduleMidnightDate.addingTimeInterval(24 * 60 * 60)
+            scheduleMidnightDate = scheduleMidnightDate.dateByAddingNumberOfDays(1)
         }
         
         return activities
