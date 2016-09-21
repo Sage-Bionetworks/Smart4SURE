@@ -92,7 +92,7 @@
      "optional"                  : true,
      "localizedSteps"            : [{
                                     "identifier" : "instruction",
-                                    "detailText" : "This activity measures your gait and balance as you walk and stand still.\nIf you cannot safely walk unassisted, then tap the “Skip this activity” link in red below.  Otherwise, tap Next to begin."
+                                    "detailText" : "This activity measures your gait and balance as you walk and stand still.\nIf you cannot safely walk unassisted, then tap the “Skip this activity” link below.  Otherwise, tap Next to begin."
                                     },
                                     {
                                      "identifier" : "instruction1",

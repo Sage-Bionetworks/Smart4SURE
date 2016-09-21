@@ -34,13 +34,12 @@
 import ResearchKit
 import BridgeAppSDK
 
-class Smart4SUREOnboardingViewController: SBATaskViewController, ORKTaskViewControllerDelegate {
+class Smart4SUREOnboardingViewController: SBATaskViewController {
     
     init() {
         let factory = SBASurveyFactory(jsonNamed: "Onboarding")
         let task = factory?.createTaskWithIdentifier("onboarding")
         super.init(task: task, taskRun: nil)
-        self.delegate = self
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -49,15 +48,16 @@ class Smart4SUREOnboardingViewController: SBATaskViewController, ORKTaskViewCont
     
     // MARK: ORKTaskViewControllerDelegate
     
-    func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
+    override func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
         if let appDelegate = UIApplication.shared.delegate as? SBABridgeAppSDKDelegate {
             appDelegate.showAppropriateViewController(true)
         }
     }
     
-    func taskViewController(_ taskViewController: ORKTaskViewController, stepViewControllerWillAppear stepViewController: ORKStepViewController) {
+    override func taskViewController(_ taskViewController: ORKTaskViewController, stepViewControllerWillAppear stepViewController: ORKStepViewController) {
         // Do not show the cancel button or back button
         stepViewController.cancelButtonItem = UIBarButtonItem()
         stepViewController.backButtonItem = UIBarButtonItem()
+        super.taskViewController(taskViewController, stepViewControllerWillAppear: stepViewController)
     }
 }
