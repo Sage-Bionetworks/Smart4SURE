@@ -152,7 +152,7 @@ class Smart4SURETests: XCTestCase {
         for _ in 1...2 {
 
             let scheduledOn = midnight.addingTimeInterval(10 * hour)
-            let expiredOn = scheduledOn.addingTimeInterval(2*day + 2*hour)
+            let expiredOn = scheduledOn.addingTimeInterval(3*day + 2*hour)
             let schedule = createScheduledActivity("1-Combined", label: "Activity Session", scheduledOn: scheduledOn, finishedOn: nil, expiresOn: expiredOn)
             schedules.append(schedule)
             

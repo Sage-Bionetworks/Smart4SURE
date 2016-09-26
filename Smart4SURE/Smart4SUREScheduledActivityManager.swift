@@ -100,9 +100,10 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         var scheduleMidnightDate = calendar.startOfDay(for: schedule.scheduledOn)
         var scheduledOnComponents = (calendar as NSCalendar).components([.hour, .minute], from: schedule.scheduledOn)
         var expiredOnComponents = (calendar as NSCalendar).components([.hour, .minute], from: schedule.expiresOn)
+        let days = Calendar.current.dateComponents([.day], from: schedule.scheduledOn, to: schedule.expiresOn).day!
         
         var activities: [SBBScheduledActivity] = []
-        for _ in 0 ..< S4S.kNumberOfDays {
+        for _ in 0 ..< days {
         
             // Pull the date for 3 days in a row and union with the time for start/end
             // Need to check the year/month/day because these can cross calendar boundaries
