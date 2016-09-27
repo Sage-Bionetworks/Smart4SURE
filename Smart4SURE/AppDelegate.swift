@@ -51,6 +51,10 @@ class AppDelegate: SBAAppDelegate {
         self.transition(toRootViewController: vc, animated: animated)
     }
     
+    override func showReconsentIfNecessary() {
+        self.currentUser.isConsentVerified = true
+    }
+    
     override func showOnboardingViewController(animated: Bool) {
         let vc = Smart4SUREOnboardingViewController()
         self.transition(toRootViewController: vc, animated: animated)
