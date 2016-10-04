@@ -110,6 +110,156 @@ class Smart4SURETests: XCTestCase {
         checkTimeSplit(schedules, expectedDate: Date())
     }
     
+    func testScheduledNotifications_OnlyTrainingCompleted() {
+        
+        let registeredOn = Date().addingNumberOfDays(-10).dateAtMilitaryTime(9)
+        let trainingFinishedOn = Date().addingNumberOfDays(-7).dateAtMilitaryTime(11)
+        
+        let trainingTask = createTrainingSession(registeredOn, finishedOn: trainingFinishedOn)
+        let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire", scheduledOn: trainingFinishedOn.dateAtMilitaryTime(12), finishedOn: nil, expiresOn: trainingFinishedOn.addingNumberOfDays(30))
+        let baseline = createBaselineSessions(trainingFinishedOn)
+        let activities = createActivitySessions(trainingFinishedOn)
+        let schedules = [trainingTask, pdq8] + activities + baseline
+        
+        let manager = TestSmart4SUREScheduledActivityManager()
+        manager.updateSchedules(schedules)
+        
+        // -- method under test
+        manager.setupCustomNotifications(schedules)
+        
+        // Get the notifications
+        guard let notifications = UIApplication.shared.scheduledLocalNotifications else {
+            XCTAssert(false, "Notifications should not be nil")
+            return
+        }
+        
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let sorted = notifications.sorted(by: { $0.0.fireDate!.compare($0.1.fireDate!) == .orderedAscending })
+
+        // The baseline notifications should be scheduled three times a day
+        let baselineNotifications = sorted.filter({ calendar.component(.hour, from: $0.fireDate!) != 12 })
+        for ii in 1...11 {
+            let idx = (ii - 1) * 3
+            if (idx + 2) < baselineNotifications.count {
+                
+                let expectedNote0 = Date().addingNumberOfDays(ii * 3).dateAtMilitaryTime(8)
+                let expectedNote1 = expectedNote0.dateAtMilitaryTime(14)
+                let expectedNote2 = expectedNote0.dateAtMilitaryTime(20)
+                
+                let note0 = baselineNotifications[idx].fireDate!
+                let note1 = baselineNotifications[idx + 1].fireDate!
+                let note2 = baselineNotifications[idx + 2].fireDate!
+                
+                XCTAssertEqual(note0, expectedNote0)
+                XCTAssertEqual(note1, expectedNote1)
+                XCTAssertEqual(note2, expectedNote2)
+            }
+            else {
+                XCTAssert(false, "baseline notification count does not match expected")
+            }
+        }
+        
+        // The activitys should schedule a
+        let noonTimes = sorted.filter({ calendar.component(.hour, from: $0.fireDate!) == 12 })
+        
+        // First noon schedule should be 30 days after the the last activity session was completed
+        // In this case, that would be the training session
+        let expectedNote0 = trainingFinishedOn.addingNumberOfDays(30).dateAtMilitaryTime(12)
+        let expectedNote1 = expectedNote0.addingNumberOfDays(1)
+        let expectedNote2 = expectedNote0.addingNumberOfDays(2)
+        
+        let note0 = noonTimes[0].fireDate!
+        let note1 = noonTimes[1].fireDate!
+        let note2 = noonTimes[2].fireDate!
+        
+        XCTAssertEqual(note0, expectedNote0)
+        XCTAssertEqual(note1, expectedNote1)
+        XCTAssertEqual(note2, expectedNote2)
+        
+        // The first schedule for the PDQ8 should be 90 days after training day
+        let expectedNotePDQ8_0 = trainingFinishedOn.addingNumberOfDays(90).dateAtMilitaryTime(12)
+        let expectedNotePDQ8_1 = expectedNotePDQ8_0.addingNumberOfDays(1)
+        let expectedNotePDQ8_2 = expectedNotePDQ8_0.addingNumberOfDays(2)
+        
+        let notePDQ8_0 = noonTimes[6].fireDate!
+        let notePDQ8_1 = noonTimes[7].fireDate!
+        let notePDQ8_2 = noonTimes[8].fireDate!
+        
+        XCTAssertEqual(notePDQ8_0, expectedNotePDQ8_0)
+        XCTAssertEqual(notePDQ8_1, expectedNotePDQ8_1)
+        XCTAssertEqual(notePDQ8_2, expectedNotePDQ8_2)
+    }
+    
+    func testScheduledNotifications_OneBaselineCompleted() {
+        
+        let registeredOn = Date().addingNumberOfDays(-10).dateAtMilitaryTime(9)
+        let trainingFinishedOn = Date().addingNumberOfDays(-7).dateAtMilitaryTime(11)
+        
+        let trainingTask = createTrainingSession(registeredOn, finishedOn: trainingFinishedOn)
+        let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire", scheduledOn: trainingFinishedOn.dateAtMilitaryTime(12), finishedOn: nil, expiresOn: trainingFinishedOn.addingNumberOfDays(30))
+        let baseline = createBaselineSessions(trainingFinishedOn)
+        let activities = createActivitySessions(trainingFinishedOn)
+        let schedules = [trainingTask, pdq8] + activities + baseline
+        
+        // Complete the second baseline activity
+        let baseline1 = baseline[1]
+        let baselineFinishedOn = Date().addingNumberOfDays(-1).dateAtMilitaryTime(15)
+        baseline1.finishedOn = baselineFinishedOn
+        
+        let manager = TestSmart4SUREScheduledActivityManager()
+        manager.updateSchedules(schedules)
+        
+        // -- method under test
+        manager.setupCustomNotifications(schedules)
+        
+        // Get the notifications
+        guard let notifications = UIApplication.shared.scheduledLocalNotifications else {
+            XCTAssert(false, "Notifications should not be nil")
+            return
+        }
+        
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let sorted = notifications.sorted(by: { $0.0.fireDate!.compare($0.1.fireDate!) == .orderedAscending })
+        
+        // The baseline notifications should be scheduled two times a day
+        // at 8am and 8pm
+        let baselineNotifications = sorted.filter({ calendar.component(.hour, from: $0.fireDate!) != 12 })
+        for ii in 1...11 {
+            let idx = (ii - 1) * 2
+            if (idx + 1) < baselineNotifications.count {
+                
+                let expectedNote0 = Date().addingNumberOfDays(ii * 3).dateAtMilitaryTime(8)
+                let expectedNote2 = expectedNote0.dateAtMilitaryTime(20)
+                
+                let note0 = baselineNotifications[idx].fireDate!
+                let note2 = baselineNotifications[idx + 1].fireDate!
+                
+                XCTAssertEqual(note0, expectedNote0)
+                XCTAssertEqual(note2, expectedNote2)
+            }
+            else {
+                XCTAssert(false, "baseline notification count does not match expected")
+            }
+        }
+        
+        // The activitys should schedule a
+        let noonTimes = sorted.filter({ calendar.component(.hour, from: $0.fireDate!) == 12 })
+        
+        // First noon schedule should be 30 days after the the last activity session was completed
+        // In this case, that would be the training session
+        let expectedNote0 = baselineFinishedOn.addingNumberOfDays(30).dateAtMilitaryTime(12)
+        let expectedNote1 = expectedNote0.addingNumberOfDays(1)
+        let expectedNote2 = expectedNote0.addingNumberOfDays(2)
+        
+        let note0 = noonTimes[0].fireDate!
+        let note1 = noonTimes[1].fireDate!
+        let note2 = noonTimes[2].fireDate!
+        
+        XCTAssertEqual(note0, expectedNote0)
+        XCTAssertEqual(note1, expectedNote1)
+        XCTAssertEqual(note2, expectedNote2)
+    }
+    
     // MARK: helper methods
     
     func checkTimeSplit(_ schedules:[SBBScheduledActivity], expectedDate: Date) {
@@ -162,19 +312,16 @@ class Smart4SURETests: XCTestCase {
         
         var schedules: [SBBScheduledActivity] = []
         
-        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        let hour: TimeInterval = 60 * 60
-        var midnight = calendar.startOfDay(for: trainingFinishedOn.addingNumberOfDays(7))
+        var scheduledOn = trainingFinishedOn.addingNumberOfDays(7).dateAtMilitaryTime(12)
         
         for _ in 1...2 {
 
-            let scheduledOn = midnight.addingTimeInterval(12 * hour)
             let expiredOn = scheduledOn.addingNumberOfDays(7)
             let schedule = createScheduledActivity("Ongoing-Combined", label: "Activity Session", scheduledOn: scheduledOn, finishedOn: nil, expiresOn: expiredOn)
             schedules.append(schedule)
             
             // Advance midnight by 1 week
-            midnight = midnight.addingNumberOfDays(7)
+            scheduledOn = scheduledOn.addingNumberOfDays(7)
         }
         
         return schedules
@@ -236,12 +383,33 @@ class Smart4SURETests: XCTestCase {
     
 }
 
+class TestSmart4SUREScheduledActivityManager : Smart4SUREScheduledActivityManager {
+    
+    lazy var inMemoryPersistentStoreCoordinator: NSPersistentStoreCoordinator = {
+        let managedObjectModel = self.managedObjectModel
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+        
+        do {
+            try coordinator.addPersistentStore(ofType: NSInMemoryStoreType, configurationName: nil, at: nil, options: nil)
+        } catch {
+            print("Adding in-memory persistent store failed")
+        }
+        
+        return coordinator
+    }()
+    
+    override var persistentStoreCoordinator: NSPersistentStoreCoordinator {
+        get { return inMemoryPersistentStoreCoordinator }
+        set { super.persistentStoreCoordinator = inMemoryPersistentStoreCoordinator }
+    }
+
+}
+
 extension Date {
     
-    func dateAtMilitaryTime(_ time: TimeInterval) -> Date {
+    func dateAtMilitaryTime(_ hour: Int) -> Date {
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        let hour: TimeInterval = 60 * 60
-        return calendar.startOfDay(for: self).addingTimeInterval(time * hour)
+        return calendar.date(bySettingHour: hour, minute: 0, second: 0, of: self)!
     }
     
 }

@@ -57,22 +57,17 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
     }
     
     override func load(scheduledActivities: [SBBScheduledActivity]) {
+        
         // cache the schedules beofre filtering
         updateSchedules(scheduledActivities)
-        // Filter the schedules before passing to super
+        
+        // Setup notifications that require custom coding
+        setupCustomNotifications(scheduledActivities)
+        
+        // Filter and edit the schedules before passing to super
         let schedules = filterSchedules(scheduledActivities)
         super.load(scheduledActivities: schedules)
     }
-    
-//    override func messageForUnavailableSchedule(_ schedule: SBBScheduledActivity) -> String {
-//        guard schedule.taskIdentifier == S4S.kBaselineSessionTaskId, let endTime = schedule.expiresTime else {
-//            return super.messageForUnavailableSchedule(schedule)
-//        }
-//        let days = Calendar.current.dateComponents([.day], from: schedule.scheduledOn, to: schedule.expiresOn).day!
-//        let format = NSLocalizedString("This activity is available from %@ until %@. You only need to complete the activity once within these times. After that, complete the activity session on a schedule that works for you." , comment: "")
-//        let numberOfDays = NumberFormatter.localizedString(from: NSNumber(value: days), number: .spellOut)
-//        return String.localizedStringWithFormat(format, schedule.scheduledTime, endTime, numberOfDays)
-//    }
     
     func filterSchedules(_ scheduledActivities: [SBBScheduledActivity]) -> [SBBScheduledActivity] {
         
@@ -94,21 +89,12 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
     
     func updatedBaselineSchedule(_ schedule: SBBScheduledActivity) -> SBBScheduledActivity {
         
-        // Split the schedule into three days
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        var scheduledOnComponents = (calendar as NSCalendar).components([.hour, .minute], from: schedule.scheduledOn)
-        
-        // Pull the day
         let scheduleDay = Date().compare(schedule.scheduledOn) == .orderedAscending ? schedule.scheduledOn! : Date()
-        let dateComponents = (calendar as NSCalendar).components([.year, .month, .day], from: scheduleDay)
         
-        scheduledOnComponents.year = dateComponents.year
-        scheduledOnComponents.month = dateComponents.month
-        scheduledOnComponents.day = dateComponents.day
-        
-        // Modify the scheduled time and detail
+        // Create a copy with modified the scheduled time and detail
         let activity = schedule.copy() as! SBBScheduledActivity
-        activity.scheduledOn = calendar.date(from: scheduledOnComponents)
+        activity.scheduledOn = merge(day: scheduleDay, time: schedule.scheduledOn)
         activity.expiresOn = calendar.date(byAdding: .hour, value: S4S.kTimeWindow, to: activity.scheduledOn)
         
         // Check that the activity is not expired and if so, forward the time
@@ -118,6 +104,166 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         }
 
         return activity
+    }
+    
+    
+    // MARK: Custom Notification handling
+    
+    func setupCustomNotifications(_ scheduledActivities: [SBBScheduledActivity]) {
+        
+        // Setup a notification for each reminder in the set
+        // Start by cancelling the existing reminder
+        UIApplication.shared.cancelAllLocalNotifications()
+        
+        // Add reminders for both baseline and noon time
+        addRemindersForBaseline(scheduledActivities)
+        addNoonTimeReminders(scheduledActivities)
+    }
+    
+    func addRemindersForBaseline(_ scheduledActivities: [SBBScheduledActivity]) {
+
+        // For the baseline session, only add the reminders if not completed,
+        // and add then add them based on the scheduled time, offset by 2 hours and
+        // with a reminder scheduled every 3 days until expired
+        
+        for schedule in scheduledActivities {
+            if !schedule.isCompleted && schedule.taskIdentifier == S4S.kBaselineSessionTaskId {
+        
+                // Offset by 2 hours
+                var reminder = schedule.scheduledOn.addingTimeInterval(2 * 60 * 60)
+                
+                // Add dates for the baseline session
+                repeat {
+                    let alertText = Localization.localizedStringWithFormatKey("SBA_TIME_FOR_%@", schedule.activity.label)
+                    addNotification(reminder: reminder, alertText: alertText)
+                    reminder = reminder.addingNumberOfDays(3)
+                } while (reminder < schedule.expiresOn)
+            }
+        }
+    }
+    
+    func addNoonTimeReminders(_ scheduledActivities: [SBBScheduledActivity]) {
+        
+        var reminders = Set<Date>()
+        var activityGuids = Array<String>()
+        
+        let schedules = scheduledActivities.filter({ $0.scheduledOn != nil })
+            .sorted(by: { $0.0.scheduledOn.compare($0.1.scheduledOn) == .orderedAscending })
+        
+        for schedule in schedules {
+            if !activityGuids.contains(schedule.activity.guid) {
+                activityGuids.append(schedule.activity.guid)
+                
+                if let taskIdentifier = schedule.taskIdentifier,
+                    taskIdentifier == S4S.kOngoingSessionTaskId {
+                    reminders.formUnion(remindersForOngoing(schedule: schedule))
+                }
+                else if schedule.taskIdentifier == nil {
+                    reminders.formUnion(remindersForSurvey(schedule: schedule))
+                }
+            }
+        }
+        
+        // Add earliest reminders first
+        let sortedReminders = reminders.sorted()
+        for reminder in sortedReminders {
+            addNotification(reminder: reminder,
+                            alertText: NSLocalizedString("Smart4SURE needs your help. Please complete activities and surveys session when it is most convenient for you today.", comment: ""))
+        }
+    }
+    
+    func addNotification(reminder: Date, alertText: String) {
+        let tomorrow = Date().addingNumberOfDays(1).startOfDay()
+        if tomorrow.compare(reminder) == .orderedAscending {
+            let notification = UILocalNotification()
+            notification.fireDate = reminder
+            notification.soundName = UILocalNotificationDefaultSoundName
+            notification.alertBody = alertText
+            UIApplication.shared.scheduleLocalNotification(notification)
+        }
+    }
+    
+    func remindersForOngoing(schedule: SBBScheduledActivity) -> Set<Date> {
+
+        // Look for a schedule matching the last time ANY activity session was completed
+        let baselinePredicate = NSPredicate(format: "taskIdentifier = %@", S4S.kBaselineSessionTaskId)
+        let ongoingPredicate = NSPredicate(format: "taskIdentifier = %@", S4S.kOngoingSessionTaskId)
+        let trainingPredicate = NSPredicate(format: "taskIdentifier = %@", S4S.kTrainingSessionTaskId)
+        let predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [baselinePredicate, ongoingPredicate, trainingPredicate])
+        
+        // Set the reminders for every 30 days
+        return remindersForActivityMatching(predicate: predicate, schedule: schedule, increment: 30)
+    }
+    
+    func remindersForSurvey(schedule: SBBScheduledActivity) -> Set<Date> {
+        // For the surveys, only want to remind every 90 days
+        let predicate = NSPredicate(format: "activityGuid = %@", schedule.activity.guid)
+        return remindersForActivityMatching(predicate: predicate, schedule: schedule, increment: 90)
+    }
+    
+    func remindersForActivityMatching(predicate: NSPredicate, schedule:SBBScheduledActivity, increment: Int) -> Set<Date> {
+        
+        let lastCompleted = lastCompletedSchedule(predicate: predicate)
+        
+        var lastDate: Date = {
+            if let finishedOn = lastCompleted?.finishedOn {
+                return merge(day: finishedOn, time: schedule.scheduledOn)
+            }
+            else {
+                return schedule.scheduledOn
+            }
+        }()
+        
+        // Setup dates for the next 360 days
+        var reminders = Set<Date>()
+        for _ in stride(from: increment, to: 180, by: increment) {
+            lastDate = lastDate.addingNumberOfDays(increment)
+            for ii in 0..<3 {
+                reminders.insert(lastDate.addingNumberOfDays(ii))
+            }
+        }
+        
+        return reminders
+    }
+    
+    func lastCompletedSchedule(predicate: NSPredicate) -> SBBScheduledActivity? {
+        var lastCompleted: SBBScheduledActivity?
+        
+        let context = backgroundObjectContext
+        context.performAndWait {
+            
+            let fetchRequest: NSFetchRequest<ScheduledActivity> = ScheduledActivity.fetchResult()
+            let finishedPredicate = NSPredicate(format: "finishedOn <> nil")
+            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [finishedPredicate, predicate])
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "finishedOn", ascending: false)]
+            
+            do {
+                let fetchedSchedules = try context.fetch(fetchRequest)
+                lastCompleted = fetchedSchedules.first?.scheduledActivity()
+                
+            } catch let error as NSError {
+                assertionFailure("Error finding schedule: \(error.localizedFailureReason)")
+                context.rollback()
+            }
+        }
+        
+        return lastCompleted
+    }
+    
+    func merge(day: Date, time: Date) -> Date {
+        
+        // Split the schedule into three days
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let timeComponents = (calendar as NSCalendar).components([.hour, .minute], from: time)
+        
+        // Pull the day
+        var dateComponents = (calendar as NSCalendar).components([.year, .month, .day], from: day)
+        
+        // Set the time
+        dateComponents.hour = timeComponents.hour
+        dateComponents.minute = timeComponents.minute
+        
+        return calendar.date(from: dateComponents)!
     }
     
     
@@ -131,15 +277,10 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         let context = backgroundObjectContext
         context.perform {
             
-            let fetchRequest: NSFetchRequest<ScheduledActivity> = {
-                if #available(iOS 10.0, *) {
-                     return ScheduledActivity.fetchRequest() as! NSFetchRequest<ScheduledActivity>
-                } else {
-                    return NSFetchRequest(entityName: "ScheduledActivity")
-                }
-            }()
+            let fetchRequest: NSFetchRequest<ScheduledActivity> = ScheduledActivity.fetchResult()
             fetchRequest.predicate = NSPredicate(format: "guid IN %@", schedules.map({ $0.guid }))
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "guid", ascending: true)]
+            fetchRequest.fetchLimit = 1
             
             do {
     
@@ -160,6 +301,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
                 
                     // Update the object
                     mo.taskIdentifier = schedule.taskIdentifier
+                    mo.activityGuid = schedule.activity.guid
                     mo.guid = schedule.guid
                     mo.scheduledOn = schedule.scheduledOn
                     mo.expiresOn = schedule.expiresOn
@@ -179,6 +321,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
             }
         }
     }
+    
     
     // MARK: - Core Data stack
     
@@ -202,7 +345,9 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         let url = self.applicationDocumentsDirectory.appendingPathComponent("Dashboard.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         do {
-            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+            let options = [NSMigratePersistentStoresAutomaticallyOption: true,
+                            NSInferMappingModelAutomaticallyOption: true]
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: options)
         } catch {
             // Report any error we got.
             var dict = [String: AnyObject]()
@@ -252,4 +397,11 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         }
     }
     
+}
+
+public extension SBBScheduledActivity {
+    
+    public dynamic var activityGuid: String? {
+        return self.activity.guid
+    }
 }
