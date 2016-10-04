@@ -49,115 +49,154 @@ class Smart4SURETests: XCTestCase {
         super.tearDown()
     }
     
-    func testDivideComboSessionByThree() {
+    func testResources_Onboarding() {
+        let onboardingVC = Smart4SUREOnboardingViewController()
+        XCTAssertNotNil(onboardingVC)
+    }
+    
+    func testResources_CombineTask_Training() {
+        let trainingTask = createTrainingSession(Date(), finishedOn: nil)
+        let manager = Smart4SUREScheduledActivityManager()
+        let (task, taskRef) = manager.createTask(for: trainingTask)
+        XCTAssertNotNil(task)
+        XCTAssertNotNil(taskRef)
+    }
+    
+    func testResources_CombineTask_Ongoing() {
+        let schedules = createActivitySessions(Date().addingNumberOfDays(-10))
+        let manager = Smart4SUREScheduledActivityManager()
+        let (task, taskRef) = manager.createTask(for: schedules[0])
+        XCTAssertNotNil(task)
+        XCTAssertNotNil(taskRef)
+    }
+    
+    func testHasAllBaseline_TrainingToday() {
         
-        let registeredOn = Date().dateAtMilitaryTime(7)
+        let registeredOn = Date().addingNumberOfDays(-10).dateAtMilitaryTime(9)
         let trainingFinishedOn = Date().dateAtMilitaryTime(11)
         
         let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire")
         let trainingTask = createTrainingSession(registeredOn, finishedOn: trainingFinishedOn)
+        let baseline = createBaselineSessions(trainingFinishedOn)
         let activities = createActivitySessions(trainingFinishedOn)
-        let initialSchedules = [trainingTask, pdq8] + activities
+        let initialSchedules = [trainingTask, pdq8] + activities + baseline
         
         let manager = Smart4SUREScheduledActivityManager()
         
         // -- method under test
         let schedules = manager.filterSchedules(initialSchedules)
         
-        // Check that the activity schedules are split across 3 days
-        let activitySchedules = schedules.filter({ $0.taskIdentifier == "1-Combined"})
-        XCTAssertEqual(activitySchedules.count, 3)
-        
-        guard activitySchedules.count == 3 else { return }
-        
-        checkTimeSplit(Array(activitySchedules[0..<3]))
+        // If training was today then baseline should be scheduled for tomorrow
+        checkTimeSplit(schedules, expectedDate: Date().addingNumberOfDays(1))
     }
     
-    func testDivideComboSessionByThree_WithCompleted() {
+    func testHasAllBaseline_TrainingLastWeek() {
         
-        let trainingFinishedOn = Date().dateAtMilitaryTime(11).addingTimeInterval(-8 * 24 * 60 * 60)
+        let registeredOn = Date().addingNumberOfDays(-10).dateAtMilitaryTime(9)
+        let trainingFinishedOn = Date().addingNumberOfDays(-7).dateAtMilitaryTime(11)
         
         let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire")
+        let trainingTask = createTrainingSession(registeredOn, finishedOn: trainingFinishedOn)
+        let baseline = createBaselineSessions(trainingFinishedOn)
         let activities = createActivitySessions(trainingFinishedOn)
-        let initialSchedules = [pdq8] + activities
-        
-        // Mark the activity as finished
-        activities[0].finishedOn = Date().dateAtMilitaryTime(10.5)
+        let initialSchedules = [trainingTask, pdq8] + activities + baseline
         
         let manager = Smart4SUREScheduledActivityManager()
         
         // -- method under test
         let schedules = manager.filterSchedules(initialSchedules)
         
-        // Check that the activity schedules are split across 3 days
-        // But only for the activity that has *not* been completed
-        let activitySchedules = schedules.filter({ $0.taskIdentifier == "1-Combined"})
-        XCTAssertEqual(activitySchedules.count, 4)
-        
-        guard activitySchedules.count == 4 else { return }
-        
-        checkTimeSplit(Array(activitySchedules[1..<4]))
+        // If training was last week then baseline should be scheduled for today
+        checkTimeSplit(schedules, expectedDate: Date())
     }
     
     // MARK: helper methods
     
-    func checkTimeSplit(_ schedules:[SBBScheduledActivity]) {
-        guard schedules.count == 3 else { return }
+    func checkTimeSplit(_ schedules:[SBBScheduledActivity], expectedDate: Date) {
         
-        let scheduleDay1 = schedules[0]
-        let scheduleDay2 = schedules[1]
-        let scheduleDay3 = schedules[2]
+        // Check that the ongoing scheduled tasks are filtered out
+        let ongoingSchedules = schedules.filter({ $0.taskIdentifier == "Ongoing-Combined"})
+        XCTAssertEqual(ongoingSchedules.count, 0)
+        
+        let baselineSchedules = schedules.filter({ $0.taskIdentifier == "Baseline-Combined"})
+        XCTAssertEqual(baselineSchedules.count, 3)
+        
+        guard baselineSchedules.count == 3 else { return }
+        
+        let scheduleDay1 = baselineSchedules[0]
+        let scheduleDay2 = baselineSchedules[1]
+        let scheduleDay3 = baselineSchedules[2]
         
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         
-        let expectedTime = "10:00 AM"
-        XCTAssertEqual(scheduleDay1.scheduledTime, expectedTime)
-        XCTAssertEqual(scheduleDay2.scheduledTime, expectedTime)
-        XCTAssertEqual(scheduleDay3.scheduledTime, expectedTime)
+        // scheduled time is expected
+        let scheduleTime1 = (calendar as NSCalendar).component(.hour, from: scheduleDay1.scheduledOn)
+        let scheduleTime2 = (calendar as NSCalendar).component(.hour, from: scheduleDay2.scheduledOn)
+        let scheduleTime3 = (calendar as NSCalendar).component(.hour, from: scheduleDay3.scheduledOn)
+        XCTAssertEqual(scheduleTime1, 6)
+        XCTAssertEqual(scheduleTime2, 12)
+        XCTAssertEqual(scheduleTime3, 18)
         
+        // Expired time is expected
         let expiredTime1 = (calendar as NSCalendar).component(.hour, from: scheduleDay1.expiresOn)
         let expiredTime2 = (calendar as NSCalendar).component(.hour, from: scheduleDay2.expiresOn)
         let expiredTime3 = (calendar as NSCalendar).component(.hour, from: scheduleDay3.expiresOn)
-        let expectedExpired = 12
-        XCTAssertEqual(expiredTime1, expectedExpired)
-        XCTAssertEqual(expiredTime2, expectedExpired)
-        XCTAssertEqual(expiredTime3, expectedExpired)
+        XCTAssertEqual(expiredTime1, 12)
+        XCTAssertEqual(expiredTime2, 18)
+        XCTAssertEqual(expiredTime3, 0)
         
-        let dayInterval = TimeInterval(24 * 60 * 60)
-        XCTAssertEqual(scheduleDay1.scheduledOn.addingTimeInterval(dayInterval), scheduleDay2.scheduledOn)
-        XCTAssertEqual(scheduleDay1.scheduledOn.addingTimeInterval(2 * dayInterval), scheduleDay3.scheduledOn)
-        
-        for schedule in schedules {
-            XCTAssertNotNil(schedule.activity)
-            XCTAssertEqual(schedule.taskIdentifier, "1-Combined")
-            XCTAssertNil(schedule.finishedOn)
+        // Scheduled date is expected
+        for schedule in baselineSchedules {
+            XCTAssertFalse(schedule.isExpired)
+            let expiresHours = calendar.dateComponents([.hour], from: schedule.scheduledOn, to: schedule.expiresOn)
+            XCTAssertEqual(expiresHours.hour!, 6)
         }
     }
     
     func createTrainingSession(_ registeredOn: Date, finishedOn: Date?) -> SBBScheduledActivity {
-        return createScheduledActivity("1-Training-Combined", label: "Training Session",
+        return createScheduledActivity("Training-Combined", label: "Training Session",
                 scheduledOn: registeredOn, finishedOn: finishedOn, expiresOn: nil)
     }
     
-    func createActivitySessions(_ trainingFinishedOn: Date = Date()) -> [SBBScheduledActivity] {
+    func createActivitySessions(_ trainingFinishedOn: Date) -> [SBBScheduledActivity] {
         
         var schedules: [SBBScheduledActivity] = []
         
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         let hour: TimeInterval = 60 * 60
-        let day: TimeInterval = 24 * hour
-        let week: TimeInterval = 7 * day
-        var midnight = calendar.startOfDay(for: trainingFinishedOn.addingTimeInterval(week))
+        var midnight = calendar.startOfDay(for: trainingFinishedOn.addingNumberOfDays(7))
         
         for _ in 1...2 {
 
-            let scheduledOn = midnight.addingTimeInterval(10 * hour)
-            let expiredOn = scheduledOn.addingTimeInterval(3*day + 2*hour)
-            let schedule = createScheduledActivity("1-Combined", label: "Activity Session", scheduledOn: scheduledOn, finishedOn: nil, expiresOn: expiredOn)
+            let scheduledOn = midnight.addingTimeInterval(12 * hour)
+            let expiredOn = scheduledOn.addingNumberOfDays(7)
+            let schedule = createScheduledActivity("Ongoing-Combined", label: "Activity Session", scheduledOn: scheduledOn, finishedOn: nil, expiresOn: expiredOn)
             schedules.append(schedule)
             
             // Advance midnight by 1 week
-            midnight = midnight.addingTimeInterval(week)
+            midnight = midnight.addingNumberOfDays(7)
+        }
+        
+        return schedules
+    }
+    
+    func createBaselineSessions(_ trainingFinishedOn: Date) -> [SBBScheduledActivity] {
+        
+        var schedules: [SBBScheduledActivity] = []
+        
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        let hour: TimeInterval = 60 * 60
+        let midnight = calendar.startOfDay(for: trainingFinishedOn.addingNumberOfDays(1))
+        var scheduledOn = midnight.addingTimeInterval(6 * hour)
+        
+        for _ in 1...3 {
+            
+            let expiredOn = scheduledOn.addingNumberOfDays(45)
+            let schedule = createScheduledActivity("Baseline-Combined", label: "Activity Session", scheduledOn: scheduledOn, finishedOn: nil, expiresOn: expiredOn)
+            schedules.append(schedule)
+            
+            // Advance the time
+            scheduledOn = scheduledOn.addingTimeInterval(6 * hour)
         }
         
         return schedules

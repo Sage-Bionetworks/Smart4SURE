@@ -22,9 +22,15 @@
 	<array>
 		<dict>
 			<key>schemaIdentifier</key>
+			<string>Mood Survey</string>
+			<key>schemaRevision</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>schemaIdentifier</key>
 			<string>Tremor Activity</string>
 			<key>schemaRevision</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>schemaIdentifier</key>
@@ -61,21 +67,23 @@
 	<array>
 		<dict>
 			<key>taskIdentifier</key>
-			<string>1-Training-Combined</string>
+			<string>Baseline-Combined</string>
+			<key>resourceName</key>
+			<string>CombinedTask</string>
+			<key>allowMultipleRun</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>taskIdentifier</key>
+			<string>Training-Combined</string>
 			<key>resourceName</key>
 			<string>CombinedTask</string>
 		</dict>
 		<dict>
 			<key>taskIdentifier</key>
-			<string>1-Combined</string>
+			<string>Ongoing-Combined</string>
 			<key>resourceName</key>
 			<string>CombinedTask</string>
-			<key>cancelDisabled</key>
-			<true/>
-			<key>allowMultipleRun</key>
-			<false/>
-			<key>scheduleNotification</key>
-			<true/>
 		</dict>
 	</array>
 </dict>

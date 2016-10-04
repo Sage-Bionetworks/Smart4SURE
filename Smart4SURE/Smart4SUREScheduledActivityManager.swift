@@ -38,13 +38,13 @@ import CoreData
 
 class S4S: NSObject {
     
-    static let kActivitySessionTaskId = "1-Combined"
-    static let kTrainingSessionTaskId = "1-Training-Combined"
-    static let kNumberOfDays = 3
+    static let kBaselineSessionTaskId = "Baseline-Combined"
+    static let kOngoingSessionTaskId = "Ongoing-Combined"
+    static let kTrainingSessionTaskId = "Training-Combined"
     
-    static let kComboPredicate = NSPredicate(format:"finishedOn = NULL AND taskIdentifier = %@", kActivitySessionTaskId)
-    static let kTrainingPredicate = NSPredicate(format:"finishedOn = NULL AND taskIdentifier = %@", kTrainingSessionTaskId)
-    static let kActiveTaskPredicate = NSPredicate(format:"taskIdentifier = %@ OR taskIdentifier = %@", kActivitySessionTaskId, kTrainingSessionTaskId)
+    static let kBaselinePredicate = NSPredicate(format:"finishedOn = NULL AND taskIdentifier = %@", kBaselineSessionTaskId)
+    
+    static let kTimeWindow = 6  // Number of hours before the task expires
 }
 
 class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
@@ -64,72 +64,60 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         super.load(scheduledActivities: schedules)
     }
     
-    override func messageForUnavailableSchedule(_ schedule: SBBScheduledActivity) -> String {
-        guard schedule.taskIdentifier == S4S.kActivitySessionTaskId, let endTime = schedule.expiresTime else {
-            return super.messageForUnavailableSchedule(schedule)
-        }
-        let format = NSLocalizedString("This activity is available from %@ until %@ for %@ days. You only need to complete the activity on one of the available days" , comment: "")
-        let numberOfDays = NumberFormatter.localizedString(from: NSNumber(value: S4S.kNumberOfDays as Int), number: .spellOut)
-        return String.localizedStringWithFormat(format, schedule.scheduledTime, endTime, numberOfDays)
-    }
+//    override func messageForUnavailableSchedule(_ schedule: SBBScheduledActivity) -> String {
+//        guard schedule.taskIdentifier == S4S.kBaselineSessionTaskId, let endTime = schedule.expiresTime else {
+//            return super.messageForUnavailableSchedule(schedule)
+//        }
+//        let days = Calendar.current.dateComponents([.day], from: schedule.scheduledOn, to: schedule.expiresOn).day!
+//        let format = NSLocalizedString("This activity is available from %@ until %@. You only need to complete the activity once within these times. After that, complete the activity session on a schedule that works for you." , comment: "")
+//        let numberOfDays = NumberFormatter.localizedString(from: NSNumber(value: days), number: .spellOut)
+//        return String.localizedStringWithFormat(format, schedule.scheduledTime, endTime, numberOfDays)
+//    }
     
     func filterSchedules(_ scheduledActivities: [SBBScheduledActivity]) -> [SBBScheduledActivity] {
         
-        // Take the schedules and copy them to a new array, spliting the "Activity Session" schedule
-        // over 3 days. If there are more than one split schedule, then only include the first.
-        var allSchedules: [SBBScheduledActivity] = []
-        var splitScheduleFound: Bool = false
-        for schedule in scheduledActivities {
-            let schedules = splitSchedule(schedule)
-            if !splitScheduleFound || schedules.count == 1 {
-                allSchedules.append(contentsOf: schedules)
-                splitScheduleFound = splitScheduleFound || (schedules.count > 1)
+        // If there is more than 1 baseline schedule, then filter out the activities schedules
+        let baselineScheduleFound = (scheduledActivities.filter({ S4S.kBaselinePredicate.evaluate(with: $0) }).count > 1)
+        
+        let allSchedules = scheduledActivities.mapAndFilter { (schedule) -> SBBScheduledActivity? in
+            if baselineScheduleFound && schedule.taskIdentifier == S4S.kOngoingSessionTaskId {
+                return nil
             }
+            else if S4S.kBaselinePredicate.evaluate(with: schedule) {
+                return updatedBaselineSchedule(schedule)
+            }
+            return schedule
         }
         
         return allSchedules
     }
     
-    func splitSchedule(_ schedule: SBBScheduledActivity) -> [SBBScheduledActivity] {
-    
-        // If this is not a combo schedule then return the schedule
-        guard S4S.kComboPredicate.evaluate(with: schedule) else { return [schedule] }
+    func updatedBaselineSchedule(_ schedule: SBBScheduledActivity) -> SBBScheduledActivity {
         
         // Split the schedule into three days
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        var scheduleMidnightDate = calendar.startOfDay(for: schedule.scheduledOn)
         var scheduledOnComponents = (calendar as NSCalendar).components([.hour, .minute], from: schedule.scheduledOn)
-        var expiredOnComponents = (calendar as NSCalendar).components([.hour, .minute], from: schedule.expiresOn)
-        let days = Calendar.current.dateComponents([.day], from: schedule.scheduledOn, to: schedule.expiresOn).day!
         
-        var activities: [SBBScheduledActivity] = []
-        for _ in 0 ..< days {
+        // Pull the day
+        let scheduleDay = Date().compare(schedule.scheduledOn) == .orderedAscending ? schedule.scheduledOn! : Date()
+        let dateComponents = (calendar as NSCalendar).components([.year, .month, .day], from: scheduleDay)
         
-            // Pull the date for 3 days in a row and union with the time for start/end
-            // Need to check the year/month/day because these can cross calendar boundaries
-            let dateComponents = (calendar as NSCalendar).components([.year, .month, .day], from: scheduleMidnightDate)
-            
-            scheduledOnComponents.year = dateComponents.year
-            scheduledOnComponents.month = dateComponents.month
-            scheduledOnComponents.day = dateComponents.day
-            
-            expiredOnComponents.year = dateComponents.year
-            expiredOnComponents.month = dateComponents.month
-            expiredOnComponents.day = dateComponents.day
-            
-            // Modify the scheduled time and detail
-            let activity = schedule.copy() as! SBBScheduledActivity
-            activity.scheduledOn = calendar.date(from: scheduledOnComponents)
-            activity.expiresOn = calendar.date(from: expiredOnComponents)
-            
-            // Add to the list
-            activities.append(activity)
-            
-            // Forward the date by 1 day
-            scheduleMidnightDate = scheduleMidnightDate.addingNumberOfDays(1)
+        scheduledOnComponents.year = dateComponents.year
+        scheduledOnComponents.month = dateComponents.month
+        scheduledOnComponents.day = dateComponents.day
+        
+        // Modify the scheduled time and detail
+        let activity = schedule.copy() as! SBBScheduledActivity
+        activity.scheduledOn = calendar.date(from: scheduledOnComponents)
+        activity.expiresOn = calendar.date(byAdding: .hour, value: S4S.kTimeWindow, to: activity.scheduledOn)
+        
+        // Check that the activity is not expired and if so, forward the time
+        if activity.isExpired {
+            activity.scheduledOn = activity.scheduledOn.addingNumberOfDays(1)
+            activity.expiresOn = activity.expiresOn.addingNumberOfDays(1)
         }
-        
-        return activities
+
+        return activity
     }
     
     
