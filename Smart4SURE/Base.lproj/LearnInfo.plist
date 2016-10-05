@@ -30,14 +30,6 @@
 		</dict>
 		<dict>
 			<key>title</key>
-			<string>What to do if I missed a session?</string>
-			<key>details</key>
-			<string>Missed Session</string>
-			<key>iconImage</key>
-			<string>missed-session-icon</string>
-		</dict>
-		<dict>
-			<key>title</key>
 			<string>Contact us</string>
 			<key>details</key>
 			<string>Contact Us</string>
