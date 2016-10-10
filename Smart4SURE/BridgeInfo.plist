@@ -67,7 +67,7 @@
 	<array>
 		<dict>
 			<key>taskIdentifier</key>
-			<string>Baseline-Combined</string>
+			<string>Pre-Baseline-Combined</string>
 			<key>resourceName</key>
 			<string>CombinedTask</string>
 			<key>allowMultipleRun</key>
@@ -84,6 +84,8 @@
 			<string>Ongoing-Combined</string>
 			<key>resourceName</key>
 			<string>CombinedTask</string>
+			<key>allowMultipleRun</key>
+			<false/>
 		</dict>
 	</array>
 </dict>

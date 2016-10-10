@@ -38,7 +38,7 @@ import CoreData
 
 class S4S: NSObject {
     
-    static let kBaselineSessionTaskId = "Baseline-Combined"
+    static let kBaselineSessionTaskId = "Pre-Baseline-Combined"
     static let kOngoingSessionTaskId = "Ongoing-Combined"
     static let kTrainingSessionTaskId = "Training-Combined"
     
@@ -204,16 +204,12 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
     
     func remindersForActivityMatching(predicate: NSPredicate, schedule:SBBScheduledActivity, increment: Int) -> Set<Date> {
         
-        let lastCompleted = lastCompletedSchedule(predicate: predicate)
+        guard let lastCompleted = lastCompletedSchedule(predicate: predicate), lastCompleted.finishedOn != nil
+        else {
+            return Set<Date>()
+        }
         
-        var lastDate: Date = {
-            if let finishedOn = lastCompleted?.finishedOn {
-                return merge(day: finishedOn, time: schedule.scheduledOn)
-            }
-            else {
-                return schedule.scheduledOn
-            }
-        }()
+        var lastDate: Date = lastCompleted.finishedOn
         
         // Setup dates for the next 360 days
         var reminders = Set<Date>()
@@ -302,6 +298,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
                 
                     // Update the object
                     mo.taskIdentifier = schedule.taskIdentifier
+                    mo.surveyIdentifier = schedule.surveyIdentifier
                     mo.activityGuid = schedule.activity.guid
                     mo.guid = schedule.guid
                     mo.scheduledOn = schedule.scheduledOn

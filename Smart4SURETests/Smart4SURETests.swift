@@ -75,13 +75,17 @@ class Smart4SURETests: XCTestCase {
         let registeredOn = Date().addingNumberOfDays(-10).dateAtMilitaryTime(9)
         let trainingFinishedOn = Date().dateAtMilitaryTime(11)
         
-        let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire")
         let trainingTask = createTrainingSession(registeredOn, finishedOn: trainingFinishedOn)
         let baseline = createBaselineSessions(trainingFinishedOn)
         let activities = createActivitySessions(trainingFinishedOn)
-        let initialSchedules = [trainingTask, pdq8] + activities + baseline
+        
+        let pdq8_initial = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire", scheduledOn: registeredOn, finishedOn: trainingFinishedOn, expiresOn: nil)
+        let pdq8_ongoing = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire", scheduledOn: pdq8_initial.finishedOn, finishedOn: nil, expiresOn: pdq8_initial.finishedOn.addingNumberOfDays(30))
+
+        let initialSchedules = [trainingTask, pdq8_initial, pdq8_ongoing] + activities + baseline
         
         let manager = Smart4SUREScheduledActivityManager()
+        manager.updateSchedules(initialSchedules)
         
         // -- method under test
         let schedules = manager.filterSchedules(initialSchedules)
@@ -95,13 +99,16 @@ class Smart4SURETests: XCTestCase {
         let registeredOn = Date().addingNumberOfDays(-10).dateAtMilitaryTime(9)
         let trainingFinishedOn = Date().addingNumberOfDays(-7).dateAtMilitaryTime(11)
         
-        let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire")
         let trainingTask = createTrainingSession(registeredOn, finishedOn: trainingFinishedOn)
         let baseline = createBaselineSessions(trainingFinishedOn)
         let activities = createActivitySessions(trainingFinishedOn)
-        let initialSchedules = [trainingTask, pdq8] + activities + baseline
+        let pdq8_initial = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire", scheduledOn: registeredOn, finishedOn: trainingFinishedOn, expiresOn: nil)
+        let pdq8_ongoing = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire", scheduledOn: pdq8_initial.finishedOn, finishedOn: nil, expiresOn: pdq8_initial.finishedOn.addingNumberOfDays(30))
+        
+        let initialSchedules = [trainingTask, pdq8_initial, pdq8_ongoing] + activities + baseline
         
         let manager = Smart4SUREScheduledActivityManager()
+        manager.updateSchedules(initialSchedules)
         
         // -- method under test
         let schedules = manager.filterSchedules(initialSchedules)
@@ -116,16 +123,19 @@ class Smart4SURETests: XCTestCase {
         let trainingFinishedOn = Date().addingNumberOfDays(-7).dateAtMilitaryTime(11)
         
         let trainingTask = createTrainingSession(registeredOn, finishedOn: trainingFinishedOn)
-        let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire", scheduledOn: trainingFinishedOn.dateAtMilitaryTime(12), finishedOn: nil, expiresOn: trainingFinishedOn.addingNumberOfDays(30))
         let baseline = createBaselineSessions(trainingFinishedOn)
         let activities = createActivitySessions(trainingFinishedOn)
-        let schedules = [trainingTask, pdq8] + activities + baseline
+        
+        let pdq8_initial = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire", scheduledOn: registeredOn, finishedOn: trainingFinishedOn, expiresOn: nil)
+        let pdq8_ongoing = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire", scheduledOn: pdq8_initial.finishedOn, finishedOn: nil, expiresOn: pdq8_initial.finishedOn.addingNumberOfDays(30))
+        
+        let initialSchedules = [trainingTask, pdq8_initial, pdq8_ongoing] + activities + baseline
         
         let manager = TestSmart4SUREScheduledActivityManager()
-        manager.updateSchedules(schedules)
+        manager.updateSchedules(initialSchedules)
         
         // -- method under test
-        manager.setupCustomNotifications(schedules)
+        manager.setupCustomNotifications(initialSchedules)
         
         // Get the notifications
         guard let notifications = UIApplication.shared.scheduledLocalNotifications else {
@@ -196,10 +206,13 @@ class Smart4SURETests: XCTestCase {
         let trainingFinishedOn = Date().addingNumberOfDays(-7).dateAtMilitaryTime(11)
         
         let trainingTask = createTrainingSession(registeredOn, finishedOn: trainingFinishedOn)
-        let pdq8 = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire", scheduledOn: trainingFinishedOn.dateAtMilitaryTime(12), finishedOn: nil, expiresOn: trainingFinishedOn.addingNumberOfDays(30))
         let baseline = createBaselineSessions(trainingFinishedOn)
         let activities = createActivitySessions(trainingFinishedOn)
-        let schedules = [trainingTask, pdq8] + activities + baseline
+        
+        let pdq8_initial = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire", scheduledOn: registeredOn, finishedOn: trainingFinishedOn, expiresOn: nil)
+        let pdq8_ongoing = createScheduledSurvey("PDQ8", label: "PDQ-8 Questionnaire", scheduledOn: pdq8_initial.finishedOn, finishedOn: nil, expiresOn: pdq8_initial.finishedOn.addingNumberOfDays(30))
+        
+        let initialSchedules = [trainingTask, pdq8_initial, pdq8_ongoing] + activities + baseline
         
         // Complete the second baseline activity
         let baseline1 = baseline[1]
@@ -207,10 +220,10 @@ class Smart4SURETests: XCTestCase {
         baseline1.finishedOn = baselineFinishedOn
         
         let manager = TestSmart4SUREScheduledActivityManager()
-        manager.updateSchedules(schedules)
+        manager.updateSchedules(initialSchedules)
         
         // -- method under test
-        manager.setupCustomNotifications(schedules)
+        manager.setupCustomNotifications(initialSchedules)
         
         // Get the notifications
         guard let notifications = UIApplication.shared.scheduledLocalNotifications else {
@@ -268,7 +281,7 @@ class Smart4SURETests: XCTestCase {
         let ongoingSchedules = schedules.filter({ $0.taskIdentifier == "Ongoing-Combined"})
         XCTAssertEqual(ongoingSchedules.count, 0)
         
-        let baselineSchedules = schedules.filter({ $0.taskIdentifier == "Baseline-Combined"})
+        let baselineSchedules = schedules.filter({ $0.taskIdentifier == "Pre-Baseline-Combined"})
         XCTAssertEqual(baselineSchedules.count, 3)
         
         guard baselineSchedules.count == 3 else { return }
@@ -339,7 +352,7 @@ class Smart4SURETests: XCTestCase {
         for _ in 1...3 {
             
             let expiredOn = scheduledOn.addingNumberOfDays(45)
-            let schedule = createScheduledActivity("Baseline-Combined", label: "Activity Session", scheduledOn: scheduledOn, finishedOn: nil, expiresOn: expiredOn)
+            let schedule = createScheduledActivity("Pre-Baseline-Combined", label: "Activity Session", scheduledOn: scheduledOn, finishedOn: nil, expiresOn: expiredOn)
             schedules.append(schedule)
             
             // Advance the time
