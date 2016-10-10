@@ -405,15 +405,6 @@ class TestSmart4SUREScheduledActivityManager : Smart4SUREScheduledActivityManage
 
 }
 
-extension Date {
-    
-    func dateAtMilitaryTime(_ hour: Int) -> Date {
-        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        return calendar.date(bySettingHour: hour, minute: 0, second: 0, of: self)!
-    }
-    
-}
-
 extension Array {
     
     func elementAtIndex(_ index: Int) -> Element? {

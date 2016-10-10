@@ -44,7 +44,8 @@ class S4S: NSObject {
     
     static let kBaselinePredicate = NSPredicate(format:"finishedOn = NULL AND taskIdentifier = %@", kBaselineSessionTaskId)
     
-    static let kTimeWindow = 6  // Number of hours before the task expires
+    static let kTimeWindow = 6                  // Number of hours before the task expires
+    static let kDefaultNotificationTime = 12    // Time of day to set notification
 }
 
 class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
@@ -158,7 +159,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
                     taskIdentifier == S4S.kOngoingSessionTaskId {
                     reminders.formUnion(remindersForOngoing(schedule: schedule))
                 }
-                else if schedule.taskIdentifier == nil {
+                else if schedule.surveyIdentifier != nil {
                     reminders.formUnion(remindersForSurvey(schedule: schedule))
                 }
             }
@@ -167,7 +168,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         // Add earliest reminders first
         let sortedReminders = reminders.sorted()
         for reminder in sortedReminders {
-            addNotification(reminder: reminder,
+            addNotification(reminder: reminder.dateAtMilitaryTime(S4S.kDefaultNotificationTime),
                             alertText: NSLocalizedString("Smart4SURE needs your help. Please complete activities and surveys session when it is most convenient for you today.", comment: ""))
         }
     }
@@ -197,7 +198,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
     
     func remindersForSurvey(schedule: SBBScheduledActivity) -> Set<Date> {
         // For the surveys, only want to remind every 90 days
-        let predicate = NSPredicate(format: "activityGuid = %@", schedule.activity.guid)
+        let predicate = NSPredicate(format: "surveyIdentifier = %@", schedule.surveyIdentifier!)
         return remindersForActivityMatching(predicate: predicate, schedule: schedule, increment: 90)
     }
     
@@ -401,7 +402,17 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
 
 public extension SBBScheduledActivity {
     
-    public dynamic var activityGuid: String? {
-        return self.activity.guid
+    public dynamic var surveyIdentifier: String? {
+        guard self.activity.survey != nil else { return nil }
+        return self.activity.survey.identifier
     }
+}
+
+public extension Date {
+    
+    public func dateAtMilitaryTime(_ hour: Int) -> Date {
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
+        return calendar.date(bySettingHour: hour, minute: 0, second: 0, of: self)!
+    }
+    
 }

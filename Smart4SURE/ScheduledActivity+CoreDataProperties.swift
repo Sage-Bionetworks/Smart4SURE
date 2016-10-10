@@ -48,6 +48,7 @@ extension ScheduledActivity {
     @NSManaged var startedOn: Date?
     @NSManaged var status: String?
     @NSManaged var taskIdentifier: String?
+    @NSManaged var surveyIdentifier: String?
     @NSManaged var label: String?
 
 }

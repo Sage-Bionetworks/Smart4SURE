@@ -10,12 +10,13 @@
         <attribute name="scheduledOn" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="startedOn" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="surveyIdentifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="taskIdentifier" optional="YES" attributeType="String" syncable="YES"/>
         <userInfo>
             <entry key="entityIDKeyPath" value="guid"/>
         </userInfo>
     </entity>
     <elements>
-        <element name="ScheduledActivity" positionX="-45" positionY="0" width="128" height="195"/>
+        <element name="ScheduledActivity" positionX="-45" positionY="0" width="128" height="210"/>
     </elements>
 </model>
