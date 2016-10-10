@@ -93,7 +93,8 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         let scheduleDay = Date().compare(schedule.scheduledOn) == .orderedAscending ? schedule.scheduledOn! : Date()
         
-        // Create a copy with modified the scheduled time and detail
+        // Create a copy of the schedule with the scheduled and expired times modified to use
+        // a 6 hour window
         let activity = schedule.copy() as! SBBScheduledActivity
         activity.scheduledOn = merge(day: scheduleDay, time: schedule.scheduledOn)
         activity.expiresOn = calendar.date(byAdding: .hour, value: S4S.kTimeWindow, to: activity.scheduledOn)
