@@ -42,10 +42,9 @@ class S4S: NSObject {
     static let kOngoingSessionTaskId = "Ongoing-Combined"
     static let kTrainingSessionTaskId = "Training-Combined"
     
-    static let kBaselinePredicate = NSPredicate(format:"finishedOn = NULL AND taskIdentifier = %@", kBaselineSessionTaskId)
-    
     static let kTimeWindow = 6                  // Number of hours before the task expires
     static let kDefaultNotificationTime = 12    // Time of day to set notification
+    static let kDaysAhead = 10                  // Filter "coming up" to 10 days ahead
 }
 
 class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
@@ -73,13 +72,20 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
     func filterSchedules(_ scheduledActivities: [SBBScheduledActivity]) -> [SBBScheduledActivity] {
         
         // If there is more than 1 baseline schedule, then filter out the activities schedules
-        let baselineScheduleFound = (scheduledActivities.filter({ S4S.kBaselinePredicate.evaluate(with: $0) }).count > 1)
+        let notExpiredPredicate = NSPredicate(format: "expiresOn = NULL OR expiresOn > %@", Date() as CVarArg)
+        let isBaselinePredicate = NSPredicate(format:"finishedOn = NULL AND taskIdentifier = %@", S4S.kBaselineSessionTaskId)
+        let baselinePredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [isBaselinePredicate, notExpiredPredicate])
+        let baselineScheduleFound = (scheduledActivities.filter({ baselinePredicate.evaluate(with: $0) }).count > 0)
         
+        let daysAheadCutoff = Date().addingNumberOfDays(S4S.kDaysAhead)
         let allSchedules = scheduledActivities.mapAndFilter { (schedule) -> SBBScheduledActivity? in
             if baselineScheduleFound && schedule.taskIdentifier == S4S.kOngoingSessionTaskId {
                 return nil
             }
-            else if S4S.kBaselinePredicate.evaluate(with: schedule) {
+            else if schedule.scheduledOn != nil && schedule.scheduledOn! > daysAheadCutoff {
+                return nil
+            }
+            else if baselinePredicate.evaluate(with: schedule) {
                 return updatedBaselineSchedule(schedule)
             }
             return schedule
@@ -89,18 +95,15 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
     }
     
     func updatedBaselineSchedule(_ schedule: SBBScheduledActivity) -> SBBScheduledActivity {
-        
-        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        let scheduleDay = Date().compare(schedule.scheduledOn) == .orderedAscending ? schedule.scheduledOn! : Date()
-        
+
         // Create a copy of the schedule with the scheduled and expired times modified to use
         // a 6 hour window
         let activity = schedule.copy() as! SBBScheduledActivity
-        activity.scheduledOn = merge(day: scheduleDay, time: schedule.scheduledOn)
+        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
         activity.expiresOn = calendar.date(byAdding: .hour, value: S4S.kTimeWindow, to: activity.scheduledOn)
         
         // Check that the activity is not expired and if so, forward the time
-        if activity.isExpired {
+        while activity.isExpired {
             activity.scheduledOn = activity.scheduledOn.addingNumberOfDays(1)
             activity.expiresOn = activity.expiresOn.addingNumberOfDays(1)
         }
@@ -170,7 +173,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         let sortedReminders = reminders.sorted()
         for reminder in sortedReminders {
             addNotification(reminder: reminder.dateAtMilitaryTime(S4S.kDefaultNotificationTime),
-                            alertText: NSLocalizedString("Smart4SURE needs your help. Please complete activities and surveys session when it is most convenient for you today.", comment: ""))
+                            alertText: NSLocalizedString("Smart4SURE needs your help. Please complete activities and surveys when it is most convenient for you today.", comment: ""))
         }
     }
     
@@ -246,22 +249,6 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         }
         
         return lastCompleted
-    }
-    
-    func merge(day: Date, time: Date) -> Date {
-        
-        // Split the schedule into three days
-        let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
-        let timeComponents = (calendar as NSCalendar).components([.hour, .minute], from: time)
-        
-        // Pull the day
-        var dateComponents = (calendar as NSCalendar).components([.year, .month, .day], from: day)
-        
-        // Set the time
-        dateComponents.hour = timeComponents.hour
-        dateComponents.minute = timeComponents.minute
-        
-        return calendar.date(from: dateComponents)!
     }
     
     

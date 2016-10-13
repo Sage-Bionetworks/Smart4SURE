@@ -7,7 +7,7 @@
 	<key>studyIdentifier</key>
 	<string>study</string>
 	<key>cacheDaysAhead</key>
-	<integer>10</integer>
+	<integer>30</integer>
 	<key>cacheDaysBehind</key>
 	<integer>7</integer>
 	<key>certificateName</key>
