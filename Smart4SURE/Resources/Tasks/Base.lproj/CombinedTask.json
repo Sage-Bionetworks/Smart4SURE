@@ -22,7 +22,7 @@
      "identifier"       : "takingLevodopa",
      "type"             : "boolean",
      "text"             : "Are you currently taking any medication containing levodopa?\n\n(For example: Sinemet, Sinemet CR, Stalevo, Parcopa, Rytary)",
-     "skipIdentifier"   : "Tapping Activity",
+     "skipIdentifier"   : "Mood Survey",
      "skipIfPassed"     : false,
      "expectedAnswer"   : true,
      "optional"         : false,
@@ -40,10 +40,17 @@
      "optional"     : false,
      },
      {
+     "taskIdentifier"            : "Mood",
+     "schemaIdentifier"          : "Mood Survey",
+     "taskType"                  : "moodSurvey",
+     "taskOptions"               : {"frequency"      : "weekly"},
+     },
+     {
      "taskIdentifier"            : "Tapping",
      "schemaIdentifier"          : "Tapping Activity",
      "taskType"                  : "tapping",
      "intendedUseDescription"    : "In this activity we ask you to tap your fingers. It is an activity that tells us about your fine motor coordination.",
+     "taskOptions"               : {"duration"      : 20.0},
      "localizedSteps"            : [{
                                     "identifier" : "instruction1.right",
                                     "detailText" : "Tap Next to begin."
@@ -79,6 +86,7 @@
      "taskIdentifier"            : "Tremor",
      "schemaIdentifier"          : "Tremor Activity",
      "taskType"                  : "tremor",
+     "taskOptions"               : {"excludePostions"      : ["queenWave", "elbowBent"]},
      "localizedSteps"            : [{
                                     "identifier" : "instruction1",
                                     "detailText" : "Tap Next to begin."

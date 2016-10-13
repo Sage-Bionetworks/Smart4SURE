@@ -53,13 +53,7 @@ class Smart4SUREDashboardViewController: SBAActivityTableViewController, SBASche
     }
     
     lazy var fetchedResultsController: NSFetchedResultsController<ScheduledActivity> = { () -> NSFetchedResultsController<ScheduledActivity> in
-        let fetchRequest: NSFetchRequest<ScheduledActivity> = {
-            if #available(iOS 10.0, *) {
-                return ScheduledActivity.fetchRequest() as! NSFetchRequest<ScheduledActivity>
-            } else {
-                return NSFetchRequest(entityName: "ScheduledActivity")
-            }
-        }()
+        let fetchRequest: NSFetchRequest<ScheduledActivity> = ScheduledActivity.fetchResult()
         let sortDescriptor = NSSortDescriptor(key: "scheduledOn", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
         fetchRequest.predicate = NSPredicate(format: "(expiresOn <> NULL AND expiresOn < %@) OR (finishedOn <> NULL)", NSDate())
@@ -105,30 +99,7 @@ class Smart4SUREDashboardViewController: SBAActivityTableViewController, SBASche
     func scheduledActivity(at indexPath: IndexPath) -> SBBScheduledActivity? {
 
         let mo = fetchedResultsController.object(at: indexPath)
-        let schedule = SBBScheduledActivity()
-        
-        schedule.guid = mo.guid
-        schedule.scheduledOn = mo.scheduledOn
-        schedule.expiresOn = mo.expiresOn
-        schedule.startedOn = mo.startedOn
-        schedule.finishedOn = mo.finishedOn
-        schedule.persistent = mo.persistent
-        schedule.status = mo.status
-        
-        schedule.activity = SBBActivity()
-        schedule.activity.label = mo.label
-        if let finishedOn = mo.finishedOn {
-            let format = NSLocalizedString("Completed: %@", comment: "Label for a completed activity")
-            let dateString = DateFormatter.localizedString(from: finishedOn, dateStyle: .short, timeStyle: .short)
-            schedule.activity.labelDetail = String.localizedStringWithFormat(format, dateString)
-        }
-        else if let expiresOn = mo.expiresOn {
-            let format = NSLocalizedString("Expired: %@", comment: "Label for a completed activity")
-            let dateString = DateFormatter.localizedString(from: expiresOn, dateStyle: .short, timeStyle: .short)
-            schedule.activity.labelDetail = String.localizedStringWithFormat(format, dateString)
-        }
-        
-        return schedule
+        return mo.scheduledActivity()
     }
     
     func shouldShowTask(for indexPath: IndexPath) -> Bool {
