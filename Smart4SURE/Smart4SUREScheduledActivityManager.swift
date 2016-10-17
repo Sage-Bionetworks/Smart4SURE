@@ -237,6 +237,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
             let finishedPredicate = NSPredicate(format: "finishedOn <> nil")
             fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [finishedPredicate, predicate])
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "finishedOn", ascending: false)]
+            fetchRequest.fetchLimit = 1
             
             do {
                 let fetchedSchedules = try context.fetch(fetchRequest)
@@ -256,16 +257,15 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
     
     func updateSchedules(_ scheduledActivities: [SBBScheduledActivity]) {
         
-        let schedules = scheduledActivities.sorted(by: { $0.0.guid > $0.1.guid })
+        let schedules = scheduledActivities.sorted(by: { $0.0.scheduleIdentifier > $0.1.scheduleIdentifier })
         guard schedules.count > 0 else { return }
         
         let context = backgroundObjectContext
         context.perform {
             
             let fetchRequest: NSFetchRequest<ScheduledActivity> = ScheduledActivity.fetchResult()
-            fetchRequest.predicate = NSPredicate(format: "guid IN %@", schedules.map({ $0.guid }))
+            fetchRequest.predicate = NSPredicate(format: "guid IN %@", schedules.map({ $0.scheduleIdentifier }))
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "guid", ascending: true)]
-            fetchRequest.fetchLimit = 1
             
             do {
     
@@ -276,7 +276,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
                     let mo: ScheduledActivity = {
                         // Note: this kind of filtering is very inefficient, but since we are only dealing
                         // with a few results, should be fine.
-                        if let fetchedSchedule = fetchedSchedules.filter({ $0.guid == schedule.guid }).first {
+                        if let fetchedSchedule = fetchedSchedules.filter({ $0.guid == schedule.scheduleIdentifier }).first {
                             return fetchedSchedule
                         }
                         else {
@@ -288,7 +288,7 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
                     mo.taskIdentifier = schedule.taskIdentifier
                     mo.surveyIdentifier = schedule.surveyIdentifier
                     mo.activityGuid = schedule.activity.guid
-                    mo.guid = schedule.guid
+                    mo.guid = schedule.scheduleIdentifier
                     mo.scheduledOn = schedule.scheduledOn
                     mo.expiresOn = schedule.expiresOn
                     mo.startedOn = schedule.startedOn
@@ -383,14 +383,6 @@ class Smart4SUREScheduledActivityManager: SBAScheduledActivityManager {
         }
     }
     
-}
-
-public extension SBBScheduledActivity {
-    
-    public dynamic var surveyIdentifier: String? {
-        guard self.activity.survey != nil else { return nil }
-        return self.activity.survey.identifier
-    }
 }
 
 public extension Date {
