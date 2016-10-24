@@ -49,9 +49,8 @@ class Smart4SUREOnboardingViewController: SBATaskViewController {
     // MARK: ORKTaskViewControllerDelegate
     
     override func taskViewController(_ taskViewController: ORKTaskViewController, didFinishWith reason: ORKTaskViewControllerFinishReason, error: Error?) {
-        if let appDelegate = UIApplication.shared.delegate as? SBABridgeAppSDKDelegate {
-            appDelegate.showAppropriateViewController(true)
-        }
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.showAppropriateViewController(animated: true)
     }
     
     override func taskViewController(_ taskViewController: ORKTaskViewController, stepViewControllerWillAppear stepViewController: ORKStepViewController) {
