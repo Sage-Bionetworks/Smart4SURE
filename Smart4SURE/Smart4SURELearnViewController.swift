@@ -72,9 +72,9 @@ class Smart4SURELearnViewController: UITableViewController , SBASharedInfoContro
         let cell = tableView.dequeueReusableCell(withIdentifier: "LearnCell", for: indexPath)
         guard let item = self.itemForRowAtIndexPath(indexPath) else { return cell }
         
-        cell.textLabel?.text = item.title
+        cell.textLabel?.text = item.learnTitle
         
-        let image = SBAResourceFinder.shared.image(forResource: item.iconImage)?.withRenderingMode(.alwaysTemplate)
+        let image = SBAResourceFinder.shared.image(forResource: item.learnIconImage)?.withRenderingMode(.alwaysTemplate)
         cell.imageView?.image = image
         
         return cell
@@ -85,10 +85,10 @@ class Smart4SURELearnViewController: UITableViewController , SBASharedInfoContro
         if let cell = sender as? UITableViewCell,
            let indexPath = self.tableView.indexPath(for: cell),
            let learnItem = self.itemForRowAtIndexPath(indexPath),
-           let url = SBAResourceFinder.shared.url(forResource: learnItem.details, withExtension:"html"),
+           let url = SBAResourceFinder.shared.url(forResource: learnItem.learnDetails, withExtension:"html"),
            let vc = segue.destination as? SBAWebViewController {
             // Hook up the title and the url for the webview controller
-            vc.title = learnItem.title
+            vc.title = learnItem.learnTitle
             vc.url = url
         }
     }

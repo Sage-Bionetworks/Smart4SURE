@@ -44,17 +44,17 @@ protocol Smart4SURELearnItem: class {
     /**
      * Title to show in the Learn tab table view cell
      */
-    var title: String! { get }
+    var learnTitle: String! { get }
     
     /**
      * Content file (html) to load for the Detail view for this item
      */
-    var details: String! { get }
+    var learnDetails: String! { get }
     
     /**
      * Name of the image to use as the item's icon in the Learn tab table view cell
      */
-    var iconImage: String! { get }
+    var learnIconImage: String! { get }
 }
 
 extension NSDictionary : Smart4SURELearnItem {
@@ -68,9 +68,9 @@ extension NSDictionary : Smart4SURELearnItem {
         return true
     }
     
-    var title : String! { return self["title"] as! String }
-    var details : String! { return self["details"] as! String }
-    var iconImage : String! { return self["iconImage"] as! String }
+    var learnTitle : String! { return self["title"] as! String }
+    var learnDetails : String! { return self["details"] as! String }
+    var learnIconImage : String! { return self["iconImage"] as! String }
 }
 
 protocol Smart4SURELearnInfo: class {
