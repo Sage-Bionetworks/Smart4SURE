@@ -40,7 +40,7 @@ class Smart4SURELearnViewController: UITableViewController , SBASharedInfoContro
         return UIApplication.shared.delegate as! SBAAppInfoDelegate
     }()
     
-    fileprivate let learnInfo : Smart4SURELearnInfo = Smart4SURELearnInfoPList()
+    fileprivate let learnInfo : SBALearnInfo = SBALearnInfoPList()
     
     @IBOutlet weak var participantIDLabel: UILabel!
     @IBOutlet weak var versionLabel: UILabel!
@@ -57,25 +57,14 @@ class Smart4SURELearnViewController: UITableViewController , SBASharedInfoContro
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return learnInfo.count
     }
-    
-    func itemForRowAtIndexPath(_ indexPath: IndexPath) -> Smart4SURELearnItem? {
-        guard let item = learnInfo[(indexPath as NSIndexPath).row] else {
-            assertionFailure("no learn item at index \((indexPath as NSIndexPath).row)")
-            return nil
-        }
 
-        return item
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LearnCell", for: indexPath)
-        guard let item = self.itemForRowAtIndexPath(indexPath) else { return cell }
+        guard let item = learnInfo.item(at: indexPath) else { return cell }
         
-        cell.textLabel?.text = item.title
-        
-        let image = SBAResourceFinder.shared.image(forResource: item.iconImage)?.withRenderingMode(.alwaysTemplate)
-        cell.imageView?.image = image
+        cell.textLabel?.text = item.learnTitle
+        cell.imageView?.image = item.learnIconImage
         
         return cell
     }
@@ -84,12 +73,11 @@ class Smart4SURELearnViewController: UITableViewController , SBASharedInfoContro
 
         if let cell = sender as? UITableViewCell,
            let indexPath = self.tableView.indexPath(for: cell),
-           let learnItem = self.itemForRowAtIndexPath(indexPath),
-           let url = SBAResourceFinder.shared.url(forResource: learnItem.details, withExtension:"html"),
+           let learnItem = learnInfo.item(at: indexPath),
            let vc = segue.destination as? SBAWebViewController {
             // Hook up the title and the url for the webview controller
-            vc.title = learnItem.title
-            vc.url = url
+            vc.title = learnItem.learnTitle
+            vc.url = learnItem.learnURL
         }
     }
     

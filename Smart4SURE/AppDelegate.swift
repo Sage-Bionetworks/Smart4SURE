@@ -41,29 +41,17 @@ class AppDelegate: SBAAppDelegate {
         return [.coremotion, .localNotifications, .microphone]
     }
     
-    override func showMainViewController(animated: Bool) {
-        guard let storyboard = openStoryboard("Main"),
-            let vc = storyboard.instantiateInitialViewController()
-            else {
-                assertionFailure("Failed to load onboarding storyboard")
-                return
-        }
-        self.transition(toRootViewController: vc, animated: animated)
-    }
-    
-    override func showReconsentIfNecessary() {
-        self.currentUser.isConsentVerified = true
+    override func presentOnboarding(for onboardingTaskType: SBAOnboardingTaskType) {
+        // Since this app does not include a path for reconsent or login
+        // should always show the onboarding view controller
+        showOnboardingViewController(animated: true)
     }
     
     override func showOnboardingViewController(animated: Bool) {
         let vc = Smart4SUREOnboardingViewController()
-        self.transition(toRootViewController: vc, animated: animated)
+        self.transition(toRootViewController: vc, state: .onboarding, animated: true)
     }
-    
-    func openStoryboard(_ name: String) -> UIStoryboard? {
-        return UIStoryboard(name: name, bundle: nil)
-    }
-    
+
     override func applicationDidBecomeActive(_ application: UIApplication) {
         super.applicationDidBecomeActive(application)
         
@@ -74,6 +62,8 @@ class AppDelegate: SBAAppDelegate {
     
     override func applicationWillResignActive(_ application: UIApplication) {
         super.applicationWillResignActive(application)
+        
+        // remove notification listener
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: SBANewsFeedUpdateNotificationKey), object: nil)
     }
     
