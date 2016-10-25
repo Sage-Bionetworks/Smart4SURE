@@ -23,7 +23,6 @@
 		80240A1A1D46949500100F21 /* pantspocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 802409FE1D46949500100F21 /* pantspocket.png */; };
 		80240A1B1D46949500100F21 /* CombinedTask.json in Resources */ = {isa = PBXBuildFile; fileRef = 80240A001D46949500100F21 /* CombinedTask.json */; };
 		80240A1E1D46949500100F21 /* Smart4SUREActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */; };
-		80240A1F1D46949500100F21 /* Smart4SURELearnInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */; };
 		80240A201D46949500100F21 /* Smart4SURELearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */; };
 		80240A991D469AFE00100F21 /* ZipZap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A8C1D469AB600100F21 /* ZipZap.framework */; };
 		80240A9A1D469AFE00100F21 /* ZipZap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A8C1D469AB600100F21 /* ZipZap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -274,7 +273,6 @@
 		802409FE1D46949500100F21 /* pantspocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pantspocket.png; sourceTree = "<group>"; };
 		80240A011D46949500100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = Base; path = Base.lproj/CombinedTask.json; sourceTree = "<group>"; };
 		80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREActivityTableViewController.swift; sourceTree = "<group>"; };
-		80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SURELearnInfo.swift; sourceTree = "<group>"; };
 		80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SURELearnViewController.swift; sourceTree = "<group>"; };
 		80240A251D469A2D00100F21 /* BridgeAppSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BridgeAppSDK.xcodeproj; path = BridgeAppSDK/BridgeAppSDK.xcodeproj; sourceTree = "<group>"; };
 		80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BridgeSDK.xcodeproj; path = BridgeAppSDK/BridgeSDK/BridgeSDK.xcodeproj; sourceTree = "<group>"; };
@@ -361,7 +359,6 @@
 				802409BD1D4692F800100F21 /* AppDelegate.swift */,
 				80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */,
 				FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */,
-				80240A081D46949500100F21 /* Smart4SURELearnInfo.swift */,
 				80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */,
 				FF722C1B1D7765E7004B2F8B /* Smart4SURENewsfeedTableViewController.swift */,
 				FF5051D81D6675A50065E677 /* Smart4SUREOnboardingViewController.swift */,
@@ -859,7 +856,6 @@
 				FF46AA771D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift in Sources */,
 				FF46AA781D6F7E2D006AD42B /* ScheduledActivity.swift in Sources */,
 				802409BE1D4692F800100F21 /* AppDelegate.swift in Sources */,
-				80240A1F1D46949500100F21 /* Smart4SURELearnInfo.swift in Sources */,
 				80240A201D46949500100F21 /* Smart4SURELearnViewController.swift in Sources */,
 				FF46AA0C1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift in Sources */,
 			);
