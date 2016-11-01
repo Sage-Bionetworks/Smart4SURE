@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DAf-PB-3AM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DAf-PB-3AM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -22,7 +22,7 @@
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityCell" id="s4Z-zP-A2e" customClass="SBAActivityTableViewCell" customModule="BridgeAppSDK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityCell" id="s4Z-zP-A2e" customClass="ActivityTableViewCell" customModule="Smart4SURE" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="104" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s4Z-zP-A2e" id="iid-PA-NEq">
@@ -70,7 +70,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="checkmarkImageView" destination="XjD-wJ-LBE" id="rv0-Xf-xgH"/>
+                                    <outlet property="checkmarkView" destination="XjD-wJ-LBE" id="Jkx-bZ-1dO"/>
                                     <outlet property="subtitleLabel" destination="nXI-lw-1dw" id="PUr-S2-82o"/>
                                     <outlet property="timeLabel" destination="SzF-0d-06U" id="JJc-JE-tJm"/>
                                     <outlet property="titleLabel" destination="ZHT-Av-klF" id="13F-h6-e8P"/>
@@ -347,7 +347,7 @@
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityCell" id="IJD-dI-mgN" customClass="SBAActivityTableViewCell" customModule="BridgeAppSDK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityCell" id="IJD-dI-mgN" customClass="ActivityTableViewCell" customModule="Smart4SURE" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IJD-dI-mgN" id="e8w-xw-8Qy">
@@ -388,7 +388,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="checkmarkImageView" destination="tld-LA-c4Z" id="1fQ-VI-Wvp"/>
+                                    <outlet property="checkmarkView" destination="tld-LA-c4Z" id="lYG-T5-zjy"/>
                                     <outlet property="subtitleLabel" destination="XZz-E4-3nm" id="WeA-V6-BvK"/>
                                     <outlet property="titleLabel" destination="zYk-Kz-fRD" id="dKk-dU-kzM"/>
                                     <outlet property="uncheckedView" destination="ezo-ds-TCH" id="UbU-UH-nVJ"/>
