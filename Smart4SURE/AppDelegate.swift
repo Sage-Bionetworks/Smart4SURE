@@ -37,10 +37,6 @@ import BridgeAppSDK
 @UIApplicationMain
 class AppDelegate: SBAAppDelegate {
     
-    override var requiredPermissions: SBAPermissionsType {
-        return [.coremotion, .localNotifications, .microphone]
-    }
-    
     override func presentOnboarding(for onboardingTaskType: SBAOnboardingTaskType) {
         // Since this app does not include a path for reconsent or login
         // should always show the onboarding view controller
