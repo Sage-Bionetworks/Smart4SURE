@@ -46,4 +46,39 @@ class Smart4SUREActivityTableViewController: SBAActivityTableViewController {
     }
 }
 
+class ActivityTableViewCell: SBAActivityTableViewCell {
+    
+    @IBOutlet weak var uncheckedView: UIView!
+    @IBOutlet weak var checkmarkView: UIImageView!
+    
+    override var complete: Bool {
+        didSet {
+            self.checkmarkView.isHidden = !complete
+            self.uncheckedView.isHidden = complete
+        }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // hardcode the corner radius b/c for some reason the bounds
+        // are not correct after laying out subviews
+        self.uncheckedView.layer.borderColor = UIColor.lightGray.cgColor
+        self.uncheckedView.layer.borderWidth = 1
+        self.uncheckedView.layer.cornerRadius = 14
+        
+        updateTintColors()
+    }
+    
+    override func tintColorDidChange() {
+        super.tintColorDidChange()
+        updateTintColors()
+    }
+    
+    func updateTintColors() {
+        self.timeLabel?.textColor = self.tintColor
+    }
+    
+    
+}
 

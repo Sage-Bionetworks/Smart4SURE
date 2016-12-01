@@ -47,7 +47,6 @@ class ScheduledActivity: NSManagedObject {
         schedule.startedOn = self.startedOn
         schedule.finishedOn = self.finishedOn
         schedule.persistent = self.persistent
-        schedule.status = self.status
         
         schedule.activity = SBBActivity()
         schedule.activity.label = self.label

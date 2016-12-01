@@ -88,5 +88,11 @@
 			<false/>
 		</dict>
 	</array>
+	<key>permissionTypes</key>
+	<array>
+		<string>notifications</string>
+		<string>coremotion</string>
+		<string>microphone</string>
+	</array>
 </dict>
 </plist>
