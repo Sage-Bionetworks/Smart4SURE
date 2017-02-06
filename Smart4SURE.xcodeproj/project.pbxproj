@@ -24,16 +24,10 @@
 		80240A1B1D46949500100F21 /* CombinedTask.json in Resources */ = {isa = PBXBuildFile; fileRef = 80240A001D46949500100F21 /* CombinedTask.json */; };
 		80240A1E1D46949500100F21 /* Smart4SUREActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A071D46949500100F21 /* Smart4SUREActivityTableViewController.swift */; };
 		80240A201D46949500100F21 /* Smart4SURELearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */; };
-		80240A991D469AFE00100F21 /* ZipZap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A8C1D469AB600100F21 /* ZipZap.framework */; };
-		80240A9A1D469AFE00100F21 /* ZipZap.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A8C1D469AB600100F21 /* ZipZap.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80240A9D1D469AFE00100F21 /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A7E1D469AA600100F21 /* ResearchKit.framework */; };
-		80240A9E1D469AFE00100F21 /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A7E1D469AA600100F21 /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80240AA11D469AFE00100F21 /* BridgeSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A701D469A9800100F21 /* BridgeSDK.framework */; };
 		80240AA21D469AFE00100F21 /* BridgeSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A701D469A9800100F21 /* BridgeSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80240AA51D469AFE00100F21 /* BridgeAppSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A321D469A2D00100F21 /* BridgeAppSDK.framework */; };
 		80240AA61D469AFE00100F21 /* BridgeAppSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80240A321D469A2D00100F21 /* BridgeAppSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80240AB41D469B2000100F21 /* openssl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80240AB11D469B1700100F21 /* openssl.framework */; };
-		80240AB51D469B2000100F21 /* openssl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80240AB11D469B1700100F21 /* openssl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80240AD01D46A38A00100F21 /* LearnInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80240ACC1D46A38A00100F21 /* LearnInfo.plist */; };
 		8027A8C71D638E5B00DCF4D0 /* BridgeInfo-private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */; };
 		8027A8DE1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */; };
@@ -52,6 +46,10 @@
 		FF84AB001D907A9D00ABD54C /* SURE-PD3.png in Resources */ = {isa = PBXBuildFile; fileRef = FF84AAFD1D907A9D00ABD54C /* SURE-PD3.png */; };
 		FF84AB011D907A9D00ABD54C /* mgh.png in Resources */ = {isa = PBXBuildFile; fileRef = FF84AAFE1D907A9D00ABD54C /* mgh.png */; };
 		FF84AB021D907A9D00ABD54C /* meliora.png in Resources */ = {isa = PBXBuildFile; fileRef = FF84AAFF1D907A9D00ABD54C /* meliora.png */; };
+		FFE42E801E4909020072BC7E /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE42E7D1E4908E70072BC7E /* ResearchKit.framework */; };
+		FFE42E811E4909020072BC7E /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFE42E7D1E4908E70072BC7E /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFE42E841E49090A0072BC7E /* ResearchUXFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE42E3E1E4907360072BC7E /* ResearchUXFactory.framework */; };
+		FFE42E851E49090A0072BC7E /* ResearchUXFactory.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFE42E3E1E4907360072BC7E /* ResearchUXFactory.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,83 +116,6 @@
 			remoteGlobalIDString = 807AE29F1B60330C002588BB;
 			remoteInfo = BridgeSDKIntegrationTests;
 		};
-		80240A7D1D469AA600100F21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80240A771D469AA600100F21 /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B183A5951A8535D100C76870;
-			remoteInfo = ResearchKit;
-		};
-		80240A7F1D469AA600100F21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80240A771D469AA600100F21 /* ResearchKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
-			remoteInfo = ResearchKitTests;
-		};
-		80240A8B1D469AB600100F21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D87BA1F81B3D6DEA00ED7EB3;
-			remoteInfo = "ZipZap (iOS Framework)";
-		};
-		80240A8D1D469AB600100F21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D899CFB0162C5EEB00112F49;
-			remoteInfo = "ZipZap (iOS Static Library)";
-		};
-		80240A8F1D469AB600100F21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D8D140D31B423B1100C411B0;
-			remoteInfo = "ZipZap (OS X Framework)";
-		};
-		80240A911D469AB600100F21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D899CF82162C5EC100112F49;
-			remoteInfo = "ZipZap (OS X Static Library)";
-		};
-		80240A931D469AB600100F21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BF8624CB1BB7495200C12EEE;
-			remoteInfo = "ZipZap (tvOS Framework)";
-		};
-		80240A951D469AB600100F21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BF8624EF1BB74B1F00C12EEE;
-			remoteInfo = "ZipZap (tvOS Static Library)";
-		};
-		80240A971D469AB600100F21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D899CF96162C5EC100112F49;
-			remoteInfo = ZipZapTests;
-		};
-		80240A9B1D469AFE00100F21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D87BA1F71B3D6DEA00ED7EB3;
-			remoteInfo = "ZipZap (iOS Framework)";
-		};
-		80240A9F1D469AFE00100F21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80240A771D469AA600100F21 /* ResearchKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = B183A4731A8535D100C76870;
-			remoteInfo = ResearchKit;
-		};
 		80240AA31D469AFE00100F21 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */;
@@ -209,26 +130,61 @@
 			remoteGlobalIDString = 801040B11C5A843D00D26E19;
 			remoteInfo = BridgeAppSDK;
 		};
-		80240AB01D469B1700100F21 /* PBXContainerItemProxy */ = {
+		FFE42E391E4907360072BC7E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 80240AAA1D469B1700100F21 /* openssl.xcodeproj */;
+			containerPortal = FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 60674AE31B30A93900A1917D;
-			remoteInfo = openssl;
+			remoteGlobalIDString = FF5C26321E28038F00A1D9E0;
+			remoteInfo = ObjCSample;
 		};
-		80240AB21D469B1700100F21 /* PBXContainerItemProxy */ = {
+		FFE42E3B1E4907360072BC7E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 80240AAA1D469B1700100F21 /* openssl.xcodeproj */;
+			containerPortal = FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 60674AEE1B30A93900A1917D;
-			remoteInfo = opensslTests;
+			remoteGlobalIDString = FF5C26571E28043900A1D9E0;
+			remoteInfo = SwiftSample;
 		};
-		80240AB61D469B2000100F21 /* PBXContainerItemProxy */ = {
+		FFE42E3D1E4907360072BC7E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 80240AAA1D469B1700100F21 /* openssl.xcodeproj */;
+			containerPortal = FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 801040B21C5A843D00D26E19;
+			remoteInfo = ResearchUXFactory;
+		};
+		FFE42E3F1E4907360072BC7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 801040BB1C5A843D00D26E19;
+			remoteInfo = ResearchUXFactoryTests;
+		};
+		FFE42E7C1E4908E70072BC7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFE42E761E4908E70072BC7E /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B183A5951A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		FFE42E7E1E4908E70072BC7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFE42E761E4908E70072BC7E /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
+			remoteInfo = ResearchKitTests;
+		};
+		FFE42E821E4909020072BC7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFE42E761E4908E70072BC7E /* ResearchKit.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 60674AE21B30A93900A1917D;
-			remoteInfo = openssl;
+			remoteGlobalIDString = B183A4731A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		FFE42E861E49090A0072BC7E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 801040B11C5A843D00D26E19;
+			remoteInfo = ResearchUXFactory;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -239,11 +195,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				80240AB51D469B2000100F21 /* openssl.framework in Embed Frameworks */,
-				80240A9E1D469AFE00100F21 /* ResearchKit.framework in Embed Frameworks */,
-				80240A9A1D469AFE00100F21 /* ZipZap.framework in Embed Frameworks */,
 				80240AA61D469AFE00100F21 /* BridgeAppSDK.framework in Embed Frameworks */,
+				FFE42E851E49090A0072BC7E /* ResearchUXFactory.framework in Embed Frameworks */,
 				80240AA21D469AFE00100F21 /* BridgeSDK.framework in Embed Frameworks */,
+				FFE42E811E4909020072BC7E /* ResearchKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,9 +231,6 @@
 		80240A091D46949500100F21 /* Smart4SURELearnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SURELearnViewController.swift; sourceTree = "<group>"; };
 		80240A251D469A2D00100F21 /* BridgeAppSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BridgeAppSDK.xcodeproj; path = BridgeAppSDK/BridgeAppSDK.xcodeproj; sourceTree = "<group>"; };
 		80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BridgeSDK.xcodeproj; path = BridgeAppSDK/BridgeSDK/BridgeSDK.xcodeproj; sourceTree = "<group>"; };
-		80240A771D469AA600100F21 /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = BridgeAppSDK/ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
-		80240A811D469AB600100F21 /* ZipZap.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ZipZap.xcodeproj; path = BridgeAppSDK/ZipZap/ZipZap.xcodeproj; sourceTree = "<group>"; };
-		80240AAA1D469B1700100F21 /* openssl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openssl.xcodeproj; path = BridgeAppSDK/CMSSupport/openssl/openssl.xcodeproj; sourceTree = "<group>"; };
 		80240ACD1D46A38A00100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Smart4SURE/Base.lproj/LearnInfo.plist; sourceTree = "<group>"; };
 		8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BridgeInfo-private.plist"; path = "../iOSPrivateProjectInfo/Smart4SURE/BridgeInfo-private.plist"; sourceTree = SOURCE_ROOT; };
 		8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sure-pd3-parkinson.pem"; sourceTree = "<group>"; };
@@ -298,6 +250,8 @@
 		FF84AAFD1D907A9D00ABD54C /* SURE-PD3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SURE-PD3.png"; sourceTree = "<group>"; };
 		FF84AAFE1D907A9D00ABD54C /* mgh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mgh.png; sourceTree = "<group>"; };
 		FF84AAFF1D907A9D00ABD54C /* meliora.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meliora.png; sourceTree = "<group>"; };
+		FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchUXFactory.xcodeproj; path = ../BridgeAppSDK/ResearchUXFactory/ResearchUXFactory.xcodeproj; sourceTree = "<group>"; };
+		FFE42E761E4908E70072BC7E /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = BridgeAppSDK/ResearchUXFactory/ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,12 +260,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF46AA651D6E5908006AD42B /* CoreData.framework in Frameworks */,
-				80240AB41D469B2000100F21 /* openssl.framework in Frameworks */,
-				80240A9D1D469AFE00100F21 /* ResearchKit.framework in Frameworks */,
-				80240A991D469AFE00100F21 /* ZipZap.framework in Frameworks */,
 				FF84AAA71D8CAFA600ABD54C /* HealthKit.framework in Frameworks */,
 				80240AA51D469AFE00100F21 /* BridgeAppSDK.framework in Frameworks */,
 				80240AA11D469AFE00100F21 /* BridgeSDK.framework in Frameworks */,
+				FFE42E801E4909020072BC7E /* ResearchKit.framework in Frameworks */,
+				FFE42E841E49090A0072BC7E /* ResearchUXFactory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,9 +395,8 @@
 			children = (
 				FF84AAA61D8CAFA600ABD54C /* HealthKit.framework */,
 				FF46AA641D6E5908006AD42B /* CoreData.framework */,
-				80240AAA1D469B1700100F21 /* openssl.xcodeproj */,
-				80240A811D469AB600100F21 /* ZipZap.xcodeproj */,
-				80240A771D469AA600100F21 /* ResearchKit.xcodeproj */,
+				FFE42E761E4908E70072BC7E /* ResearchKit.xcodeproj */,
+				FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */,
 				80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */,
 				80240A251D469A2D00100F21 /* BridgeAppSDK.xcodeproj */,
 			);
@@ -472,38 +424,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		80240A781D469AA600100F21 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				80240A7E1D469AA600100F21 /* ResearchKit.framework */,
-				80240A801D469AA600100F21 /* ResearchKitTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		80240A821D469AB600100F21 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				80240A8C1D469AB600100F21 /* ZipZap.framework */,
-				80240A8E1D469AB600100F21 /* libZipZap.a */,
-				80240A901D469AB600100F21 /* ZipZap.framework */,
-				80240A921D469AB600100F21 /* libZipZap.a */,
-				80240A941D469AB600100F21 /* ZipZap.framework */,
-				80240A961D469AB600100F21 /* libZipZap.a */,
-				80240A981D469AB600100F21 /* ZipZapTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		80240AAB1D469B1700100F21 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				80240AB11D469B1700100F21 /* openssl.framework */,
-				80240AB31D469B1700100F21 /* opensslTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		80240AD31D46A44900100F21 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -527,6 +447,26 @@
 			name = "Core Data";
 			sourceTree = "<group>";
 		};
+		FFE42E321E4907350072BC7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFE42E3A1E4907360072BC7E /* ObjCSample.app */,
+				FFE42E3C1E4907360072BC7E /* SwiftSample.app */,
+				FFE42E3E1E4907360072BC7E /* ResearchUXFactory.framework */,
+				FFE42E401E4907360072BC7E /* ResearchUXFactoryTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FFE42E771E4908E70072BC7E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFE42E7D1E4908E70072BC7E /* ResearchKit.framework */,
+				FFE42E7F1E4908E70072BC7E /* ResearchKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -542,11 +482,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				80240A9C1D469AFE00100F21 /* PBXTargetDependency */,
-				80240AA01D469AFE00100F21 /* PBXTargetDependency */,
 				80240AA41D469AFE00100F21 /* PBXTargetDependency */,
 				80240AA81D469AFE00100F21 /* PBXTargetDependency */,
-				80240AB71D469B2000100F21 /* PBXTargetDependency */,
+				FFE42E831E4909020072BC7E /* PBXTargetDependency */,
+				FFE42E871E49090A0072BC7E /* PBXTargetDependency */,
 			);
 			name = Smart4SURE;
 			productName = Smart4SURE;
@@ -648,16 +587,12 @@
 					ProjectRef = 80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */;
 				},
 				{
-					ProductGroup = 80240AAB1D469B1700100F21 /* Products */;
-					ProjectRef = 80240AAA1D469B1700100F21 /* openssl.xcodeproj */;
+					ProductGroup = FFE42E771E4908E70072BC7E /* Products */;
+					ProjectRef = FFE42E761E4908E70072BC7E /* ResearchKit.xcodeproj */;
 				},
 				{
-					ProductGroup = 80240A781D469AA600100F21 /* Products */;
-					ProjectRef = 80240A771D469AA600100F21 /* ResearchKit.xcodeproj */;
-				},
-				{
-					ProductGroup = 80240A821D469AB600100F21 /* Products */;
-					ProjectRef = 80240A811D469AB600100F21 /* ZipZap.xcodeproj */;
+					ProductGroup = FFE42E321E4907350072BC7E /* Products */;
+					ProjectRef = FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -719,81 +654,46 @@
 			remoteRef = 80240A751D469A9800100F21 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80240A7E1D469AA600100F21 /* ResearchKit.framework */ = {
+		FFE42E3A1E4907360072BC7E /* ObjCSample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ObjCSample.app;
+			remoteRef = FFE42E391E4907360072BC7E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FFE42E3C1E4907360072BC7E /* SwiftSample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = SwiftSample.app;
+			remoteRef = FFE42E3B1E4907360072BC7E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FFE42E3E1E4907360072BC7E /* ResearchUXFactory.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ResearchUXFactory.framework;
+			remoteRef = FFE42E3D1E4907360072BC7E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FFE42E401E4907360072BC7E /* ResearchUXFactoryTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ResearchUXFactoryTests.xctest;
+			remoteRef = FFE42E3F1E4907360072BC7E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FFE42E7D1E4908E70072BC7E /* ResearchKit.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ResearchKit.framework;
-			remoteRef = 80240A7D1D469AA600100F21 /* PBXContainerItemProxy */;
+			remoteRef = FFE42E7C1E4908E70072BC7E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80240A801D469AA600100F21 /* ResearchKitTests.xctest */ = {
+		FFE42E7F1E4908E70072BC7E /* ResearchKitTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ResearchKitTests.xctest;
-			remoteRef = 80240A7F1D469AA600100F21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80240A8C1D469AB600100F21 /* ZipZap.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ZipZap.framework;
-			remoteRef = 80240A8B1D469AB600100F21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80240A8E1D469AB600100F21 /* libZipZap.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libZipZap.a;
-			remoteRef = 80240A8D1D469AB600100F21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80240A901D469AB600100F21 /* ZipZap.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ZipZap.framework;
-			remoteRef = 80240A8F1D469AB600100F21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80240A921D469AB600100F21 /* libZipZap.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libZipZap.a;
-			remoteRef = 80240A911D469AB600100F21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80240A941D469AB600100F21 /* ZipZap.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ZipZap.framework;
-			remoteRef = 80240A931D469AB600100F21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80240A961D469AB600100F21 /* libZipZap.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libZipZap.a;
-			remoteRef = 80240A951D469AB600100F21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80240A981D469AB600100F21 /* ZipZapTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ZipZapTests.xctest;
-			remoteRef = 80240A971D469AB600100F21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80240AB11D469B1700100F21 /* openssl.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = openssl.framework;
-			remoteRef = 80240AB01D469B1700100F21 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80240AB31D469B1700100F21 /* opensslTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = opensslTests.xctest;
-			remoteRef = 80240AB21D469B1700100F21 /* PBXContainerItemProxy */;
+			remoteRef = FFE42E7E1E4908E70072BC7E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -890,16 +790,6 @@
 			target = 802409B91D4692F800100F21 /* Smart4SURE */;
 			targetProxy = 802409DA1D4692F800100F21 /* PBXContainerItemProxy */;
 		};
-		80240A9C1D469AFE00100F21 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "ZipZap (iOS Framework)";
-			targetProxy = 80240A9B1D469AFE00100F21 /* PBXContainerItemProxy */;
-		};
-		80240AA01D469AFE00100F21 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ResearchKit;
-			targetProxy = 80240A9F1D469AFE00100F21 /* PBXContainerItemProxy */;
-		};
 		80240AA41D469AFE00100F21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = BridgeSDK;
@@ -910,10 +800,15 @@
 			name = BridgeAppSDK;
 			targetProxy = 80240AA71D469AFE00100F21 /* PBXContainerItemProxy */;
 		};
-		80240AB71D469B2000100F21 /* PBXTargetDependency */ = {
+		FFE42E831E4909020072BC7E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = openssl;
-			targetProxy = 80240AB61D469B2000100F21 /* PBXContainerItemProxy */;
+			name = ResearchKit;
+			targetProxy = FFE42E821E4909020072BC7E /* PBXContainerItemProxy */;
+		};
+		FFE42E871E49090A0072BC7E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ResearchUXFactory;
+			targetProxy = FFE42E861E49090A0072BC7E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1098,7 +993,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Smart4SURE/Smart4SURE.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1117,7 +1012,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Smart4SURE/Smart4SURE.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 23;
+				CURRENT_PROJECT_VERSION = 24;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
