@@ -31,6 +31,8 @@
 		80240AD01D46A38A00100F21 /* LearnInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 80240ACC1D46A38A00100F21 /* LearnInfo.plist */; };
 		8027A8C71D638E5B00DCF4D0 /* BridgeInfo-private.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */; };
 		8027A8DE1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem in Resources */ = {isa = PBXBuildFile; fileRef = 8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */; };
+		FF1A38C41E4B97850079AA4E /* ResearchUXFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1A38C11E4B974F0079AA4E /* ResearchUXFactory.framework */; };
+		FF1A38C51E4B97850079AA4E /* ResearchUXFactory.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF1A38C11E4B974F0079AA4E /* ResearchUXFactory.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF3A7AEE1D78C0150073CE96 /* About.html in Resources */ = {isa = PBXBuildFile; fileRef = FF3A7AEC1D78C0150073CE96 /* About.html */; };
 		FF46AA0C1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */; };
 		FF46AA631D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF46AA621D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift */; };
@@ -48,8 +50,6 @@
 		FF84AB021D907A9D00ABD54C /* meliora.png in Resources */ = {isa = PBXBuildFile; fileRef = FF84AAFF1D907A9D00ABD54C /* meliora.png */; };
 		FFE42E801E4909020072BC7E /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE42E7D1E4908E70072BC7E /* ResearchKit.framework */; };
 		FFE42E811E4909020072BC7E /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFE42E7D1E4908E70072BC7E /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FFE42E841E49090A0072BC7E /* ResearchUXFactory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE42E3E1E4907360072BC7E /* ResearchUXFactory.framework */; };
-		FFE42E851E49090A0072BC7E /* ResearchUXFactory.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFE42E3E1E4907360072BC7E /* ResearchUXFactory.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,33 +130,40 @@
 			remoteGlobalIDString = 801040B11C5A843D00D26E19;
 			remoteInfo = BridgeAppSDK;
 		};
-		FFE42E391E4907360072BC7E /* PBXContainerItemProxy */ = {
+		FF1A38BC1E4B974F0079AA4E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */;
+			containerPortal = FF1A38B51E4B974F0079AA4E /* ResearchUXFactory.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = FF5C26321E28038F00A1D9E0;
 			remoteInfo = ObjCSample;
 		};
-		FFE42E3B1E4907360072BC7E /* PBXContainerItemProxy */ = {
+		FF1A38BE1E4B974F0079AA4E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */;
+			containerPortal = FF1A38B51E4B974F0079AA4E /* ResearchUXFactory.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = FF5C26571E28043900A1D9E0;
 			remoteInfo = SwiftSample;
 		};
-		FFE42E3D1E4907360072BC7E /* PBXContainerItemProxy */ = {
+		FF1A38C01E4B974F0079AA4E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */;
+			containerPortal = FF1A38B51E4B974F0079AA4E /* ResearchUXFactory.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 801040B21C5A843D00D26E19;
 			remoteInfo = ResearchUXFactory;
 		};
-		FFE42E3F1E4907360072BC7E /* PBXContainerItemProxy */ = {
+		FF1A38C21E4B974F0079AA4E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */;
+			containerPortal = FF1A38B51E4B974F0079AA4E /* ResearchUXFactory.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 801040BB1C5A843D00D26E19;
 			remoteInfo = ResearchUXFactoryTests;
+		};
+		FF1A38C61E4B97850079AA4E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF1A38B51E4B974F0079AA4E /* ResearchUXFactory.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 801040B11C5A843D00D26E19;
+			remoteInfo = ResearchUXFactory;
 		};
 		FFE42E7C1E4908E70072BC7E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -179,13 +186,6 @@
 			remoteGlobalIDString = B183A4731A8535D100C76870;
 			remoteInfo = ResearchKit;
 		};
-		FFE42E861E49090A0072BC7E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 801040B11C5A843D00D26E19;
-			remoteInfo = ResearchUXFactory;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -196,7 +196,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				80240AA61D469AFE00100F21 /* BridgeAppSDK.framework in Embed Frameworks */,
-				FFE42E851E49090A0072BC7E /* ResearchUXFactory.framework in Embed Frameworks */,
+				FF1A38C51E4B97850079AA4E /* ResearchUXFactory.framework in Embed Frameworks */,
 				80240AA21D469AFE00100F21 /* BridgeSDK.framework in Embed Frameworks */,
 				FFE42E811E4909020072BC7E /* ResearchKit.framework in Embed Frameworks */,
 			);
@@ -234,6 +234,7 @@
 		80240ACD1D46A38A00100F21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Smart4SURE/Base.lproj/LearnInfo.plist; sourceTree = "<group>"; };
 		8027A8C61D638E5B00DCF4D0 /* BridgeInfo-private.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "BridgeInfo-private.plist"; path = "../iOSPrivateProjectInfo/Smart4SURE/BridgeInfo-private.plist"; sourceTree = SOURCE_ROOT; };
 		8027A8DD1D638FDF00DCF4D0 /* sure-pd3-parkinson.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sure-pd3-parkinson.pem"; sourceTree = "<group>"; };
+		FF1A38B51E4B974F0079AA4E /* ResearchUXFactory.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchUXFactory.xcodeproj; path = BridgeAppSDK/ResearchUXFactory/ResearchUXFactory.xcodeproj; sourceTree = "<group>"; };
 		FF3A7AED1D78C0150073CE96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/About.html; sourceTree = "<group>"; };
 		FF46AA0B1D6E44E2006AD42B /* Smart4SUREDashboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREDashboardViewController.swift; sourceTree = "<group>"; };
 		FF46AA621D6E58BE006AD42B /* Smart4SUREScheduledActivityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Smart4SUREScheduledActivityManager.swift; sourceTree = "<group>"; };
@@ -250,7 +251,6 @@
 		FF84AAFD1D907A9D00ABD54C /* SURE-PD3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SURE-PD3.png"; sourceTree = "<group>"; };
 		FF84AAFE1D907A9D00ABD54C /* mgh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mgh.png; sourceTree = "<group>"; };
 		FF84AAFF1D907A9D00ABD54C /* meliora.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = meliora.png; sourceTree = "<group>"; };
-		FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchUXFactory.xcodeproj; path = ../BridgeAppSDK/ResearchUXFactory/ResearchUXFactory.xcodeproj; sourceTree = "<group>"; };
 		FFE42E761E4908E70072BC7E /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = BridgeAppSDK/ResearchUXFactory/ResearchKit/ResearchKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -261,10 +261,10 @@
 			files = (
 				FF46AA651D6E5908006AD42B /* CoreData.framework in Frameworks */,
 				FF84AAA71D8CAFA600ABD54C /* HealthKit.framework in Frameworks */,
-				80240AA51D469AFE00100F21 /* BridgeAppSDK.framework in Frameworks */,
 				80240AA11D469AFE00100F21 /* BridgeSDK.framework in Frameworks */,
 				FFE42E801E4909020072BC7E /* ResearchKit.framework in Frameworks */,
-				FFE42E841E49090A0072BC7E /* ResearchUXFactory.framework in Frameworks */,
+				FF1A38C41E4B97850079AA4E /* ResearchUXFactory.framework in Frameworks */,
+				80240AA51D469AFE00100F21 /* BridgeAppSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,8 +395,8 @@
 			children = (
 				FF84AAA61D8CAFA600ABD54C /* HealthKit.framework */,
 				FF46AA641D6E5908006AD42B /* CoreData.framework */,
+				FF1A38B51E4B974F0079AA4E /* ResearchUXFactory.xcodeproj */,
 				FFE42E761E4908E70072BC7E /* ResearchKit.xcodeproj */,
-				FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */,
 				80240A621D469A9800100F21 /* BridgeSDK.xcodeproj */,
 				80240A251D469A2D00100F21 /* BridgeAppSDK.xcodeproj */,
 			);
@@ -437,6 +437,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		FF1A38B61E4B974F0079AA4E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF1A38BD1E4B974F0079AA4E /* ObjCSample.app */,
+				FF1A38BF1E4B974F0079AA4E /* SwiftSample.app */,
+				FF1A38C11E4B974F0079AA4E /* ResearchUXFactory.framework */,
+				FF1A38C31E4B974F0079AA4E /* ResearchUXFactoryTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		FF46AA791D6F9770006AD42B /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -445,17 +456,6 @@
 				FF46AA751D6F7E2D006AD42B /* ScheduledActivity+CoreDataProperties.swift */,
 			);
 			name = "Core Data";
-			sourceTree = "<group>";
-		};
-		FFE42E321E4907350072BC7E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FFE42E3A1E4907360072BC7E /* ObjCSample.app */,
-				FFE42E3C1E4907360072BC7E /* SwiftSample.app */,
-				FFE42E3E1E4907360072BC7E /* ResearchUXFactory.framework */,
-				FFE42E401E4907360072BC7E /* ResearchUXFactoryTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		FFE42E771E4908E70072BC7E /* Products */ = {
@@ -485,7 +485,7 @@
 				80240AA41D469AFE00100F21 /* PBXTargetDependency */,
 				80240AA81D469AFE00100F21 /* PBXTargetDependency */,
 				FFE42E831E4909020072BC7E /* PBXTargetDependency */,
-				FFE42E871E49090A0072BC7E /* PBXTargetDependency */,
+				FF1A38C71E4B97850079AA4E /* PBXTargetDependency */,
 			);
 			name = Smart4SURE;
 			productName = Smart4SURE;
@@ -591,8 +591,8 @@
 					ProjectRef = FFE42E761E4908E70072BC7E /* ResearchKit.xcodeproj */;
 				},
 				{
-					ProductGroup = FFE42E321E4907350072BC7E /* Products */;
-					ProjectRef = FFE42E311E4907350072BC7E /* ResearchUXFactory.xcodeproj */;
+					ProductGroup = FF1A38B61E4B974F0079AA4E /* Products */;
+					ProjectRef = FF1A38B51E4B974F0079AA4E /* ResearchUXFactory.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -654,32 +654,32 @@
 			remoteRef = 80240A751D469A9800100F21 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FFE42E3A1E4907360072BC7E /* ObjCSample.app */ = {
+		FF1A38BD1E4B974F0079AA4E /* ObjCSample.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = ObjCSample.app;
-			remoteRef = FFE42E391E4907360072BC7E /* PBXContainerItemProxy */;
+			remoteRef = FF1A38BC1E4B974F0079AA4E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FFE42E3C1E4907360072BC7E /* SwiftSample.app */ = {
+		FF1A38BF1E4B974F0079AA4E /* SwiftSample.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = SwiftSample.app;
-			remoteRef = FFE42E3B1E4907360072BC7E /* PBXContainerItemProxy */;
+			remoteRef = FF1A38BE1E4B974F0079AA4E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FFE42E3E1E4907360072BC7E /* ResearchUXFactory.framework */ = {
+		FF1A38C11E4B974F0079AA4E /* ResearchUXFactory.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ResearchUXFactory.framework;
-			remoteRef = FFE42E3D1E4907360072BC7E /* PBXContainerItemProxy */;
+			remoteRef = FF1A38C01E4B974F0079AA4E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		FFE42E401E4907360072BC7E /* ResearchUXFactoryTests.xctest */ = {
+		FF1A38C31E4B974F0079AA4E /* ResearchUXFactoryTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
 			path = ResearchUXFactoryTests.xctest;
-			remoteRef = FFE42E3F1E4907360072BC7E /* PBXContainerItemProxy */;
+			remoteRef = FF1A38C21E4B974F0079AA4E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		FFE42E7D1E4908E70072BC7E /* ResearchKit.framework */ = {
@@ -800,15 +800,15 @@
 			name = BridgeAppSDK;
 			targetProxy = 80240AA71D469AFE00100F21 /* PBXContainerItemProxy */;
 		};
+		FF1A38C71E4B97850079AA4E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ResearchUXFactory;
+			targetProxy = FF1A38C61E4B97850079AA4E /* PBXContainerItemProxy */;
+		};
 		FFE42E831E4909020072BC7E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ResearchKit;
 			targetProxy = FFE42E821E4909020072BC7E /* PBXContainerItemProxy */;
-		};
-		FFE42E871E49090A0072BC7E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ResearchUXFactory;
-			targetProxy = FFE42E861E49090A0072BC7E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
