@@ -8,8 +8,8 @@ install:
   - export PATH="$HOME/.fastlane/bin:$PATH"
 script:
 # disable tests due to issues BRIDGE-1740 & BRIGDE-1727
-#  - travis_wait 30 ./fastlane/run-tests.sh
-  - travis_wait 30 ./fastlane/run-archive.sh
+#  - travis_wait 30 ./travis/run-tests.sh
+  - travis_wait 30 ./travis/run-archive.sh
 
 # deploy latest build
 deploy:
