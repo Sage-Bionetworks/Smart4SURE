@@ -1,0 +1,39 @@
+language: objective-c
+osx_image: xcode8.2
+before_install:
+  - brew update
+  - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
+install:
+  - ./travis/install-fastlane.sh
+  - export PATH="$HOME/.fastlane/bin:$PATH"
+script:
+# disable tests due to issues BRIDGE-1740 & BRIGDE-1727
+#  - travis_wait 30 ./travis/run-tests.sh
+  - travis_wait 30 ./travis/run-archive.sh
+
+# deploy latest build
+deploy:
+  provider: s3
+  access_key_id: AKIAICA2M6XGX62Q4NTQ
+  secret_access_key:
+    secure: mYhSI/Ck4yw3Dnm0dR9/gjbzfRY4GBOV5dlE9IIf5EvjNtf6bbKyRwpn1zLAU2zh6CpWuK4BF/d2PcKZsfR7E/eyrWUHK7RGNLiKBn6AwtnDGm2dOZAoMvmVnFVa8NVm5NvSo70+COJgyuCi3u1UNZhoQ2RfEOkdf8scuIzAhckZg4e9QCaySmO6BC/SBCQvbQf0oktnezw6ZlEAGEk/tAnk5mr7X1+IvhnnF1u+bxmQfkvYjp8NwGAIhPeggPw9HXg7zxD6+ajdY673BS/c9HJ1YmiNVVhez6dLH8t1YOyb1MVXIXeqtcaVzF7iYEXBiThd9ZfQ1lUBBHWroriuDaPNGuZBxGXTTYFQIpJyfQL0JBHNSFvFzUxqH81+Pf/OKgByQGQFnUJaay1xij/cS/CvLvxG4v2tWpolM2f6DgI9X2JqWtFHGhKbbDuaBrwIWge1GNevf4cOOMMfXbDO7Sw9uhLeRG2g9Ry9K7h0/RM0e8XF8VqrekGQTaKbz1O/yyD2w134yCC0DtFrl47pTL7Rkn4XUhSFSCHx/JFZNIijemsppvQOnABEknFc8FDS6xQl4Stgpfygcf6q/RhzQHfPq/sS3fYS/aQBUbFC7vj7o35WdLM5nkQOpVhehLrWFgq3sopzFs9gFuRI25gegfoohRiAcNPr7o21aPcU3sk=
+  bucket: ios-apps.sagebridge.org
+  local-dir: build
+  upload-dir: ci/org.sagebase.Smart4SURE/latest
+  acl: public_read
+  on:
+    branch: master
+
+# deploy tagged build
+deploy:
+  provider: s3
+  access_key_id: AKIAICA2M6XGX62Q4NTQ
+  secret_access_key:
+    secure: mYhSI/Ck4yw3Dnm0dR9/gjbzfRY4GBOV5dlE9IIf5EvjNtf6bbKyRwpn1zLAU2zh6CpWuK4BF/d2PcKZsfR7E/eyrWUHK7RGNLiKBn6AwtnDGm2dOZAoMvmVnFVa8NVm5NvSo70+COJgyuCi3u1UNZhoQ2RfEOkdf8scuIzAhckZg4e9QCaySmO6BC/SBCQvbQf0oktnezw6ZlEAGEk/tAnk5mr7X1+IvhnnF1u+bxmQfkvYjp8NwGAIhPeggPw9HXg7zxD6+ajdY673BS/c9HJ1YmiNVVhez6dLH8t1YOyb1MVXIXeqtcaVzF7iYEXBiThd9ZfQ1lUBBHWroriuDaPNGuZBxGXTTYFQIpJyfQL0JBHNSFvFzUxqH81+Pf/OKgByQGQFnUJaay1xij/cS/CvLvxG4v2tWpolM2f6DgI9X2JqWtFHGhKbbDuaBrwIWge1GNevf4cOOMMfXbDO7Sw9uhLeRG2g9Ry9K7h0/RM0e8XF8VqrekGQTaKbz1O/yyD2w134yCC0DtFrl47pTL7Rkn4XUhSFSCHx/JFZNIijemsppvQOnABEknFc8FDS6xQl4Stgpfygcf6q/RhzQHfPq/sS3fYS/aQBUbFC7vj7o35WdLM5nkQOpVhehLrWFgq3sopzFs9gFuRI25gegfoohRiAcNPr7o21aPcU3sk=
+  bucket: ios-apps.sagebridge.org
+  skip_cleanup: true
+  local_dir: build
+  upload-dir: org.sagebase.Smart4SURE/$TRAVIS_TAG
+  on:
+    tags: true
+
