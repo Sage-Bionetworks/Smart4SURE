@@ -18,8 +18,66 @@ default_platform :ios
 platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    ENV["MATCH_KEYCHAIN_NAME"] = "ios-build.keychain"
+    # ensure_git_status_clean 
     
-    
+  end
+
+  desc "Create keychains to store certificates"
+  lane :keychains do
+    create_keychain(
+      name: ENV["MATCH_KEYCHAIN_NAME"],
+      password: ENV["MATCH_PASSWORD"],
+      default_keychain: true,
+      unlock: true,
+      timeout: 3600,
+      add_to_search_list: true
+    )
+  end
+
+  desc "Fetches provisioning profile and certificates from github repo"
+  desc "Usage fastlane certificates export_method:\"enterprise\""
+  lane :certificates do |options|
+    export_method = options[:export_method]
+    match(
+      type: "development",
+      app_identifier: "org.sagebase.Smart4SURE",
+      keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
+      keychain_password: ENV["MATCH_PASSWORD"],
+      readonly: true
+    )
+    match(
+      type: "appstore",
+      app_identifier: "org.sagebase.Smart4SURE",
+      keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
+      keychain_password: ENV["MATCH_PASSWORD"],
+      readonly: true
+    )
+  end
+
+  desc "Archive and export app"
+  desc "Usage fastlane archive scheme:\"Smart4SURE\" export_method:\"enterprise\""
+  lane :archive do |options|
+    scheme = options[:scheme]
+    export_method = options[:export_method]
+    gym(
+      scheme: "#{scheme}",
+      clean: true,
+      include_bitcode: true,
+      output_directory: "./build",
+      output_name: "#{scheme}.ipa",
+      export_method: "#{export_method}",
+      destination: "generic/platform=iOS",
+    )
+  end
+
+  desc "This lane is for CI bots to archive and export"
+  lane :ci_archive do |options|
+    scheme = options[:scheme]
+    export_method = options[:export_method]
+    keychains
+    certificates
+    archive(scheme: "#{scheme}",export_method: "#{export_method}")
   end
 
   desc "Runs all the tests"
@@ -29,27 +87,6 @@ platform :ios do
     else
       scan
     end
-  end
-
-  desc "Fetches provisioning profiles so you can build locally and deploy to your device"
-  lane :certificates do
-    match(type: "development", app_identifier: "org.sagebase.Smart4SURE", readonly: true)
-  end
-
-  desc "Archive and export app"
-  lane :archive do |options|
-    scheme = options[:scheme]
-    certificates
-    gym(
-      scheme: "#{scheme}",
-      clean: true,
-      include_bitcode: true,
-      output_directory: "./build",
-      output_name: "Smart4SURE.ipa",
-      export_method: "development",
-      destination: "generic/platform=iOS",
-      use_legacy_build_api: false,
-    )
   end
 
   desc "Submit a new Beta Build to Apple TestFlight"
@@ -89,10 +126,3 @@ platform :ios do
     # )
   end
 end
-
-
-# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
-# All available actions: https://docs.fastlane.tools/actions
-
-# fastlane reports which actions are used
-# No personal data is recorded. Learn more at https://github.com/fastlane/enhancer
