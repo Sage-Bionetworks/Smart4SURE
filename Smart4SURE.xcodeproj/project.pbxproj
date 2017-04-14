@@ -542,6 +542,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 4B822CZK9N;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.HealthKit = {
 								enabled = 1;
@@ -994,11 +995,14 @@
 				CODE_SIGN_ENTITLEMENTS = Smart4SURE/Smart4SURE.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 25;
+				DEVELOPMENT_TEAM = 4B822CZK9N;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "66b0cc74-99f2-43ef-94c8-03c98dee762d";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development org.sagebase.Smart4SURE";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1013,11 +1017,14 @@
 				CODE_SIGN_ENTITLEMENTS = Smart4SURE/Smart4SURE.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 25;
+				DEVELOPMENT_TEAM = 4B822CZK9N;
 				INFOPLIST_FILE = Smart4SURE/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.sagebase.Smart4SURE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "66b0cc74-99f2-43ef-94c8-03c98dee762d";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development org.sagebase.Smart4SURE";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
