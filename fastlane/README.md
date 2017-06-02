@@ -40,7 +40,7 @@ fastlane ios certificates
 ```
 Fetches provisioning profile and certificates from github repo
 
-Usage fastlane certificates export_method:"enterprise"
+Usage fastlane certificates export_method:"app-store"
 ### ios archive
 ```
 fastlane ios archive
@@ -53,23 +53,13 @@ Usage fastlane archive scheme:"Smart4SURE" export_method:"enterprise"
 fastlane ios ci_archive
 ```
 This lane is for CI bots to archive and export
-### ios test
-```
-fastlane ios test
-```
-Runs all the tests
 ### ios beta
 ```
 fastlane ios beta
 ```
-Submit a new Beta Build to Apple TestFlight
+Submit a new Build to appstore
 
 This will also make sure the profile is up to date
-### ios release
-```
-fastlane ios release
-```
-Deploy a new version to the App Store
 
 ----
 

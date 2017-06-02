@@ -19,8 +19,6 @@ platform :ios do
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
     ENV["MATCH_KEYCHAIN_NAME"] = "ios-build.keychain"
-    # ensure_git_status_clean 
-    
   end
 
   desc "Create keychains to store certificates"
@@ -36,19 +34,17 @@ platform :ios do
   end
 
   desc "Fetches provisioning profile and certificates from github repo"
-  desc "Usage fastlane certificates export_method:\"enterprise\""
+  desc "Usage fastlane certificates export_method:\"app-store\""
   lane :certificates do |options|
     export_method = options[:export_method]
     match(
       type: "development",
-      app_identifier: "org.sagebase.Smart4SURE",
       keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
       keychain_password: ENV["MATCH_PASSWORD"],
       readonly: true
     )
     match(
       type: "appstore",
-      app_identifier: "org.sagebase.Smart4SURE",
       keychain_name: ENV["MATCH_KEYCHAIN_NAME"],
       keychain_password: ENV["MATCH_PASSWORD"],
       readonly: true
@@ -80,33 +76,22 @@ platform :ios do
     archive(scheme: "#{scheme}",export_method: "#{export_method}")
   end
 
-  desc "Runs all the tests"
-  lane :test do |options|
-    if options[:scheme]
-      scan(scheme: options[:scheme])
-    else
-      scan
-    end
-  end
-
-  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "Submit a new Build to appstore"
   desc "This will also make sure the profile is up to date"
-  lane :beta do
-    # match(type: "appstore") # more information: https://codesigning.guide
-    gym(scheme: "Smart4SURE") # Build your app - more options available
-    pilot
-
-    # sh "your_script.sh"
-    # You can also use other beta testing services here (run `fastlane actions`)
-  end
-
-  desc "Deploy a new version to the App Store"
-  lane :release do
-    # match(type: "appstore")
-    # snapshot
-    gym(scheme: "Smart4SURE") # Build your app - more options available
-    deliver(force: true)
-    # frameit
+  lane :beta do |options|
+    scheme = options[:scheme]
+    export_method = options[:export_method]
+    ensure_git_status_clean
+    keychains
+    certificates
+    version_number = get_version_number
+    next_build_number = latest_testflight_build_number(version: "#{version_number}") + 1
+    increment_build_number(build_number: next_build_number)
+    scan
+    archive(scheme: "#{scheme}",export_method: "#{export_method}")
+    testflight(ipa: "./build/#{scheme}.ipa", skip_submission: true)
+    add_git_tag(tag: "#{version_number}_#{next_build_number}")
+    push_to_git_remote(remote_branch: ENV["TRAVIS_BRANCH"])
   end
 
   # You can define as many lanes as you want
