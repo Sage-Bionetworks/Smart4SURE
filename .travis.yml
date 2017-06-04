@@ -11,7 +11,7 @@ install:
 - bundle install
 script:
 - "travis_wait 45 ./travis/build.sh"
-branch:
+branches:
   only:
   - master
   - /^stable-.*$/
