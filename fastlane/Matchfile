@@ -4,7 +4,7 @@ git_branch "4B822CZK9N"
 type "development" # The default type, can be: appstore, adhoc, enterprise or development
 
 app_identifier "org.sagebase.Smart4SURE" # The bundle identifier of your app
-username "apple.developer@sagebase.org" # Your Apple Developer Portal username
+username "appleservicer@sagebase.org" # Your Apple Developer Portal username
 
 readonly true
 # For all available options run `fastlane match --help`
